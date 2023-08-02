@@ -1,0 +1,44 @@
+:root {
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --black: #111;
+  --text: #111;
+  --header-border-color: #111;
+  --black-1: #202024;
+  --black-2: #000000;
+  --violet: #4f2ee8;
+  --yellow: #eac645;
+  --white: #ffffff;
+  --icon-color: #111111;
+  --main-background-color: #f3f3f3;
+  --switcher-theme: linear-gradient(180deg, #4f2ee8 0%, #dcdcdc 100%);
+  --logo-fill-color: #000;
+  --categories-text-color: rgba(17, 17, 17, 0.6);
+  --categories-text-color-active: #4f2ee8;
+  --books-color: #b4afaf;
+  --pop-up-border: #111;
+  --pop-up-add-text: rgba(17, 17, 17, 0.5);
+  --background-color: #fff;
+  --book-border-color: rgba(79, 46, 232, 0.4);
+  --shopping-list-empty-text-color: rgba(0, 0, 0, 0.6);
+  --pagination-left-icon-color: #b4afaf;
+  --pagination-text-active-color: #ffffff;
+  --pagination-border-color: #111111;
+}
+
+:root[data-theme="dark"] {
+  --text: #ffffff;
+  --header-border-color: #ffffff;
+  --main-background-color: #202024;
+  --switcher-theme: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
+  --logo-fill-color: #f3f3f3;
+  --categories-text-color: rgba(255, 255, 255, 0.6);
+  --categories-text-color-active: #eac645;
+  --pop-up-border: #fff;
+  --icon-color: #ffffff;
+  --pop-up-add-text: rgba(255, 255, 255, 0.5);
+  --background-color: #111111;
+  --shopping-list-empty-text-color: rgba(255, 255, 255, 0.6);
+  --pagination-left-icon-color: #ffffff;
+  --pagination-text-active-color: #000000;
+  --pagination-border-color: #ffffff;
+}

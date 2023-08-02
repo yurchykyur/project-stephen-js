@@ -1,0 +1,61 @@
+.gotop-wrapper {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gotop-wrapper.show {
+  opacity: 1;
+}
+
+.gotop-link {
+  display: block;
+
+  width: 44px;
+  height: 44px;
+  scale: 1;
+
+  background-color: var(--dark-green-color);
+  border: 1px solid var(--social-hover-color);
+  border-radius: 25%;
+
+  transition: transform var(--transition), border-radius var(--transition);
+}
+
+.gotop-link:is(:hover, :focus) {
+  transform: scale(1.27);
+  border-radius: 50%;
+}
+
+.gotop-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+
+  fill: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+  .gotop-link {
+    width: 55px;
+    height: 55px;
+  }
+
+  .gotop-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gotop-wrapper {
+    bottom: 120px;
+  }
+}

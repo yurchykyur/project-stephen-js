@@ -1,0 +1,39 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+
+  color: var(--text);
+  background-color: var(--main-background-color);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* .btn {
+  text-align: center;
+  text-transform: uppercase;
+
+  color: var(--white-color);
+  background: var(--dark-green-color);
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  transition: border-color var(--transition);
+}
+
+.btn:is(:hover, :focus) {
+  border-color: var(--white-color);
+} */
