@@ -1,0 +1,2 @@
+!function(){const e=document.querySelector("#toggle"),t=document.documentElement;e.addEventListener("change",(function(){"dark"===t.getAttribute("data-theme")?(t.removeAttribute("data-theme"),localStorage.removeItem("theme")):(t.setAttribute("data-theme","dark"),localStorage.setItem("theme","dark"))})),"dark"===localStorage.getItem("theme")&&(t.setAttribute("data-theme","dark"),e.checked=!0)}();
+//# sourceMappingURL=index.89516883.js.map
