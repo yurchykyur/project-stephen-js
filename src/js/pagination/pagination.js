@@ -108,8 +108,6 @@ function onClickPagination(e) {
 
 
 
-
-
 function moveToStart() {
   console.log('moveToStart()')  
   createPagination(DATA, 1)
@@ -216,23 +214,21 @@ function deleteClassActivePage(page = 1) {
    })
 }
 
+
+
 createPagination(DATA, 1, true)
 
-
-export default function createPagination(data, initialPage = 1, isFirstRender=false) {
+export default function createPagination(data, initialPage = 1, isFirstRender = false) {
 
   if (data.length <= 3) {
-    return
+  return
   }
-
-
 
   // не забути розкоментувати
 
   // numbersOfPages(data)
 
-  // не забути розкоментувати
-
+// не забути розкоментувати
 
   const maxVisiblePages = window.innerWidth > 768 ? 3 : 2
   console.log(maxVisiblePages)
@@ -246,12 +242,14 @@ export default function createPagination(data, initialPage = 1, isFirstRender=fa
   
  refs.paginationContainer.innerHTML=  createMarcupPagination(initialPage, maxVisiblePages, isThreePoint) 
   createRefsPagination()
-  
-    if (isFirstRender) {
+ 
+  if (isFirstRender) {
+
     addActivePage(1)
 
   }
 }
+
 
 function createRefsPagination() {
   refs.content=document.querySelector('.js-content-container')
@@ -260,6 +258,10 @@ function createRefsPagination() {
         
 }
 
+
+function prepareDataForBooks(page, data) {
+  
+}
 
 function createMarcupPagination(initialPage, maxVisiblePages, isThreePoint = true) {
   let murkupPages = '';
@@ -328,5 +330,3 @@ function createMarcupPagesPagination(initialPage=1, maxVisiblePages=2) {
  
 
 // console.log(createMarcupPagination())
-
-export {createPagination, }
