@@ -11,21 +11,20 @@
 
 /* components */
 
-// @import url('./components/_burger-menu.css');
-// @import url('./components/_buy-now.scss');
+@import url('./components/_burger-menu.scss');
+@import url('./components/_modal-window.scss');
 @import url('./components/_team-modal.scss');
 @import url('./components/_gotop.scss');
 
 /* banner */
 
-// @import url('./banner/_support-ukraine.scss');
+@import url('./banner/_support-ukraine.scss');
 
 /* layouts */
 
 @import url('./components/_header.scss');
-// @import url('./hero.css');
-// @import url('./about-us.css');
-// @import url('./catalog.css');
-// @import url('./new-watches.css');
-// @import url('./sale.css');
+@import url('./shopping-list/_content-wrapper.scss');
+@import url('./banner/_support-ukraine.scss');
+@import url('./shopping-list/_content.scss');
+@import url('./shopping-list/_pagination.scss');
 @import url('./components/_footer.scss');
