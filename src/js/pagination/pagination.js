@@ -27,8 +27,7 @@ const DATA = [{ title: "oject 1", text: 'Lorem ipsum dolor sit amet, consectetur
 
 console.log(DATA)
 const refs = {
-   
-    paginationContainer: document.querySelector('.pagination-container'),
+  paginationContainer: document.querySelector('.pagination-container'),
 }
 
 
@@ -194,7 +193,7 @@ function findActivePage() {
   return Number(activePage)
 }
 
-function addActivePage(page = 1) {
+ function addActivePage(page = 1) {
   console.log('addActivePage', refs.allPaginationPages)
   refs.allPaginationPages.forEach(elem => {
     const number = Number(elem.dataset.pagination)
@@ -215,8 +214,9 @@ function deleteClassActivePage(page = 1) {
    })
 }
 
-createPagination(DATA, 1)
 
+
+createPagination(DATA, 1, true)
 
 export default function createPagination(data, initialPage = 1, isFirstRender = false) {
 
@@ -242,8 +242,9 @@ export default function createPagination(data, initialPage = 1, isFirstRender = 
   
  refs.paginationContainer.innerHTML=  createMarcupPagination(initialPage, maxVisiblePages, isThreePoint) 
   createRefsPagination()
-
+ 
   if (isFirstRender) {
+
     addActivePage(1)
 
   }
