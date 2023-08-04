@@ -16,11 +16,15 @@
 @import url('./components/_team-modal.scss');
 @import url('./components/_gotop.scss');
 
+/* banner */
+
+@import url('./banner/_support-ukraine.scss');
+
 /* layouts */
 
 @import url('./components/_header.scss');
-@import url('./index/_categories.scss');
-@import url('./index/_content-wrapper.scss');
+@import url('./shopping-list/_content-wrapper.scss');
 @import url('./banner/_support-ukraine.scss');
-@import url('./index/_books.scss');
+@import url('./shopping-list/_content.scss');
+@import url('./shopping-list/_pagination.scss');
 @import url('./components/_footer.scss');
