@@ -5,14 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="./images/favicon.ico" />
-    <title>The Books</title>
+    <title>Bookshelf</title>
+
     <link rel="stylesheet" href="./sass/index.scss" />
     <script async type="module" src="./js/header/theme-toggle.js"></script>
     <script defer type="module" src="./index.js"></script>
   </head>
   <body>
+    <a href="./shopping-list.html">shopping-list.html</a>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/example.html"></include>
+
+    <!-- Секції Максима -->
+    <include src="./partials/header.html"></include>
+    <!-- Секції Максима -->
+
+    <div class="content-wrapper">
+      <!-- Секції Ростислава -->
+      <div class="categories-wrapper">
+        <include src="./partials/index/categories.html"></include>
+        <include src="./partials/banner/support-ukraine.html"></include>
+      </div>
+      <!-- Секції Ростислава -->
+
+      <!-- Секції Мирослава -->
+      <include src="./partials/index/books.html"></include>
+      <!-- Секції Мирослава -->
+    </div>
+
+    <!-- Секції Дар'ї -->
+    <include src="./partials/index/modal-window.html"></include>
+    <!-- Секції Дар'ї -->
+
+    <!-- Секції Павла -->
+    <include src="./partials/team-modal.html"></include>
+    <include src="./partials/footer.html"></include>
+    <!-- Секції Павла -->
 
     <include src="./partials/gotop-btn.html"></include>
   </body>
