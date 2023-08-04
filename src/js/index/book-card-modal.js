@@ -51,8 +51,8 @@ async function createMarkup(bookId) {
             </div>
             <div class="book-info">
                 <h2 class="book-title">${books.bookName}</h2>
-                <p class="author-text">${books.author}</p>
-                <p class="description-text">${books.description}</p>
+                <p class="book-author">${books.author}</p>
+                <p class="book-description">${books.description}</p>
                 <ul class="list shop-list">${shopName}</ul>
             </div>
         </div>
@@ -79,7 +79,8 @@ function closeModal(instance) {
   });
 }
 
-async function openModal(evt) {
+//import to gallery
+export async function openModal(evt) {
   if (
     !(
       (evt.target.parentElement.nodeName === "LI" &&
@@ -89,6 +90,7 @@ async function openModal(evt) {
   ) {
     return;
   }
+
   idBook =
     evt.target.nodeName === "LI"
       ? evt.target.dataset.bookId
