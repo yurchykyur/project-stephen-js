@@ -26,8 +26,8 @@ async function getBookInfo(bookId) {
 }
 
 function getImages(name) {
-  if (name in books) {
-    const img = books[name];
+  if (name in shops) {
+    const img = shops[name];
     return img;
   } else return "";
 }
@@ -123,7 +123,6 @@ async function openModal(evt) {
   }
   addBtn.addEventListener("click", () => {
     addElement(idBook, books);
-    firebase_addEl(idBook, books);
     addBtn.classList.add("hidden");
     removeBtn.classList.remove("hidden");
     textRemove.classList.remove("hidden");
@@ -131,7 +130,6 @@ async function openModal(evt) {
 
   removeBtn.addEventListener("click", () => {
     localStorage.removeItem(idBook);
-    firebase_deleteEl(idBook);
     addBtn.classList.remove("hidden");
     removeBtn.classList.add("hidden");
     textRemove.classList.add("hidden");
