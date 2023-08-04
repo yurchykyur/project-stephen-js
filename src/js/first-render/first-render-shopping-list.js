@@ -1,6 +1,6 @@
 import createPagination from '../pagination/pagination'
 
-export default function firstRenderShoppingList() {
+function firstRenderShoppingList() {
     // функція запиту в локал сторедж та отриманні даних
     const data = false; 
 
@@ -10,3 +10,5 @@ export default function firstRenderShoppingList() {
     // createPagination(data, 1, true)
 
 }
+
+firstRenderShoppingList()
