@@ -27,8 +27,7 @@ const DATA = [{ title: "oject 1", text: 'Lorem ipsum dolor sit amet, consectetur
 
 console.log(DATA)
 const refs = {
-   
-    paginationContainer: document.querySelector('.pagination-container'),
+  paginationContainer: document.querySelector('.pagination-container'),
 }
 
 
@@ -196,7 +195,7 @@ function findActivePage() {
   return Number(activePage)
 }
 
-function addActivePage(page = 1) {
+ function addActivePage(page = 1) {
   console.log('addActivePage', refs.allPaginationPages)
   refs.allPaginationPages.forEach(elem => {
     const number = Number(elem.dataset.pagination)
@@ -217,11 +216,23 @@ function deleteClassActivePage(page = 1) {
    })
 }
 
-createPagination(DATA, 1)
-addActivePage(1)
+createPagination(DATA, 1, true)
 
 
-function createPagination(data, initialPage = 1) {
+export default function createPagination(data, initialPage = 1, isFirstRender=false) {
+
+  if (data.length <= 3) {
+    return
+  }
+
+
+
+  // не забути розкоментувати
+
+  // numbersOfPages(data)
+
+  // не забути розкоментувати
+
 
   const maxVisiblePages = window.innerWidth > 768 ? 3 : 2
   console.log(maxVisiblePages)
@@ -235,6 +246,11 @@ function createPagination(data, initialPage = 1) {
   
  refs.paginationContainer.innerHTML=  createMarcupPagination(initialPage, maxVisiblePages, isThreePoint) 
   createRefsPagination()
+  
+    if (isFirstRender) {
+    addActivePage(1)
+
+  }
 }
 
 function createRefsPagination() {
@@ -312,3 +328,5 @@ function createMarcupPagesPagination(initialPage=1, maxVisiblePages=2) {
  
 
 // console.log(createMarcupPagination())
+
+export {createPagination, }
