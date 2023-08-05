@@ -1,3 +1,4 @@
+import sprite from '/src/images/icons.svg';
 
 let DATA = [
   {
@@ -96,8 +97,6 @@ const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
 };
 
-
-
 let arrayNumbersOfPages = [];
 
 // numbersOfPages(DATA)
@@ -105,7 +104,6 @@ let arrayNumbersOfPages = [];
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
   for (let i = 0; i < Math.ceil(data.length / CARD_PER_PAGE); i += 1) {
-
     arrayNumbersOfPages.push(i + 1);
   }
 }
@@ -115,7 +113,6 @@ console.log(arrayNumbersOfPages);
 refs.paginationContainer.addEventListener('click', onClickPagination);
 
 function createMarcupContent(data) {
-
   return data
     .map(({ title, text }) => {
       return `<div class="book">
@@ -124,7 +121,6 @@ function createMarcupContent(data) {
       </div>`;
     })
     .join('');
-
 }
 
 function onClickPagination(e) {
@@ -184,7 +180,6 @@ function moveToStart() {
 
   const string = createMarcupContent(prepareDataForBooks(1));
   refs.content.innerHTML = string;
-
 }
 
 function moveToBackward() {
@@ -197,11 +192,8 @@ function moveToBackward() {
     document.querySelector('.js-pagination-pages').dataset.pagination
   );
 
-
-
   if (activePage <= 3) {
     const initialPage = 1;
-
 
     deleteClassActivePage(activePage);
     console.log(initialPage, 'initialPage');
@@ -212,7 +204,6 @@ function moveToBackward() {
     refs.content.innerHTML = string;
   } else {
     const initialPage = startPagePagination - 1;
-
 
     deleteClassActivePage(activePage);
     console.log(initialPage, 'initialPage');
@@ -227,7 +218,6 @@ function moveToBackward() {
 function moveToForward() {
   console.log('moveToforward()');
   const activePage = findActivePage();
-
 
   if (activePage === arrayNumbersOfPages.length) {
     return;
@@ -246,7 +236,6 @@ function moveToForward() {
 
   const string = createMarcupContent(prepareDataForBooks(activePage + 1));
   refs.content.innerHTML = string;
-
 }
 
 function moveToEnd() {
@@ -316,8 +305,6 @@ export default function createPagination(
   isFirstRender = false,
   isDeleted = false
 ) {
-
-  
   if (data === 'undefined') {
     return;
   }
@@ -406,7 +393,6 @@ function onDeletedItem(data, prevState, activePage) {
 
 // ============================================
 
-
 // =====================================================================================
 
 // підготовка даних для створення даних для рендеру  секції шоппінг ліст
@@ -431,7 +417,6 @@ function prepareDataForBooks(page) {
 
 // =====================================================================================
 
-
 function createMarcupPagination(
   initialPage,
   maxVisiblePages,
@@ -450,12 +435,12 @@ function createMarcupPagination(
       <div class="left-arrows-wrapper">
         <button class="js-pagination-button start" type="button" data-pagination="start">
           <svg class="pagination-icon-start" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-arrow-ff"></use>
+            <use href="${sprite}#icon-arrow-ff"></use>
           </svg>
         </button>
         <button class="js-pagination-button backward" type="button" data-pagination="backward">
           <svg class="pagination-icon-backward" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-arrow"></use>
+            <use href="${sprite}#icon-arrow"></use>
           </svg>
         </button>
       </div>
@@ -467,12 +452,12 @@ function createMarcupPagination(
       <div class="right-arrows-wrapper">
         <button class="js-pagination-button forward" type="button" data-pagination="forward">
           <svg class="pagination-icon-forward" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-arrow"></use>
+            <use href="${sprite}#icon-arrow"></use>
           </svg>
         </button>
         <button class="js-pagination-button end" type="button" data-pagination="end">
           <svg class="pagination-icon-end" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-arrow-ff"></use>
+            <use href="${sprite}#icon-arrow-ff"></use>
           </svg>
         </button>
       </div>
