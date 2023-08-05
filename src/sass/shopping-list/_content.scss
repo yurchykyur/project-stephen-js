@@ -1,0 +1,151 @@
+// .shopping-list-section {
+//   background: #f6f6f6;
+// }
+.container {
+}
+
+.header-shopping {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+  color: #111;
+  font-family: DM Sans;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.19; 
+  letter-spacing: -1.28px;
+}
+.header-color {
+  color: #4f2ee8;
+  font-family: DM Sans;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: -1.28px;
+}
+.shopping-list-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.shopping-list-item {
+  display: flex;
+  padding: 14px;
+
+  max-width: 335px;
+  height: 170px;
+
+  border-radius: 16px;
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  background: #fff;
+}
+
+.shopping-list-item:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sh-wrapper{
+position: relative;
+width: 100px;
+height: 142px;
+
+}
+
+.book-logo{ 
+    width: 32px;
+    height: 30px;
+    position: absolute;
+     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #4F2EE8;
+}
+
+.shopping-list-img {
+    width: 100px;
+    height: 142px;
+
+  border-radius: 8px;
+  border: 1px solid #000;
+  background:  lightgray 50% / cover no-repeat;
+//    url(<path-to-image>),
+}
+
+.trash-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border: transparent;
+    padding: 8px;
+ 
+    background-color: #4F2EE8;
+    border-radius: 50%;
+}
+.trash-logo{
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+}
+.shopping-list-info {
+  margin-left: 14px;
+  position: relative;
+}
+
+.shopping-book-title {
+  margin: 0 auto 4px 0;
+
+//   color: #111;
+  //font-family: DM Sans;
+  font-size: 16px;
+  //font-style: normal;
+  //font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.64px;
+  text-transform: uppercase;
+}
+
+.shopping-book-polygraphy {
+  margin: 0 auto 8px 0;
+  color: #b4afaf;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.36px;
+}
+.shopping-book-author {
+  color: #b4afaf;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.36px;
+}
+
+.shopping-book-desc {
+  margin: 0 auto 14px 0;
+  overflow: hidden;
+  max-width: 193px;
+  height: 68px;
+
+  color: #111;
+  text-overflow: ellipsis;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28; 
+  letter-spacing: -0.56px;
+}
+.links-to-buy {
+}
+
+.empty-sh-page{
+    
+}
