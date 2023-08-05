@@ -1,106 +1,106 @@
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }
 
-.close-btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  display: flex;
-  padding: 0;
-  justify-content: center;
-  align-items: center;
-  width: 28px;
-  height: 28px;
-  background-color: transparent;
-  border: none;
-  stroke: #111;
-}
+// .close-btn {
+//   position: absolute;
+//   top: 24px;
+//   right: 24px;
+//   display: flex;
+//   padding: 0;
+//   justify-content: center;
+//   align-items: center;
+//   width: 28px;
+//   height: 28px;
+//   background-color: transparent;
+//   border: none;
+//   stroke: #111;
+// }
 
-.close-btn:hover {
-  stroke: #4f2ee8;
-}
+// .close-btn:hover {
+//   stroke: #4f2ee8;
+// }
 
-.book-card-container {
-  padding: 40px;
-  max-width: 580px;
-  max-height: 500px;
-  overflow-y: auto;
-  border-radius: 18px;
-  border: 2px solid #111;
-  background-color: #fff;
-}
+// .book-card-container {
+//   padding: 40px;
+//   max-width: 580px;
+//   max-height: 500px;
+//   overflow-y: auto;
+//   border-radius: 18px;
+//   border: 2px solid #111;
+//   background-color: #fff;
+// }
 
-.book-cover {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+// .book-cover {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+// }
 
-.book-cover img {
-  width: 192px;
-  height: 280px;
-  border-radius: 8px;
-}
+// .book-cover img {
+//   width: 192px;
+//   height: 280px;
+//   border-radius: 8px;
+// }
 
-.book-title {
-  color: #111;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1, 17;
-  letter-spacing: -0.96px;
-  margin-bottom: 8px;
-}
+// .book-title {
+//   color: #111;
+//   font-size: 24px;
+//   font-weight: 700;
+//   line-height: 1, 17;
+//   letter-spacing: -0.96px;
+//   margin-bottom: 8px;
+// }
 
-.book-description {
-  color: #111;
-  font-size: 14px;
-  line-height: 1, 28;
-  letter-spacing: -0.56px;
-  margin-top: 20px;
-}
+// .book-description {
+//   color: #111;
+//   font-size: 14px;
+//   line-height: 1, 28;
+//   letter-spacing: -0.56px;
+//   margin-top: 20px;
+// }
 
-.shop-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 173px;
-  height: 36px;
-}
+// .shop-list {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 20px;
+//   width: 173px;
+//   height: 36px;
+// }
 
-.btn-modal {
-  margin: 0 auto;
-  width: 100%;
-  border-radius: 40px;
-  border: 2px solid #4f2eeb;
-  background-color: transparent;
-  color: #111;
-  font-size: 18px;
-  font-weight: 700px;
-  line-height: 1, 33;
-  letter-spacing: -0.18px;
-  text-transform: uppercase;
-}
+// .btn-modal {
+//   margin: 0 auto;
+//   width: 100%;
+//   border-radius: 40px;
+//   border: 2px solid #4f2eeb;
+//   background-color: transparent;
+//   color: #111;
+//   font-size: 18px;
+//   font-weight: 700px;
+//   line-height: 1, 33;
+//   letter-spacing: -0.18px;
+//   text-transform: uppercase;
+// }
 
-.btn-modal:hover {
-  color: #fff;
-  background-color: #4f2eeb;
-}
+// .btn-modal:hover {
+//   color: #fff;
+//   background-color: #4f2eeb;
+// }
 
-.btn-modal:focus {
-  color: #fff;
-  background-color: #4f2eeb;
-  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.15);
-}
+// .btn-modal:focus {
+//   color: #fff;
+//   background-color: #4f2eeb;
+//   box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.15);
+// }
 
-.book-description {
-  margin: 0 auto;
-  margin-top: 8px;
-  max-width: 324px;
-  color: rgba(17, 17, 17, 0.5);
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: -0.48px;
-}
+// .book-description {
+//   margin: 0 auto;
+//   margin-top: 8px;
+//   max-width: 324px;
+//   color: rgba(17, 17, 17, 0.5);
+//   text-align: center;
+//   font-size: 12px;
+//   line-height: 1.17;
+//   letter-spacing: -0.48px;
+// }
