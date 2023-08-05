@@ -44,8 +44,8 @@
 .pagination-icon-start,
 .pagination-icon-backward {
   position: absolute;
-  bottom: 50%;
-  right: 50%;
+  top: 50%;
+  left: 48%;
   transform: translate(-50%, -50%);
 
   width: 24px;
@@ -71,7 +71,7 @@
 .pagination-icon-forward {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 52%;
   transform: translate(-50%, -50%);
 
   fill: var(--black-2);
