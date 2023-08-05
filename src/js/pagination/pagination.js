@@ -305,7 +305,7 @@ export default function createPagination(
   isFirstRender = false,
   isDeleted = false
 ) {
-  if (data === 'undefined') {
+  if (data === 'undefined' || data.length === 0) {
     return;
   }
 
@@ -313,7 +313,7 @@ export default function createPagination(
     DATA = [...data];
     CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
     numbersOfPages(DATA);
-
+    // вставити функцію від Олега
     const string = createMarcupContent(prepareDataForBooks(1));
     document.querySelector('.js-content-container').innerHTML = string;
   }
@@ -375,6 +375,11 @@ function createRefsPagination() {
 function onDeletedItem(data, prevState, activePage) {
   if (activePage === arrayNumbersOfPages.length) {
     moveToEnd();
+    return;
+  }
+
+  if (activePage === 1) {
+    moveToStart();
     return;
   }
 
