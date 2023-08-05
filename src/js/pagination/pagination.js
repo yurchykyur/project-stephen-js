@@ -313,7 +313,7 @@ export default function createPagination(
     DATA = [...data];
     CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
     numbersOfPages(DATA);
-    //
+    // вставити функцію від Олега
     const string = createMarcupContent(prepareDataForBooks(1));
     document.querySelector('.js-content-container').innerHTML = string;
   }
