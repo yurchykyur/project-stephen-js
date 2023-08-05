@@ -18,6 +18,15 @@
     visibility: visible;
   }
 
+  .modal-team-wrapper::before {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 100%;
+    height: 615px;
+    background-color: var(--main-background-color);
+  }
+
   .modal-team-goit-icon {
     position: absolute;
     top: -32px;
@@ -84,7 +93,6 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
-
     padding: 12px;
 
     display: flex;
@@ -186,6 +194,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+    .modal-team-wrapper::before {
+    height: 706px;
+  }
+
   .modal-team {
     bottom: 30px;
     padding: 20px;
