@@ -142,10 +142,23 @@ height: 142px;
   font-weight: 400;
   line-height: 1.28; 
   letter-spacing: -0.56px;
+    //   white-space: nowrap;
+    // text-overflow: ellipsis;
 }
 .links-to-buy {
 }
 
 .empty-sh-page{
-    
+    display: flex;
+        flex-direction: column;
+    align-items: center;
+}
+
+.empty-sh-page-text{
+  width: 244px;
+  color: rgba(0, 0, 0, 0.60);
+text-align: center;
+font-size: 14px;
+line-height: 1.28;
+letter-spacing: -0.28px;
 }
