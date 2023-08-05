@@ -89,6 +89,7 @@ let DATA = [
   },
 ];
 
+let CARD_PER_PAGE = 3;
 console.log(DATA);
 const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
@@ -100,7 +101,7 @@ let arrayNumbersOfPages = [];
 
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
-  for (let i = 0; i < Math.ceil(data.length / 3); i += 1) {
+  for (let i = 0; i < Math.ceil(data.length / CARD_PER_PAGE); i += 1) {
     arrayNumbersOfPages.push(i + 1);
   }
 }
@@ -141,15 +142,6 @@ function onClickPagination(e) {
     } else {
       moveToPage(clickPage);
     }
-    // switch (clickPage) {
-    //   case '...':
-    //     console.log('case "..."');
-    //     break;
-
-    //   default:
-    //     moveToPage(clickPage);
-    //     return;
-    // }
   }
 
   if (clickOnButtonPagination) {
@@ -302,17 +294,45 @@ createPagination(DATA, 1, true);
 export default function createPagination(
   data,
   initialPage = 1,
-  isFirstRender = false
+  isFirstRender = false,
+  isDeleted = false
 ) {
   if (data === 'undefined') {
     return;
   }
 
-  if (data.length <= 3) {
+  if (isFirstRender) {
+    DATA = [...data];
+    CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
+    numbersOfPages(DATA);
+
+    const string = createMarcupContent(prepareDataForBooks(1));
+    document.querySelector('.js-content-container').innerHTML = string;
+  }
+
+  if (data.length <= CARD_PER_PAGE) {
     return;
   }
 
-  numbersOfPages(data);
+  if (isDeleted) {
+    const prevState = [...DATA];
+    const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
+
+    DATA = [...data];
+
+    const activePage = findActivePage();
+
+    if (arrayNumbersOfPages.length === prevStatePages) {
+      const string = createMarcupContent(
+        prepareDataForBooks(Number(activePage))
+      );
+      refs.content.innerHTML = string;
+    } else {
+      onDeletedItem(data, prevState, activePage);
+    }
+
+    return;
+  }
 
   const maxVisiblePages = window.innerWidth > 768 ? 3 : 2;
   console.log(maxVisiblePages);
@@ -332,7 +352,6 @@ export default function createPagination(
 
   if (isFirstRender) {
     addActivePage(1);
-    DATA = [...data];
   }
 }
 
@@ -342,15 +361,38 @@ function createRefsPagination() {
   refs.allPaginationPages = document.querySelectorAll('.js-pagination-pages');
 }
 
+// =============================================
+// функція обробки при видаллені елемента
+
+function onDeletedItem(data, prevState, activePage) {
+  if (activePage === arrayNumbersOfPages.length) {
+    moveToEnd();
+    return;
+  }
+
+  const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
+  if (arrayNumbersOfPages.length === prevStatePages) {
+    const startPagePagination = Number(
+      document.querySelector('.js-pagination-pages').dataset.pagination
+    );
+    const initialPage = startPagePagination;
+    const activePage = findActivePage();
+    addActivePage(Number(page));
+    const string = createMarcupContent(prepareDataForBooks(Number(page)));
+    refs.content.innerHTML = string;
+  }
+}
+
+// ============================================
+
 // =====================================================================================
 
 // підготовка даних для створення даних для рендеру  секції шоппінг ліст
 function prepareDataForBooks(page) {
-  const elementsPerPages = 3;
   const arrayOfIndexes = [];
-  const startIndex = elementsPerPages * (page - 1);
+  const startIndex = CARD_PER_PAGE * (page - 1);
 
-  for (let i = 0; i < elementsPerPages; i += 1) {
+  for (let i = 0; i < CARD_PER_PAGE; i += 1) {
     if (startIndex + i < DATA.length) {
       arrayOfIndexes.push(startIndex + i);
     }
