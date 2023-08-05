@@ -5,9 +5,9 @@ const URL = "https://books.backend.p.goit.global/books/";
 let idBook = "";
 
 const shops = {
-  Amazon: `<img src="#" alt="amazon logo" width="62" height="19">`,
-  "Apple Books": `<img src="#" alt="apple books logo" width="33" height="32">`,
-  "Book Shop": `<img src="#" alt="book shop logo" width="38" height="36">`,
+  Amazon: `<img src="#" alt="amazon logo" width="62" height="19" />`,
+  "Apple Books": `<img src="#" alt="apple books logo" width="33" height="32" />`,
+  "Book Shop": `<img src="#" alt="book shop logo" width="38" height="36" />`,
 };
 
 async function getBookInfo(bookId) {
@@ -43,8 +43,7 @@ async function createMarkup(bookId) {
   let bookCard = `
     <div class="book-card-container js-modal">
         <button type="button" class="close-btn">
-            <svg class="close-img" width="28" height="28">#</svg>
-            <svg><use href=""></use></svg>
+            <svg class="close-img" width="28" height="28"><use href=""></use></svg>
         </button>
         <div class="book-info-container">
             <div class="book-cover">
