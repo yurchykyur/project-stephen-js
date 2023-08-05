@@ -43,7 +43,7 @@ async function createMarkup(bookId) {
   let bookCard = `
     <div class="book-card-container js-modal">
         <button type="button" class="close-btn">
-            <svg class="close-img" width="28" height="28"><use href=""></use></svg>
+            <svg class="close-img" width="28" height="28"><use href="#"></use></svg>
         </button>
         <div class="book-info-container">
             <div class="book-cover">
