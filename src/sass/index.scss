@@ -1,26 +1,24 @@
-// @import './common';
-// @import './example';
+
 
 /* utils */
+@import '/node_modules/modern-normalize/modern-normalize.css';
 @import url('./utils/_reset.scss');
 @import url('./utils/_fonts.scss');
 @import url('./utils/_vars.scss');
 @import url('./utils/_js-selectors.scss');
 @import url('./utils/_classes.scss');
 @import url('./utils/_container.scss');
-
 /* components */
 
-// @import url('./components/_burger-menu.css');
-// @import url('./components/_buy-now.scss');
+@import url('./components/_burger-menu.scss');
+@import url('./components/_modal-window.scss');
 @import url('./components/_team-modal.scss');
 @import url('./components/_gotop.scss');
-
 /* layouts */
-// @import url('./header.css');
-// @import url('./hero.css');
-// @import url('./about-us.css');
-// @import url('./catalog.css');
-// @import url('./new-watches.css');
-// @import url('./sale.css');
-// @import url('./footer.css');
+
+@import url('./components/_header.scss');
+@import url('./index/_categories.scss');
+@import url('./index/_content-wrapper.scss');
+@import url('./banner/_support-ukraine.scss');
+@import url('./index/_books.scss');
+@import url('./components/_footer.scss');

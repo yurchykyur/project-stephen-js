@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="./images/favicon.ico" />
+    <title>Bookshelf</title>
+
+    <link rel="stylesheet" href="./sass/shopping-list.scss" />
+    <script async type="module" src="./js/header/theme-toggle.js"></script>
+    <script defer type="module" src="./shopping-list.js"></script>
+  </head>
+  <body>
+    <!-- Секції Максима -->
+    <include src="./partials/header.html"></include>
+    <include src="./partials/burger-menu.html"></include>
+    <!-- Секції Максима -->
+
+    <div class="content-wrapper container">
+      <!-- Секції Ростислава -->
+      <div class="banner-wrapper">
+        <include src="./partials/banner/support-ukraine.html"></include>
+      </div>
+      <!-- Секції Ростислава -->
+
+      <!-- Секції Олега -->
+      <div class="shopping-list-wrapper">
+        <include src="./partials/shopping-list/content.html"></include>
+        <include src="./partials/shopping-list/pagination.html"></include>
+      </div>
+      <!-- Секції Олега -->
+    </div>
+
+    <!-- Секції Павла -->
+    <include src="./partials/team-modal.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/gotop-btn.html"></include>
+    <!-- Секції Павла -->
+  </body>
+</html>

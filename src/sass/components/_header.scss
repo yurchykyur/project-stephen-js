@@ -1,0 +1,231 @@
+.header {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  height: 64px;
+  border-radius: 0px 0px 8px 8px;
+  border: 1.5px solid var(--header-border-color);
+  background: var(--background-color);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  display: flex;
+  align-items: center;
+  fill: var(--logo-fill-color);
+}
+
+.icon-logo {
+}
+
+.burger-wraper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.burger-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.icon-burger {
+  width: 28px;
+  height: 28px;
+  fill: var(--icon-color);
+}
+
+.js-close-menu {
+  display: none;
+}
+
+.header-menu {
+  display: none;
+}
+
+.login-btn {
+  display: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.user-info-img {
+}
+.user-info-text {
+  color: var(--white);
+  font-family: DM Sans;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.44px;
+}
+
+// Стилі перемикача зміни теми
+.theme-switch {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+.checkbox {
+  display: none;
+}
+
+.label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 40px;
+  height: 20px;
+  background: var(--switcher-theme);
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.5) inset;
+  border-radius: 10px;
+  transition: background-color var(--transition);
+}
+
+.ball {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(0deg, #f0f0f0 0%, var(--white) 100%);
+  filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2))
+    drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
+  border-radius: 50%;
+  transition: transform var(--transition);
+}
+
+.ball::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: ‘’;
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(180deg, #d0d0d0 0%, var(--white) 100%);
+  border-radius: 50%;
+}
+
+.ball::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: ‘’;
+  width: 13px;
+  height: 13px;
+  background: linear-gradient(0deg, #f0f0f0 0%, var(--white) 100%);
+  border-radius: 50%;
+}
+
+.checkbox:checked + .label {
+  background: var(--switcher-theme);
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(20px);
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    display: flex;
+  }
+
+  .header-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 40px;
+    color: var(--text);
+    font-family: DM Sans;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+  }
+
+  .burger-wraper {
+    gap: 24px;
+  }
+
+  .header-menu-item {
+  }
+
+  .header-menu-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+  }
+
+  .icon-shop {
+    fill: var(--text);
+  }
+
+  .js-open-menu {
+    display: none;
+  }
+
+  .login-btn {
+    color: var(--white);
+    font-family: DM Sans;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.44px;
+    width: 184px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 36px;
+    border: none;
+    background: var(--violet);
+  }
+
+  .login-img {
+    margin-right: 9px;
+  }
+
+  .icon-login {
+    margin-left: 4px;
+    fill: var(--white);
+  }
+
+  .header-menu-link:hover,
+  .header-menu-link:focus {
+    font-weight: 700;
+    border-radius: 36px;
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .header-menu-link:hover .icon-shop,
+  .header-menu-link:focus .icon-shop {
+    fill: var(--black);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header-menu {
+    margin-left: 76px;
+  }
+}
