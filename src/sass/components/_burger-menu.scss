@@ -1,0 +1,121 @@
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(
+    189.32% 190.93% at 59.76% -23.42%,
+    var(--violet) 18.03%,
+    var(--white) 100%
+  );
+
+  transform: translateX(100%);
+  transition: transform var(--transition);
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.menu-wrapper {
+  padding: 104px 20px;
+}
+
+.login-mob-btn {
+  color: var(--white);
+  font-family: DM Sans;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.56px;
+  padding: 14px 15px;
+  width: 184px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 18px;
+  border: 1.5px solid var(--black);
+  background: var(--violet);
+}
+
+.icon-mob-login {
+  fill: var(--yellow);
+}
+
+.mob-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mob-menu-list {
+  padding-top: 126px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.mob-menu-item {
+  color: var(--white);
+  font-family: DM Sans;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.56px;
+  text-transform: uppercase;
+}
+
+.mob-menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 16px;
+}
+
+.mob-menu-icon {
+  fill: var(--white);
+}
+
+.mobile-menu-background {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 375px;
+  /* Встановлюємо ширину зображення на 375px */
+  height: auto;
+  /* Зберігаємо пропорції зображення */
+}
+
+.mob-menu-link:hover,
+.mob-menu-link:focus {
+  font-weight: 700;
+  border-radius: 36px;
+  background: var(--yellow);
+}
+
+.logout-mob-btn {
+  position: absolute;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 118px;
+  height: 48px;
+  border-radius: 18px;
+  border: 1.5px solid var(--black);
+  background: var(--white);
+  color: #111;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  letter-spacing: -0.56px;
+}
+.icon-mob-logout {
+}
