@@ -78,7 +78,7 @@
 }
 
 .js-pagination-button:is(:hover, :focus) {
-  scale: 1.2;
+  scale: 1.15;
 }
 
 .js-pagination-pages {
@@ -102,10 +102,36 @@
 }
 
 .js-pagination-pages:is(:hover, :focus) {
-  scale: 1.2;
+  scale: 1.15;
 }
 
 .js-active-pagination {
   color: var(--pagination-text-active-color);
   background-color: var(--pagination-border-color);
+}
+
+@media screen and (max-width: 768px) {
+  .pagination-container {
+
+    gap: 14px;
+  }
+
+  .left-arrows-wrapper,
+  .right-arrows-wrapper,
+  .js-pagination {
+    gap: 8px;
+  }
+
+  .js-pagination-button.start,
+  .js-pagination-button.backward,
+  .js-pagination-button.end,
+  .js-pagination-button.forward {
+    width: 38px;
+    height: 38px;
+  }
+
+  .js-pagination-pages {
+    width: 38px;
+    height: 38px;
+  }
 }
