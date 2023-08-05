@@ -1,3 +1,4 @@
+
 let DATA = [
   {
     title: 'oject 1',
@@ -95,6 +96,8 @@ const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
 };
 
+
+
 let arrayNumbersOfPages = [];
 
 // numbersOfPages(DATA)
@@ -102,6 +105,7 @@ let arrayNumbersOfPages = [];
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
   for (let i = 0; i < Math.ceil(data.length / CARD_PER_PAGE); i += 1) {
+
     arrayNumbersOfPages.push(i + 1);
   }
 }
@@ -111,6 +115,7 @@ console.log(arrayNumbersOfPages);
 refs.paginationContainer.addEventListener('click', onClickPagination);
 
 function createMarcupContent(data) {
+
   return data
     .map(({ title, text }) => {
       return `<div class="book">
@@ -119,6 +124,7 @@ function createMarcupContent(data) {
       </div>`;
     })
     .join('');
+
 }
 
 function onClickPagination(e) {
@@ -137,6 +143,7 @@ function onClickPagination(e) {
     const clickPage = clickOnPagePagination.dataset.pagination;
     console.log(typeof clickPage);
     console.log(clickPage);
+
     if (clickPage === '...') {
       console.log('case "..."');
     } else {
@@ -174,8 +181,10 @@ function moveToStart() {
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
   addActivePage(1);
+
   const string = createMarcupContent(prepareDataForBooks(1));
   refs.content.innerHTML = string;
+
 }
 
 function moveToBackward() {
@@ -188,22 +197,28 @@ function moveToBackward() {
     document.querySelector('.js-pagination-pages').dataset.pagination
   );
 
+
+
   if (activePage <= 3) {
     const initialPage = 1;
+
 
     deleteClassActivePage(activePage);
     console.log(initialPage, 'initialPage');
     createPagination(DATA, initialPage);
     addActivePage(activePage - 1);
+
     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
     refs.content.innerHTML = string;
   } else {
     const initialPage = startPagePagination - 1;
 
+
     deleteClassActivePage(activePage);
     console.log(initialPage, 'initialPage');
     createPagination(DATA, initialPage);
     addActivePage(activePage - 1);
+
     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
     refs.content.innerHTML = string;
   }
@@ -212,6 +227,7 @@ function moveToBackward() {
 function moveToForward() {
   console.log('moveToforward()');
   const activePage = findActivePage();
+
 
   if (activePage === arrayNumbersOfPages.length) {
     return;
@@ -227,8 +243,10 @@ function moveToForward() {
   console.log(initialPage, 'initialPage');
   createPagination(DATA, initialPage);
   addActivePage(activePage + 1);
+
   const string = createMarcupContent(prepareDataForBooks(activePage + 1));
   refs.content.innerHTML = string;
+
 }
 
 function moveToEnd() {
@@ -238,6 +256,7 @@ function moveToEnd() {
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
   addActivePage(arrayNumbersOfPages.length);
+
   const string = createMarcupContent(
     prepareDataForBooks(arrayNumbersOfPages.length)
   );
@@ -297,6 +316,8 @@ export default function createPagination(
   isFirstRender = false,
   isDeleted = false
 ) {
+
+  
   if (data === 'undefined') {
     return;
   }
@@ -385,6 +406,7 @@ function onDeletedItem(data, prevState, activePage) {
 
 // ============================================
 
+
 // =====================================================================================
 
 // підготовка даних для створення даних для рендеру  секції шоппінг ліст
@@ -409,6 +431,7 @@ function prepareDataForBooks(page) {
 
 // =====================================================================================
 
+
 function createMarcupPagination(
   initialPage,
   maxVisiblePages,
@@ -422,34 +445,38 @@ function createMarcupPagination(
   } else {
     murkupPages = createMarcupPagesPagination(initialPage, maxVisiblePages);
   }
-  return `<button
-        class="js-pagination-button"
-        type="button"
-        data-pagination="start"
-      >
-        On start
-      </button>
-      <button
-        class="js-pagination-button"
-        type="button"
-        data-pagination="backward"
-      >
-        move backward
-      </button>
+
+  return `<div class="pagination-container">
+      <div class="left-arrows-wrapper">
+        <button class="js-pagination-button start" type="button" data-pagination="start">
+          <svg class="pagination-icon-start" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow-ff"></use>
+          </svg>
+        </button>
+        <button class="js-pagination-button backward" type="button" data-pagination="backward">
+          <svg class="pagination-icon-backward" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow"></use>
+          </svg>
+        </button>
+      </div>
+
       <ul class="js-pagination">
         ${murkupPages}
       </ul>
-      <button
-        class="js-pagination-button"
-        type="button"
-        data-pagination="forward"
-      >
-        move forward
-      </button>
-      <button class="js-pagination-button" type="button" data-pagination="end">
-        to the end
-        <div class="test"></div>
-      </button>`;
+
+      <div class="right-arrows-wrapper">
+        <button class="js-pagination-button forward" type="button" data-pagination="forward">
+          <svg class="pagination-icon-forward" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow"></use>
+          </svg>
+        </button>
+        <button class="js-pagination-button end" type="button" data-pagination="end">
+          <svg class="pagination-icon-end" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow-ff"></use>
+          </svg>
+        </button>
+      </div>
+    </div>`;
 }
 
 function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
