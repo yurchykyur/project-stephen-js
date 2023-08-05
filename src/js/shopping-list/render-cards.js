@@ -35,11 +35,12 @@ export default function renderCards(arr = []) {
 }
 
 function emptyPage() {
-  shRefs.emptyPage.hidden = false;
+  console.log('visually-hidden');
+  //shRefs.classList.remove('visually-hidden');
 }
 
 function shoppingMarkap(arr) {
-  //const markap = arr
+  shRefs.emptyPage.classList.add('visually-hidden');
   return arr
     .map(({ cover, alt, title, polygraphy, description, author }) => {
       let bookCover = `<svg class="book-logo">
