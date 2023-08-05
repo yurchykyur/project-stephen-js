@@ -112,7 +112,6 @@
 
 @media screen and (max-width: 768px) {
   .pagination-container {
-
     gap: 14px;
   }
 
@@ -125,11 +124,7 @@
   .js-pagination-button.start,
   .js-pagination-button.backward,
   .js-pagination-button.end,
-  .js-pagination-button.forward {
-    width: 38px;
-    height: 38px;
-  }
-
+  .js-pagination-button.forward,
   .js-pagination-pages {
     width: 38px;
     height: 38px;
