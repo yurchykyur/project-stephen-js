@@ -1,4 +1,5 @@
-const DATA = [
+
+let DATA = [
   {
     title: 'oject 1',
     text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
@@ -94,12 +95,15 @@ const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
 };
 
+
+
 let arrayNumbersOfPages = [];
 
 // numbersOfPages(DATA)
 
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
+
   for (let i = 0; i < Math.ceil(data.length / 3); i += 1) {
     arrayNumbersOfPages.push(i + 1);
   }
@@ -110,11 +114,16 @@ console.log(arrayNumbersOfPages);
 refs.paginationContainer.addEventListener('click', onClickPagination);
 
 function createMarcupContent(data) {
-  const { title, text } = data;
-  return `<div class="book">
+
+  return data
+    .map(({ title, text }) => {
+      return `<div class="book">
         <h3>${title}</h3>
         <p>${text}</p>
       </div>`;
+    })
+    .join('');
+
 }
 
 function onClickPagination(e) {
@@ -133,6 +142,7 @@ function onClickPagination(e) {
     const clickPage = clickOnPagePagination.dataset.pagination;
     console.log(typeof clickPage);
     console.log(clickPage);
+
     if (clickPage === '...') {
       console.log('case "..."');
     } else {
@@ -179,6 +189,10 @@ function moveToStart() {
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
   addActivePage(1);
+
+  const string = createMarcupContent(prepareDataForBooks(1));
+  refs.content.innerHTML = string;
+
 }
 
 function moveToBackward() {
@@ -190,32 +204,38 @@ function moveToBackward() {
   const startPagePagination = Number(
     document.querySelector('.js-pagination-pages').dataset.pagination
   );
-  const initialPage = startPagePagination - 1;
-  deleteClassActivePage(activePage);
-  console.log(initialPage, 'initialPage');
-  createPagination(DATA, initialPage);
-  addActivePage(activePage - 1);
+
+
 
   if (activePage <= 3) {
     const initialPage = 1;
 
-    deleteClassActivePage(activePage);
-    console.log(initialPage, 'initialPage');
-    createPagination(DATA, initialPage);
-    addActivePage(activePage - 1);
-  } else {
-    const initialPage = startPagePagination - 1;
 
     deleteClassActivePage(activePage);
     console.log(initialPage, 'initialPage');
     createPagination(DATA, initialPage);
     addActivePage(activePage - 1);
+
+    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+    refs.content.innerHTML = string;
+  } else {
+    const initialPage = startPagePagination - 1;
+
+
+    deleteClassActivePage(activePage);
+    console.log(initialPage, 'initialPage');
+    createPagination(DATA, initialPage);
+    addActivePage(activePage - 1);
+
+    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+    refs.content.innerHTML = string;
   }
 }
 
 function moveToForward() {
   console.log('moveToforward()');
   const activePage = findActivePage();
+
 
   if (activePage === arrayNumbersOfPages.length) {
     return;
@@ -231,6 +251,10 @@ function moveToForward() {
   console.log(initialPage, 'initialPage');
   createPagination(DATA, initialPage);
   addActivePage(activePage + 1);
+
+  const string = createMarcupContent(prepareDataForBooks(activePage + 1));
+  refs.content.innerHTML = string;
+
 }
 
 function moveToEnd() {
@@ -240,6 +264,11 @@ function moveToEnd() {
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
   addActivePage(arrayNumbersOfPages.length);
+
+  const string = createMarcupContent(
+    prepareDataForBooks(arrayNumbersOfPages.length)
+  );
+  refs.content.innerHTML = string;
 }
 
 function moveToPage(page) {
@@ -249,6 +278,8 @@ function moveToPage(page) {
   console.log(activePage);
   deleteClassActivePage(activePage);
   addActivePage(Number(page));
+  const string = createMarcupContent(prepareDataForBooks(Number(page)));
+  refs.content.innerHTML = string;
 }
 
 console.log(window.innerWidth);
@@ -292,6 +323,8 @@ export default function createPagination(
   initialPage = 1,
   isFirstRender = false
 ) {
+
+  
   if (data === 'undefined') {
     return;
   }
@@ -300,7 +333,9 @@ export default function createPagination(
     return;
   }
 
+
   numbersOfPages(data);
+
 
   const maxVisiblePages = window.innerWidth > 768 ? 3 : 2;
   console.log(maxVisiblePages);
@@ -320,6 +355,8 @@ export default function createPagination(
 
   if (isFirstRender) {
     addActivePage(1);
+
+    DATA = [...data];
   }
 }
 
@@ -329,8 +366,32 @@ function createRefsPagination() {
   refs.allPaginationPages = document.querySelectorAll('.js-pagination-pages');
 }
 
+
+// =====================================================================================
+
 // підготовка даних для створення даних для рендеру  секції шоппінг ліст
-function prepareDataForBooks(page, data) {}
+function prepareDataForBooks(page) {
+  const elementsPerPages = 3;
+  const arrayOfIndexes = [];
+  const startIndex = elementsPerPages * (page - 1);
+
+  for (let i = 0; i < elementsPerPages; i += 1) {
+    if (startIndex + i < DATA.length) {
+      arrayOfIndexes.push(startIndex + i);
+    }
+  }
+
+  console.log('arrayOfIndexes', arrayOfIndexes);
+  const newDataForRenderList = [];
+  arrayOfIndexes.forEach(elem => newDataForRenderList.push(DATA[elem]));
+
+  console.log('newDataForRenderList', newDataForRenderList);
+
+  return newDataForRenderList;
+}
+
+// =====================================================================================
+
 
 function createMarcupPagination(
   initialPage,
@@ -345,34 +406,38 @@ function createMarcupPagination(
   } else {
     murkupPages = createMarcupPagesPagination(initialPage, maxVisiblePages);
   }
-  return `<button
-        class="js-pagination-button"
-        type="button"
-        data-pagination="start"
-      >
-        On start
-      </button>
-      <button
-        class="js-pagination-button"
-        type="button"
-        data-pagination="backward"
-      >
-        move backward
-      </button>
+
+  return `<div class="pagination-container">
+      <div class="left-arrows-wrapper">
+        <button class="js-pagination-button start" type="button" data-pagination="start">
+          <svg class="pagination-icon-start" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow-ff"></use>
+          </svg>
+        </button>
+        <button class="js-pagination-button backward" type="button" data-pagination="backward">
+          <svg class="pagination-icon-backward" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow"></use>
+          </svg>
+        </button>
+      </div>
+
       <ul class="js-pagination">
         ${murkupPages}
       </ul>
-      <button
-        class="js-pagination-button"
-        type="button"
-        data-pagination="forward"
-      >
-        move forward
-      </button>
-      <button class="js-pagination-button" type="button" data-pagination="end">
-        to the end
-        <div class="test"></div>
-      </button>`;
+
+      <div class="right-arrows-wrapper">
+        <button class="js-pagination-button forward" type="button" data-pagination="forward">
+          <svg class="pagination-icon-forward" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow"></use>
+          </svg>
+        </button>
+        <button class="js-pagination-button end" type="button" data-pagination="end">
+          <svg class="pagination-icon-end" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-arrow-ff"></use>
+          </svg>
+        </button>
+      </div>
+    </div>`;
 }
 
 function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
