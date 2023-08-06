@@ -140,7 +140,7 @@ export default function createPagination(
     CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
     numbersOfPages(DATA);
     // вставити функцію від Олега
-    console.log(prepareDataForBooks(1));
+
     renderCards(prepareDataForBooks(1));
     const string = createMarcupContent(prepareDataForBooks(1));
     document.querySelector('.js-content-container').innerHTML = string;
@@ -157,7 +157,6 @@ export default function createPagination(
   }
 
   const maxVisiblePages = window.innerWidth > 768 ? 3 : 2;
-  console.log(maxVisiblePages);
 
   let isThreePoint = true;
 
@@ -171,11 +170,34 @@ export default function createPagination(
     isThreePoint
   );
   createRefsPagination();
+  // for test
+  document
+    .querySelector('.shopping-list-list')
+    .addEventListener('click', onClickDelete);
+  // for test
 
   if (isFirstRender) {
     addActivePage(1);
   }
 }
+
+// for test
+
+function onClickDelete(e) {
+  e.preventDefault();
+  console.log(e.target.closest('.shopping-list-item'));
+  const click = e.target.closest('.shopping-list-item');
+  if (click) {
+    const newData = [...DATA];
+    newData.splice(-1);
+    console.log(' if (click)');
+    console.log(newData);
+
+    createPagination(newData, 1, false, true);
+  }
+}
+
+// for test
 
 function onClickPagination(e) {
   e.preventDefault();
@@ -286,7 +308,6 @@ function moveToForward() {
 function moveToEnd() {
   createPagination(DATA, arrayNumbersOfPages.length);
 
-  //  функція створення розмітки секції з вибраними книгами
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
   addActivePage(arrayNumbersOfPages.length);
@@ -351,39 +372,163 @@ function createRefsPagination() {
 // функція обробки при видаллені елемента
 
 function onDeletedItem(data) {
+  console.log([...DATA]);
   const prevState = [...DATA];
   const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
 
   DATA = [...data];
-
-  const activePage = findActivePage();
+  numbersOfPages(DATA);
+  let activePage = findActivePage();
 
   if (DATA.length <= CARD_PER_PAGE) {
+    console.log(
+      'if (DATA.length <= CARD_PER_PAGE)',
+      DATA.length <= CARD_PER_PAGE
+    );
+
     refs.paginationContainer.innerHTML = '';
+
     renderCards(prepareDataForBooks(1));
     const string = createMarcupContent(prepareDataForBooks(1));
     refs.content.innerHTML = string;
+    return;
   }
 
-  if (arrayNumbersOfPages.length === prevStatePages) {
-    renderCards(prepareDataForBooks(Number(activePage)));
-    const string = createMarcupContent(prepareDataForBooks(Number(activePage)));
+  if (activePage > arrayNumbersOfPages.length) {
+    console.log('if (activePage > arrayNumbersOfPages.length)');
+
+    createPagination(DATA, arrayNumbersOfPages.length);
+    addActivePage(arrayNumbersOfPages.length);
+    renderCards(prepareDataForBooks(arrayNumbersOfPages.length));
+    const string = createMarcupContent(
+      prepareDataForBooks(arrayNumbersOfPages.length)
+    );
     refs.content.innerHTML = string;
-  }
-
-  if (activePage === 1) {
-    moveToStart();
     return;
   }
 
-  if (arrayNumbersOfPages.length - activePage >= 1) {
-    moveToPage(activePage);
+  if (activePage < arrayNumbersOfPages.length && activePage === 1) {
+    createPagination(DATA, 1);
+
+    addActivePage(1);
+    renderCards(prepareDataForBooks(1));
+
+    const string = createMarcupContent(prepareDataForBooks(1));
+    refs.content.innerHTML = string;
     return;
   }
 
-  if (activePage === arrayNumbersOfPages.length) {
-    moveToEnd();
+  if (prepareDataForBooks(activePage).length <= CARD_PER_PAGE) {
+    console.log(
+      'if (prepareDataForBooks(activePage) < CARD_PER_PAGE)',
+      prepareDataForBooks(activePage).length,
+      prepareDataForBooks(activePage)
+    );
+    const startPagePagination = Number(
+      document.querySelector('.js-pagination-pages').dataset.pagination
+    );
+
+    createPagination(DATA, startPagePagination);
+    addActivePage(activePage);
+
+    renderCards(prepareDataForBooks(activePage));
+    const string = createMarcupContent(prepareDataForBooks(activePage));
+    refs.content.innerHTML = string;
+
+    return;
   }
+
+  // if (activePage < arrayNumbersOfPages.length && activePage > 1) {
+  //   const startPagePagination = Number(
+  //     document.querySelector('.js-pagination-pages').dataset.pagination
+  //   );
+
+  //   if (activePage <= 3) {
+  //     const initialPage = 1;
+
+  //     deleteClassActivePage(activePage);
+  //     createPagination(DATA, initialPage);
+  //     addActivePage(activePage - 1);
+
+  //     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+  //     refs.content.innerHTML = string;
+  //   } else {
+  //     const initialPage = startPagePagination - 1;
+
+  //     deleteClassActivePage(activePage);
+  //     createPagination(DATA, initialPage);
+  //     addActivePage(activePage - 1);
+
+  //     renderCards(prepareDataForBooks(activePage - 1));
+  //     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+  //     refs.content.innerHTML = string;
+  //   }
+  // }
+
+  // const startPagePagination = Number(
+  //   document.querySelector('.js-pagination-pages').dataset.pagination
+  // );
+
+  // if (activePage <= 3) {
+  //   const initialPage = 1;
+
+  //   deleteClassActivePage(activePage);
+  //   createPagination(DATA, initialPage);
+  //   addActivePage(activePage);
+
+  //   const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+  //   refs.content.innerHTML = string;
+  // } else {
+  //   const initialPage = startPagePagination - 1;
+
+  //   deleteClassActivePage(activePage);
+  //   createPagination(DATA, initialPage);
+  //   addActivePage(activePage - 1);
+
+  //   renderCards(prepareDataForBooks(activePage - 1));
+  //   const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+  //   refs.content.innerHTML = string;
+  // }
+
+  console.log('arrayNumbersOfPages.length', arrayNumbersOfPages.length);
+  console.log('prevStatePages', prevStatePages);
+
+  // if (arrayNumbersOfPages.length === prevStatePages) {
+  //   console.log(
+  //     'arrayNumbersOfPages.length === prevStatePages',
+  //     arrayNumbersOfPages.length === prevStatePages
+  //   );
+
+  //   moveToEnd();
+
+  // renderCards(prepareDataForBooks(Number(activePage)));
+  // const string = createMarcupContent(prepareDataForBooks(Number(activePage)));
+  // refs.content.innerHTML = string;
+  //   return;
+  // }
+
+  // if (activePage === 1) {
+  //   console.log('activePage === 1', activePage === 1);
+  //   moveToStart();
+  //   return;
+  // }
+
+  // if (arrayNumbersOfPages.length - activePage >= 1) {
+  //   console.log(
+  //     'arrayNumbersOfPages.length - activePage >= 1',
+  //     arrayNumbersOfPages.length - activePage >= 1
+  //   );
+  //   moveToPage(activePage);
+  //   return;
+  // }
+
+  // if (activePage === arrayNumbersOfPages.length) {
+  //   console.log(
+  //     'activePage === arrayNumbersOfPages.length',
+  //     activePage === arrayNumbersOfPages.length
+  //   );
+  //   moveToEnd();
+  // }
 }
 
 // =====================================================================================
