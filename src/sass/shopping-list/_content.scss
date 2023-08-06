@@ -70,8 +70,8 @@ height: 142px;
 
 .trash-btn{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 2px;
+    right: -2px;
     width: 28px;
     height: 28px;
     border: transparent;
@@ -81,15 +81,22 @@ height: 142px;
     border-radius: 50%;
 }
 .trash-logo{
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     fill: var(--white);
 }
 
+.sh-markap-wrapper{
+  
+}
 
 .shopping-list-info {
   margin-left: 14px;
   position: relative;
+  //height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .shopping-book-title {
@@ -159,22 +166,29 @@ max-width: 193px;
 
 .links-to-buy {
   display: flex;
-justify-content: center;
-align-items: flex-end;
-gap: 8px;
-width: 80px;
-height: 16px;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
 }
 
 .item-to-buy{
- height: 16px;
+  height: 16px;
   width: 100%;
 }
 
-.shop-logo{
-  
-   height: 16px;
+.shop-logo-applebook{
+    height: 16px;
     width: 16px;
+}
+
+.shop-logo-bookshop{
+  height: 16px;
+  width: 16px;
+}
+
+.shop-logo-amazon{
+  width: 32px;
+height: 11px;
 }
 
 .empty-sh-page{
@@ -201,6 +215,10 @@ height: 16px;
     font-size: 48px;
     line-height: 1.08; 
     letter-spacing: -1.92px;
+  }
+  
+  .shopping-book-title{
+    max-width: 400px;
   }
 
   .empty-sh-page{
@@ -233,7 +251,6 @@ height: 16px;
   .sh-desc-wrapper{
     max-width: 508px;
     height: 53px;
-    margin-bottom: 32px;
   }
 
   .sh-wrapper{
@@ -247,7 +264,9 @@ height: 16px;
     }
 
     .trash-btn{
-      padding: 7px;
+      top: 0px;
+      right: 0px;
+      padding: 6px;
       width: 34px;
       height: 34px;   
     }
@@ -255,14 +274,36 @@ height: 16px;
       width: 28px;
       height: 28px;
     }
+
+    .links-to-buy {
+      gap: 16px;
+    }
+
+    .shop-logo-amazon{
+      width: 48px;
+      height: 15px;
+    }
+
+    .shop-logo-applebook{
+      width: 28px;
+      height: 27px;
+    }
+    .shop-logo-bookshop{
+      width: 32px;
+      height: 30px;
+    }
 }
 
 @media screen and (min-width: 1440px){
   .shopping-list-item{
     max-width: 996px;
     height: 213px;
-    padding: 30px 24px;
   }
+
+   .shopping-book-title{
+    max-width: 600px;
+  }
+
 
   .shopping-list-info{
     width: 808px;
@@ -271,6 +312,6 @@ height: 16px;
 
   .sh-desc-wrapper{
     max-width: 808px;
-height: 53px;
+    height: 53px;
   }
 }
