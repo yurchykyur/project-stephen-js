@@ -10,6 +10,6 @@ const throttledScroll = throttle(() => {
   } else {
     goToTopWrapper.classList.remove('show');
   }
-}, 100);
+}, 600);
 
 window.addEventListener('scroll', throttledScroll);
