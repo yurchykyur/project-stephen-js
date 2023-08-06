@@ -47,6 +47,7 @@ export function onFiltred(event) {
     onLoader();
     fetchBooks(cateroryName).then(dataMarkup).catch();
 }
+
 // if (title.text == 'Bookshelf') {
 //     onRenderBestsellers();
 //     window.addEventListener(
