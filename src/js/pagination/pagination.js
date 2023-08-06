@@ -291,7 +291,7 @@ function moveToEnd() {
   deleteClassActivePage(activePage);
   addActivePage(arrayNumbersOfPages.length);
 
-  renderCards(arrayNumbersOfPages.length);
+  renderCards(prepareDataForBooks(arrayNumbersOfPages.length));
   const string = createMarcupContent(
     prepareDataForBooks(arrayNumbersOfPages.length)
   );
