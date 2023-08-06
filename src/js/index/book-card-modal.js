@@ -122,7 +122,10 @@ export async function openModal(evt) {
   const textRemove = document.querySelector(".text-remove");
   const books = await getBookInfo(idBook);
 
-  if (localStorage.getItem(books.id) !== null) {
+  const savedBooks = getSavedBooks();
+  const isBookSaved = savedBooks.some(item => item.id === idBook);
+
+  if (isBookSaved) {
     addBtn.classList.add("hidden");
     removeBtn.classList.remove("hidden");
   } else {
@@ -130,6 +133,7 @@ export async function openModal(evt) {
     removeBtn.classList.add("hidden");
     textRemove.classList.add("hidden");
   }
+  
   addBtn.addEventListener("click", () => {
     addElement(idBook, books);
     addBtn.classList.add("hidden");
@@ -138,7 +142,9 @@ export async function openModal(evt) {
   });
 
   removeBtn.addEventListener("click", () => {
-    localStorage.removeItem(idBook);
+    const updatedSavedBooks = savedBooks.filter(item => item.id !== idBook);
+    localStorage.setItem(SHOPPING_LIST_LS, JSON.stringify(updatedSavedBooks));
+
     addBtn.classList.remove("hidden");
     removeBtn.classList.add("hidden");
     textRemove.classList.add("hidden");
@@ -146,6 +152,11 @@ export async function openModal(evt) {
 }
 
 function addElement(key, value) {
-  let addElToStorage = JSON.stringify(value);
-  localStorage.setItem(key, addElToStorage);
+  let existingItems = JSON.parse(localStorage.getItem(SHOPPING_LIST_LS)) || [];
+  existingItems.push({ id: key, book: value });
+  localStorage.setItem(SHOPPING_LIST_LS, JSON.stringify(existingItems));
+}
+
+function getSavedBooks() {
+  return JSON.parse(localStorage.getItem(SHOPPING_LIST_LS)) || [];
 }
