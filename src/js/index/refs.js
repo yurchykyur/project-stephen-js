@@ -1,6 +1,10 @@
-export default function pickRef() {
+export default function getRefs() {
   return {
-    categoryRef: document.querySelector('.category'),
-    categoriesRef: document.querySelector('.nav-cate-lis'),
+   
+    galleryRef: document.querySelector('.gallery'),
+
+    categoriesRef: document.querySelector('.nav-categories-list'),
+  
+
   };
 }
