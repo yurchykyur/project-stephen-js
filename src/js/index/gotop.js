@@ -1,17 +1,15 @@
+import throttle from 'lodash.throttle';
+
 const goToTopWrapper = document.querySelector('.gotop-wrapper');
 
-const goToTopBtn = document.querySelector('.gototop');
-
-window.addEventListener('scroll', () => {
+const throttledScroll = throttle(() => {
   const currentPosition = document.documentElement.scrollTop;
 
-  const pageHeight = document.documentElement.scrollHeight;
-
-  const windowHeight = window.innerHeight;
-
-  if (currentPosition + windowHeight >= pageHeight - 140) {
+  if (currentPosition >= 100) {
     goToTopWrapper.classList.add('show');
   } else {
     goToTopWrapper.classList.remove('show');
   }
-});
+}, 600);
+
+window.addEventListener('scroll', throttledScroll);
