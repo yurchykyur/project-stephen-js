@@ -224,6 +224,7 @@ function moveToStart() {
   deleteClassActivePage(activePage);
   addActivePage(1);
 
+  renderCards(prepareDataForBooks(1));
   const string = createMarcupContent(prepareDataForBooks(1));
   refs.content.innerHTML = string;
 }
@@ -254,6 +255,7 @@ function moveToBackward() {
     createPagination(DATA, initialPage);
     addActivePage(activePage - 1);
 
+    renderCards(prepareDataForBooks(activePage - 1));
     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
     refs.content.innerHTML = string;
   }
@@ -276,6 +278,7 @@ function moveToForward() {
   createPagination(DATA, initialPage);
   addActivePage(activePage + 1);
 
+  renderCards(prepareDataForBooks(activePage + 1));
   const string = createMarcupContent(prepareDataForBooks(activePage + 1));
   refs.content.innerHTML = string;
 }
@@ -288,6 +291,7 @@ function moveToEnd() {
   deleteClassActivePage(activePage);
   addActivePage(arrayNumbersOfPages.length);
 
+  renderCards(arrayNumbersOfPages.length);
   const string = createMarcupContent(
     prepareDataForBooks(arrayNumbersOfPages.length)
   );
@@ -300,6 +304,7 @@ function moveToPage(page) {
   deleteClassActivePage(activePage);
   addActivePage(Number(page));
 
+  renderCards(prepareDataForBooks(Number(page)));
   const string = createMarcupContent(prepareDataForBooks(Number(page)));
   refs.content.innerHTML = string;
 }
@@ -355,11 +360,13 @@ function onDeletedItem(data) {
 
   if (DATA.length <= CARD_PER_PAGE) {
     refs.paginationContainer.innerHTML = '';
+    renderCards(prepareDataForBooks(1));
     const string = createMarcupContent(prepareDataForBooks(1));
     refs.content.innerHTML = string;
   }
 
   if (arrayNumbersOfPages.length === prevStatePages) {
+    renderCards(prepareDataForBooks(Number(activePage)));
     const string = createMarcupContent(prepareDataForBooks(Number(activePage)));
     refs.content.innerHTML = string;
   }
