@@ -1,102 +1,15 @@
 import sprite from '/src/images/icons.svg';
 import renderCards from '/src/js/shopping-list/render-cards';
 
-let DATA = [
-  {
-    title: 'oject 1',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 2',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 3',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 4',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 5',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 6',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 7',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 8',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 9',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 10',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 11',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 12',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 13',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 14',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 15',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 16',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 17',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 18',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 19',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 20',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 21',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-  {
-    title: 'oject 22',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ducimus incidunt laudantium id maxime.',
-  },
-];
+let DATA = [];
 
 let CARD_PER_PAGE = 3;
 
 const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
 };
+
+refs.paginationContainer.addEventListener('click', onClickPagination);
 
 let arrayNumbersOfPages = [];
 
@@ -106,23 +19,6 @@ function numbersOfPages(data) {
   for (let i = 0; i < Math.ceil(data.length / CARD_PER_PAGE); i += 1) {
     arrayNumbersOfPages.push(i + 1);
   }
-}
-
-refs.paginationContainer.addEventListener('click', onClickPagination);
-
-function createMarcupContent(data) {
-  return data
-    .map(({ title, description, alt, polygraphy, author }) => {
-      return `<div class="book">
-        <h3>${title}</h3>
-        <p>${description}</p>
-        <p>${polygraphy}</p>
-        <p>${alt}</p>
-        <p>${author}</p>
-
-      </div>`;
-    })
-    .join('');
 }
 
 export default function createPagination(
@@ -139,11 +35,7 @@ export default function createPagination(
     DATA = [...data];
     CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
     numbersOfPages(DATA);
-    // вставити функцію від Олега
-
     renderCards(prepareDataForBooks(1));
-    const string = createMarcupContent(prepareDataForBooks(1));
-    document.querySelector('.js-content-container').innerHTML = string;
   }
 
   if (isDeleted) {
@@ -170,18 +62,18 @@ export default function createPagination(
     isThreePoint
   );
   createRefsPagination();
-  // for test
+  // for test =================================================================================
   document
     .querySelector('.shopping-list-list')
     .addEventListener('click', onClickDelete);
-  // for test
+  // for test ============================================================================
 
   if (isFirstRender) {
     addActivePage(1);
   }
 }
 
-// for test
+// for test ========================================================================
 
 function onClickDelete(e) {
   e.preventDefault();
@@ -197,7 +89,7 @@ function onClickDelete(e) {
   }
 }
 
-// for test
+// for test =========================================================
 
 function onClickPagination(e) {
   e.preventDefault();
@@ -240,15 +132,11 @@ function onClickPagination(e) {
 function moveToStart() {
   createPagination(DATA, 1);
 
-  //  функція створення розмітки секції з вибраними книгами
   const activePage = findActivePage();
 
   deleteClassActivePage(activePage);
   addActivePage(1);
-
   renderCards(prepareDataForBooks(1));
-  const string = createMarcupContent(prepareDataForBooks(1));
-  refs.content.innerHTML = string;
 }
 
 function moveToBackward() {
@@ -267,19 +155,14 @@ function moveToBackward() {
     deleteClassActivePage(activePage);
     createPagination(DATA, initialPage);
     addActivePage(activePage - 1);
-
-    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-    refs.content.innerHTML = string;
+    renderCards(prepareDataForBooks(activePage - 1));
   } else {
     const initialPage = startPagePagination - 1;
 
     deleteClassActivePage(activePage);
     createPagination(DATA, initialPage);
     addActivePage(activePage - 1);
-
     renderCards(prepareDataForBooks(activePage - 1));
-    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-    refs.content.innerHTML = string;
   }
 }
 
@@ -299,10 +182,7 @@ function moveToForward() {
   deleteClassActivePage(activePage);
   createPagination(DATA, initialPage);
   addActivePage(activePage + 1);
-
   renderCards(prepareDataForBooks(activePage + 1));
-  const string = createMarcupContent(prepareDataForBooks(activePage + 1));
-  refs.content.innerHTML = string;
 }
 
 function moveToEnd() {
@@ -311,12 +191,7 @@ function moveToEnd() {
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
   addActivePage(arrayNumbersOfPages.length);
-
   renderCards(prepareDataForBooks(arrayNumbersOfPages.length));
-  const string = createMarcupContent(
-    prepareDataForBooks(arrayNumbersOfPages.length)
-  );
-  refs.content.innerHTML = string;
 }
 
 function moveToPage(page) {
@@ -324,10 +199,7 @@ function moveToPage(page) {
 
   deleteClassActivePage(activePage);
   addActivePage(Number(page));
-
   renderCards(prepareDataForBooks(Number(page)));
-  const string = createMarcupContent(prepareDataForBooks(Number(page)));
-  refs.content.innerHTML = string;
 }
 
 function findActivePage() {
@@ -363,177 +235,50 @@ function deleteClassActivePage(page = 1) {
 }
 
 function createRefsPagination() {
-  refs.content = document.querySelector('.js-content-container');
   refs.pagination = document.querySelector('.js-pagination-list');
   refs.allPaginationPages = document.querySelectorAll('.js-pagination-pages');
 }
 
-// =============================================
-// функція обробки при видаллені елемента
-
 function onDeletedItem(data) {
-  console.log([...DATA]);
-  const prevState = [...DATA];
-  const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
-
   DATA = [...data];
   numbersOfPages(DATA);
   let activePage = findActivePage();
 
   if (DATA.length <= CARD_PER_PAGE) {
-    console.log(
-      'if (DATA.length <= CARD_PER_PAGE)',
-      DATA.length <= CARD_PER_PAGE
-    );
-
     refs.paginationContainer.innerHTML = '';
 
     renderCards(prepareDataForBooks(1));
-    const string = createMarcupContent(prepareDataForBooks(1));
-    refs.content.innerHTML = string;
+
     return;
   }
 
   if (activePage > arrayNumbersOfPages.length) {
-    console.log('if (activePage > arrayNumbersOfPages.length)');
-
     createPagination(DATA, arrayNumbersOfPages.length);
     addActivePage(arrayNumbersOfPages.length);
     renderCards(prepareDataForBooks(arrayNumbersOfPages.length));
-    const string = createMarcupContent(
-      prepareDataForBooks(arrayNumbersOfPages.length)
-    );
-    refs.content.innerHTML = string;
+
     return;
   }
 
   if (activePage < arrayNumbersOfPages.length && activePage === 1) {
     createPagination(DATA, 1);
-
     addActivePage(1);
     renderCards(prepareDataForBooks(1));
 
-    const string = createMarcupContent(prepareDataForBooks(1));
-    refs.content.innerHTML = string;
     return;
   }
 
   if (prepareDataForBooks(activePage).length <= CARD_PER_PAGE) {
-    console.log(
-      'if (prepareDataForBooks(activePage) < CARD_PER_PAGE)',
-      prepareDataForBooks(activePage).length,
-      prepareDataForBooks(activePage)
-    );
     const startPagePagination = Number(
       document.querySelector('.js-pagination-pages').dataset.pagination
     );
 
     createPagination(DATA, startPagePagination);
     addActivePage(activePage);
-
     renderCards(prepareDataForBooks(activePage));
-    const string = createMarcupContent(prepareDataForBooks(activePage));
-    refs.content.innerHTML = string;
-
-    return;
   }
-
-  // if (activePage < arrayNumbersOfPages.length && activePage > 1) {
-  //   const startPagePagination = Number(
-  //     document.querySelector('.js-pagination-pages').dataset.pagination
-  //   );
-
-  //   if (activePage <= 3) {
-  //     const initialPage = 1;
-
-  //     deleteClassActivePage(activePage);
-  //     createPagination(DATA, initialPage);
-  //     addActivePage(activePage - 1);
-
-  //     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-  //     refs.content.innerHTML = string;
-  //   } else {
-  //     const initialPage = startPagePagination - 1;
-
-  //     deleteClassActivePage(activePage);
-  //     createPagination(DATA, initialPage);
-  //     addActivePage(activePage - 1);
-
-  //     renderCards(prepareDataForBooks(activePage - 1));
-  //     const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-  //     refs.content.innerHTML = string;
-  //   }
-  // }
-
-  // const startPagePagination = Number(
-  //   document.querySelector('.js-pagination-pages').dataset.pagination
-  // );
-
-  // if (activePage <= 3) {
-  //   const initialPage = 1;
-
-  //   deleteClassActivePage(activePage);
-  //   createPagination(DATA, initialPage);
-  //   addActivePage(activePage);
-
-  //   const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-  //   refs.content.innerHTML = string;
-  // } else {
-  //   const initialPage = startPagePagination - 1;
-
-  //   deleteClassActivePage(activePage);
-  //   createPagination(DATA, initialPage);
-  //   addActivePage(activePage - 1);
-
-  //   renderCards(prepareDataForBooks(activePage - 1));
-  //   const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-  //   refs.content.innerHTML = string;
-  // }
-
-  console.log('arrayNumbersOfPages.length', arrayNumbersOfPages.length);
-  console.log('prevStatePages', prevStatePages);
-
-  // if (arrayNumbersOfPages.length === prevStatePages) {
-  //   console.log(
-  //     'arrayNumbersOfPages.length === prevStatePages',
-  //     arrayNumbersOfPages.length === prevStatePages
-  //   );
-
-  //   moveToEnd();
-
-  // renderCards(prepareDataForBooks(Number(activePage)));
-  // const string = createMarcupContent(prepareDataForBooks(Number(activePage)));
-  // refs.content.innerHTML = string;
-  //   return;
-  // }
-
-  // if (activePage === 1) {
-  //   console.log('activePage === 1', activePage === 1);
-  //   moveToStart();
-  //   return;
-  // }
-
-  // if (arrayNumbersOfPages.length - activePage >= 1) {
-  //   console.log(
-  //     'arrayNumbersOfPages.length - activePage >= 1',
-  //     arrayNumbersOfPages.length - activePage >= 1
-  //   );
-  //   moveToPage(activePage);
-  //   return;
-  // }
-
-  // if (activePage === arrayNumbersOfPages.length) {
-  //   console.log(
-  //     'activePage === arrayNumbersOfPages.length',
-  //     activePage === arrayNumbersOfPages.length
-  //   );
-  //   moveToEnd();
-  // }
 }
 
-// =====================================================================================
-
-// підготовка даних для створення даних для рендеру  секції шоппінг ліст
 function prepareDataForBooks(page) {
   const arrayOfIndexes = [];
   const startIndex = CARD_PER_PAGE * (page - 1);
@@ -550,8 +295,6 @@ function prepareDataForBooks(page) {
   return newDataForRenderList;
 }
 
-// =====================================================================================
-
 function createMarcupPagination(
   initialPage,
   maxVisiblePages,
@@ -562,13 +305,12 @@ function createMarcupPagination(
   if (isThreePoint) {
     murkupPages =
       createMarcupPagesPagination(initialPage, maxVisiblePages) +
-      `<li class="js-pagination-pages" data-pagination="...">...</li>`;
+      `<div class="js-three-point" data-pagination="...">...</div>`;
   } else {
     murkupPages = createMarcupPagesPagination(initialPage, maxVisiblePages);
   }
 
-  return `<div class="pagination-container">
-      <div class="left-arrows-wrapper">
+  return `<div class="left-arrows-wrapper">
         <button class="js-pagination-button start" type="button" data-pagination="start">
           <svg class="pagination-icon-start" width="24" height="24">
             <use href="${sprite}#icon-arrow-ff"></use>
@@ -596,14 +338,13 @@ function createMarcupPagination(
             <use href="${sprite}#icon-arrow-ff"></use>
           </svg>
         </button>
-      </div>
-    </div>`;
+      </div>`;
 }
 
 function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
   let markupString = '';
   let newInitialPage = initialPage;
-  let pages = arrayNumbersOfPages.length;
+  const pages = arrayNumbersOfPages.length;
 
   if (initialPage + maxVisiblePages - 1 >= pages) {
     newInitialPage = pages - maxVisiblePages + 1;
@@ -623,5 +364,3 @@ function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
 
   return markupString;
 }
-
-// console.log(createMarcupPagination())
