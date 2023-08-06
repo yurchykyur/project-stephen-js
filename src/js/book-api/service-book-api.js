@@ -1,26 +1,19 @@
+import axios from 'axios';
+export default async function serviceBookAPI(endpoint, params = {}) {
+  const BASE_URL = 'https://books-backend.p.goit.global/books/';
 
-// import Loader from './index/loader';
+  const config = {
+    topBooks: 'top-books',
+    categoryList: 'category-list',
+    category: `category/?category=${params.category}`,
+    book: `${params.id}`,
+  };
 
-// const loader = new Loader('.loader')
+  const url = `${BASE_URL}${config[endpoint]}`;
 
-
-
-
-// export default async function serviceBookAPI(endpoint, params = {}) {
-//   const BASE_URL = 'https://books-backend.p.goit.global/books/';
-
-//   const config = {
-//     topBooks: 'top-books',
-//     categoryList: 'category-list',
-//     category: `category/?category=${params.category}`,
-//     book: `${params.id}`,
-//   };
-
-//   const url = `${BASE_URL}${config[endpoint]}`;
-
-//   const response = await axios.get(url);
-//   return response.data;
-// }
+  const response = await axios.get(url);
+  return response.data;
+}
 
 // call examples
 
@@ -41,56 +34,62 @@
 // console.log('Book by ID:', bookById);
 
 
-import axios from 'axios';
+// Після виконання запиту,  повертає дані про книжки, які належать до вказаної категорі
 
-export async function fetchingByCategory(query) {
-  try {
+// export async function fetchingByCategory(query) {
+//   try {
  
-    const response = await axios.get(
-      `https://books-backend.p.goit.global/books/category?category=${query}`
-    );
+//     const response = await axios.get(
+//       `https://books-backend.p.goit.global/books/category?category=${query}`
+//     );
 
-    return response.data;
-  } catch (error) {
-    console.log('catch error', error);
-  }
-}
+//     return response.data;
+//   } catch (error) {
+//     console.log('catch error', error);
+//   }
+// }
 
-export async function fetchingTopBooks() {
-  try {
+//  отримує дані про популярні книжки, які належать до усіх категорій  і повертає отримані дані про популярні книжки.
+
+// export async function fetchingTopBooks() {
+//   try {
  
-    const response = await axios.get(
-      `https://books-backend.p.goit.global/books/top-books`
-    );
+//     const response = await axios.get(
+//       `https://books-backend.p.goit.global/books/top-books`
+//     );
 
-    return response.data;
-  } catch (error) {
-    console.log('catch error', error);
-  }
-}
+//     return response.data;
+//   } catch (error) {
+//     console.log('catch error', error);
+//   }
+// }
 
-export async function fetchingCategories() {
-  try {
+//  Ця функція отримує список усіх доступних категорій книжок. Вона формує запит до сервера і повертає отриманий список категорій
 
-    const response = await axios.get(
-      'https://books-backend.p.goit.global/books/category-list'
-    );
+// export async function fetchingCategories() {
+//   try {
+
+//     const response = await axios.get(
+//       'https://books-backend.p.goit.global/books/category-list'
+//     );
   
-    return response.data;
-  } catch (error) {
-    console.log('catch error', error);
-  }
-}
+//     return response.data;
+//   } catch (error) {
+//     console.log('catch error', error);
+//   }
+// }
 
-export async function fetchingByBook(id) {
-  try {
+
+// Ця функція отримує детальну інформацію про окрему книжку за її ідентифікатором.
+// export async function fetchingByBook(id) {
+//   try {
  
-    const response = await axios.get(
-      `https://books-backend.p.goit.global/books/${id}`
-    );
+//     const response = await axios.get(
+//       `https://books-backend.p.goit.global/books/${id}`
+//     );
 
-    return response.data;
-  } catch (error) {
-    console.log('catch error', error);
-  }
-}
+//     return response.data;
+//   } catch (error) {
+//     console.log('catch error', error);
+//   }
+// }

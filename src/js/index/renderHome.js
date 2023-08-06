@@ -1,9 +1,9 @@
-import getRefs from './refs';
-import { fetchingTopBooks } from '../book-api/service-book-api';
-import { createHomeBookCard } from './render-book';
-import renderingByCategory from './render-category';
+/* // import getRefs from './refs';
+// import { fetchingTopBooks } from '../book-api/service-book-api';
+// import { createHomeBookCard } from './render-book';
+// import renderingByCategory from './render-category';
 // import addBooksListeners from './addBooksListeners';
-const { galleryRef } = getRefs();
+// const { galleryRef } = getRefs();
 
 export function renderingHomePage() {
   galleryRef.innerHTML = '';
@@ -31,7 +31,7 @@ export function renderingHomePage() {
       for (let i = 0; i < btnRef.length; i++) {
         btnRef[i].addEventListener('click', renderingByCategory);
       }
-      addBooksListeners();
+      // addBooksListeners();
     });
   } else if (document.documentElement.clientWidth < 1440) {
     galleryRef.insertAdjacentHTML(
@@ -62,7 +62,7 @@ export function renderingHomePage() {
       for (let i = 0; i < btnRef.length; i++) {
         btnRef[i].addEventListener('click', renderingByCategory);
       }
-      addBooksListeners();
+      // addBooksListeners();
     });
   } else {
     galleryRef.insertAdjacentHTML(
@@ -93,10 +93,10 @@ export function renderingHomePage() {
       for (let i = 0; i < btnRef.length; i++) {
         btnRef[i].addEventListener('click', renderingByCategory);
       }
-      addBooksListeners();
+      // addBooksListeners();
     });
   }
 
   // scrolling to top
   window.scrollTo(0, 0);
-}
+} */
