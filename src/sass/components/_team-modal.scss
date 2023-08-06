@@ -51,8 +51,9 @@
 
     line-height: 1;
 
-    border: none;
+    fill: var(--logo-fill-color);
     background-color: transparent;
+    border: none;
 
     transition: fill var(--transition);
   }
