@@ -92,7 +92,7 @@ const obj = {
   title: 'SWEET ENOUGH',
 };
 
-localStorage.setItem('shopping list', JSON.stringify(booksArr));
+// localStorage.setItem('shopping list', JSON.stringify(booksArr));
 
 //delete up to heare
 
