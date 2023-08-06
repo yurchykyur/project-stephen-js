@@ -7,7 +7,7 @@ import img16 from '/src/js/shopping-list/Rectangle 16.jpg';
 import img17 from '/src/js/shopping-list/Rectangle 17.jpg';
 import img18 from '/src/js/shopping-list/Rectangle 18.jpg';
 import img19 from '/src/js/shopping-list/Rectangle 19.jpg';
-const booksArr = [
+const arr = [
   {
     cover: img13,
     alt: 'book 13',
@@ -84,7 +84,7 @@ export default function renderCards(arr = [1]) {
   if (!arr.length) {
     emptyPage();
   } else {
-    shRefs.list.insertAdjacentHTML('beforeend', shoppingMarkap(booksArr));
+    shRefs.list.insertAdjacentHTML('beforeend', shoppingMarkap(arr));
   }
 }
 

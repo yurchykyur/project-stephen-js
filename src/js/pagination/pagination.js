@@ -1,4 +1,5 @@
 import sprite from '/src/images/icons.svg';
+import renderCards from '/src/js/shopping-list/render-cards';
 
 let DATA = [
   {
@@ -139,6 +140,8 @@ export default function createPagination(
     CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
     numbersOfPages(DATA);
     // вставити функцію від Олега
+    console.log(prepareDataForBooks(1));
+    renderCards(prepareDataForBooks(1));
     const string = createMarcupContent(prepareDataForBooks(1));
     document.querySelector('.js-content-container').innerHTML = string;
   }
