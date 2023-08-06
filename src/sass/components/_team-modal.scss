@@ -32,7 +32,7 @@
     top: -32px;
     left: 0;
 
-    fill: var(--black);
+    fill: var(--logo-fill-color);
 
     transition: fill var(--transition);
   }
@@ -51,8 +51,9 @@
 
     line-height: 1;
 
-    border: none;
+    fill: var(--logo-fill-color);
     background-color: transparent;
+    border: none;
 
     transition: fill var(--transition);
   }

@@ -10,7 +10,7 @@ import img16 from '/src/js/shopping-list/Rectangle 16.jpg';
 import img17 from '/src/js/shopping-list/Rectangle 17.jpg';
 import img18 from '/src/js/shopping-list/Rectangle 18.jpg';
 import img19 from '/src/js/shopping-list/Rectangle 19.jpg';
-const booksArr = [
+const arr = [
   {
     id: '13',
     cover: img13,
@@ -134,6 +134,7 @@ function onDelete(eve) {
     renderCards(newBookArr); //to delete
   } catch (error) {
     console.log('ERROR!', error);
+
   }
 }
 

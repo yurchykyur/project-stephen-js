@@ -57,6 +57,7 @@
   justify-content: center;
   align-items: flex-start;
   gap: 16px;
+  z-index: 999;
 }
 
 .mob-menu-item {
@@ -74,6 +75,9 @@
   justify-content: center;
   gap: 4px;
   padding: 8px 16px;
+   border-radius: 36px;
+
+  transition: background-color var(--transition);
 }
 
 .mob-menu-icon {
@@ -91,17 +95,18 @@
   /* Зберігаємо пропорції зображення */
 }
 
-.mob-menu-link:hover,
-.mob-menu-link:focus {
+.mob-menu-link:is(:hover, :focus) {
   font-weight: 700;
   border-radius: 36px;
+
+  color: var(--black);
   background: var(--yellow);
 }
 
 .logout-mob-btn {
   position: absolute;
   bottom: 20px;
-  z-index: 2;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,4 +123,13 @@
   letter-spacing: -0.56px;
 }
 .icon-mob-logout {
+  margin-left: 4px;
+
+  height: 20px;
+  width: 20px;
+  fill: var(--yellow);
+}
+
+.mob-menu-link:hover .mob-menu-icon {
+  fill: var(--black);
 }

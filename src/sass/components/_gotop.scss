@@ -1,15 +1,13 @@
 .gotop-wrapper {
+  display: none;
   position: fixed;
   bottom: 84px;
   left: 50%;
   transform: translateX(-50%);
-
-  opacity: 0;
-  transition: opacity var(--transition);
 }
 
 .gotop-wrapper.show {
-  opacity: 1;
+  display: block;
 }
 
 .gotop-link {
