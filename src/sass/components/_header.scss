@@ -213,6 +213,59 @@
     fill: var(--white);
   }
 
+  .logout-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 184px;
+    height: 48px;
+    border-radius: 18px;
+    border: 1.5px solid var(--black);
+    background: var(--white);
+    color: #111;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+    letter-spacing: -0.56px;
+    transition: background var(--transition);
+  }
+
+  /* Выпадающий контент (по умолчанию скрыт) */
+  .dropdown-content {
+    position: absolute;
+    z-index: 1;
+    bottom: -30px;
+
+    transition: var(--transition);
+    opacity: 0;
+  }
+
+  /* Змінюємо колір при наведенні */
+  .logout-btn:hover {
+    background: var(--books-color);
+  }
+
+  /* Показуємо випадаючу кнопку при наведенні */
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(11px);
+  }
+
+  /* Изменяем фоновый цвет вызывающей кнопки при выводе выпадающего блока */
+  .login-btn:hover,
+  .dropdown:hover .login-btn {
+    border: 1.5px solid var(--text);
+  }
+
+  .icon-logout {
+    margin-left: 90px;
+
+    height: 20px;
+    width: 20px;
+    fill: var(--yellow);
+  }
+
   .header-menu-link:is(:hover, :focus) {
     font-weight: 700;
     border-radius: 36px;

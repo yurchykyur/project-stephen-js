@@ -39,19 +39,30 @@
         </svg>
       </button>
 
-      <button type="button" class="login-btn">
-        <img
-          class="login-img"
-          src="./images/user.png"
-          alt="Icon"
-          width="37"
-          height="37"
-        />
-        Stephen
-        <svg class="icon-login" width="24" height="24">
-          <use href="./images/icons.svg#user-arrow"></use>
-        </svg>
-      </button>
+      <div class="dropdown">
+        <button type="button" class="login-btn">
+          <img
+            class="login-img"
+            src="./images/user.png"
+            alt="Icon"
+            width="37"
+            height="37"
+          />
+          Stephen
+          <svg class="icon-login" width="24" height="24">
+            <use href="./images/icons.svg#user-arrow"></use>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="#"
+            ><button type="button" class="logout-btn">
+              Log out
+              <svg class="icon-logout" width="20" height="20">
+                <use href="./images/icons.svg#login-arrow"></use>
+              </svg></button
+          ></a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
