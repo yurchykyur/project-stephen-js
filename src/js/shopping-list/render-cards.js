@@ -1,4 +1,5 @@
 import sprite from '/src/images/icons.svg';
+import createPagination from '../pagination/pagination';
 
 // delete below
 import img13 from '/src/js/shopping-list/Rectangle 13.jpg';
@@ -298,7 +299,7 @@ function onDelete(eve) {
       renderCards(newBookArr);
       return;
     }
-    createPagination(newData, 1, false, true);
+    createPagination(newBookArr, 1, false, true);
     //renderCards(newBookArr); //to delete
   } catch (error) {
     console.log('ERROR!', error);
