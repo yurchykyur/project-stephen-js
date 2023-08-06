@@ -1,4 +1,5 @@
 import createPagination from '../pagination/pagination';
+import renderCards from '../shopping-list/render-cards';
 import getDataLocalStorage from '../service-local-storage/get-data-local-storage';
 
 import img13 from '/src/js/shopping-list/Rectangle 13.jpg';
@@ -13,6 +14,7 @@ const SHOPPING_LIST_LS = 'shopping list';
 
 export default function firstRenderShoppingList() {
   // функція запиту в локал сторедж та отриманні даних
+
   // const data = getDataLocalStorage(SHOPPING_LIST_LS);
 
   const data = [
@@ -107,6 +109,7 @@ export default function firstRenderShoppingList() {
       author: 'R.J. Palacio',
     },
   ];
+  
   // виклик створення розмітки пагінації та розмітки
   createPagination(data, 1, true);
 }
