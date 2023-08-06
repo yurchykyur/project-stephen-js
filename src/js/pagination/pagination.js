@@ -92,212 +92,37 @@ let DATA = [
 ];
 
 let CARD_PER_PAGE = 3;
-console.log(DATA);
+
 const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
 };
 
 let arrayNumbersOfPages = [];
 
-// numbersOfPages(DATA)
-
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
+
   for (let i = 0; i < Math.ceil(data.length / CARD_PER_PAGE); i += 1) {
     arrayNumbersOfPages.push(i + 1);
   }
 }
 
-console.log(arrayNumbersOfPages);
-
 refs.paginationContainer.addEventListener('click', onClickPagination);
 
 function createMarcupContent(data) {
   return data
-    .map(({ title, text }) => {
+    .map(({ title, description, alt, polygraphy, author }) => {
       return `<div class="book">
         <h3>${title}</h3>
-        <p>${text}</p>
+        <p>${description}</p>
+        <p>${polygraphy}</p>
+        <p>${alt}</p>
+        <p>${author}</p>
+
       </div>`;
     })
     .join('');
 }
-
-function onClickPagination(e) {
-  e.preventDefault();
-  // if (e.currentTarget === e.target || e.target.nodeName === 'UL' ) {
-  //     return
-  // }
-  // console.log('e.currentTarget', e.currentTarget.dataset.pagination)
-  //  console.log('e.target', e.target.dataset.pagination)
-
-  // console.log('e.target', e.target.closest('.js-pagination-button').dataset.pagination)
-  const clickOnPagePagination = e.target.closest('.js-pagination-pages');
-  const clickOnButtonPagination = e.target.closest('.js-pagination-button');
-
-  if (clickOnPagePagination) {
-    const clickPage = clickOnPagePagination.dataset.pagination;
-    console.log(typeof clickPage);
-    console.log(clickPage);
-
-    if (clickPage === '...') {
-      console.log('case "..."');
-    } else {
-      moveToPage(clickPage);
-    }
-  }
-
-  if (clickOnButtonPagination) {
-    const clickPage = clickOnButtonPagination.dataset.pagination;
-    console.log(typeof clickPage);
-    console.log(clickPage);
-    switch (clickPage) {
-      case 'start':
-        moveToStart();
-        break;
-      case 'backward':
-        moveToBackward();
-        break;
-      case 'forward':
-        moveToForward();
-        break;
-      case 'end':
-        moveToEnd();
-        break;
-      default:
-        return;
-    }
-  }
-}
-
-function moveToStart() {
-  console.log('moveToStart()');
-  createPagination(DATA, 1);
-  //  функція створення розмітки секції з вибраними книгами
-  const activePage = findActivePage();
-  deleteClassActivePage(activePage);
-  addActivePage(1);
-
-  const string = createMarcupContent(prepareDataForBooks(1));
-  refs.content.innerHTML = string;
-}
-
-function moveToBackward() {
-  console.log('moveToBackward()');
-  const activePage = findActivePage();
-  if (activePage === 1) {
-    return;
-  }
-  const startPagePagination = Number(
-    document.querySelector('.js-pagination-pages').dataset.pagination
-  );
-
-  if (activePage <= 3) {
-    const initialPage = 1;
-
-    deleteClassActivePage(activePage);
-    console.log(initialPage, 'initialPage');
-    createPagination(DATA, initialPage);
-    addActivePage(activePage - 1);
-
-    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-    refs.content.innerHTML = string;
-  } else {
-    const initialPage = startPagePagination - 1;
-
-    deleteClassActivePage(activePage);
-    console.log(initialPage, 'initialPage');
-    createPagination(DATA, initialPage);
-    addActivePage(activePage - 1);
-
-    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
-    refs.content.innerHTML = string;
-  }
-}
-
-function moveToForward() {
-  console.log('moveToforward()');
-  const activePage = findActivePage();
-
-  if (activePage === arrayNumbersOfPages.length) {
-    return;
-  }
-
-  const startPgePagination = Number(
-    document.querySelector('.js-pagination-pages').dataset.pagination
-  );
-
-  const initialPage = startPgePagination + 1;
-
-  deleteClassActivePage(activePage);
-  console.log(initialPage, 'initialPage');
-  createPagination(DATA, initialPage);
-  addActivePage(activePage + 1);
-
-  const string = createMarcupContent(prepareDataForBooks(activePage + 1));
-  refs.content.innerHTML = string;
-}
-
-function moveToEnd() {
-  console.log('moveToEnd()');
-  createPagination(DATA, arrayNumbersOfPages.length);
-  //  функція створення розмітки секції з вибраними книгами
-  const activePage = findActivePage();
-  deleteClassActivePage(activePage);
-  addActivePage(arrayNumbersOfPages.length);
-
-  const string = createMarcupContent(
-    prepareDataForBooks(arrayNumbersOfPages.length)
-  );
-  refs.content.innerHTML = string;
-}
-
-function moveToPage(page) {
-  console.log('moveToPage()');
-  const activePage = findActivePage();
-
-  console.log(activePage);
-  deleteClassActivePage(activePage);
-  addActivePage(Number(page));
-  const string = createMarcupContent(prepareDataForBooks(Number(page)));
-  refs.content.innerHTML = string;
-}
-
-console.log(window.innerWidth);
-
-function findActivePage() {
-  let activePage = 1;
-  refs.allPaginationPages.forEach(elem => {
-    if (elem.classList.contains('js-active-pagination')) {
-      activePage = elem.dataset.pagination;
-    }
-  });
-
-  return Number(activePage);
-}
-
-function addActivePage(page = 1) {
-  console.log('addActivePage', refs.allPaginationPages);
-  refs.allPaginationPages.forEach(elem => {
-    const number = Number(elem.dataset.pagination);
-
-    if (number === page) {
-      elem.classList.add('js-active-pagination');
-    }
-  });
-}
-
-function deleteClassActivePage(page = 1) {
-  refs.allPaginationPages.forEach(elem => {
-    const number = Number(elem.dataset.pagination);
-
-    if (number === page) {
-      elem.classList.remove('js-active-pagination');
-    }
-  });
-}
-
-createPagination(DATA, 1, true);
 
 export default function createPagination(
   data,
@@ -318,27 +143,13 @@ export default function createPagination(
     document.querySelector('.js-content-container').innerHTML = string;
   }
 
-  if (data.length <= CARD_PER_PAGE) {
+  if (isDeleted) {
+    onDeletedItem(data);
+
     return;
   }
 
-  if (isDeleted) {
-    const prevState = [...DATA];
-    const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
-
-    DATA = [...data];
-
-    const activePage = findActivePage();
-
-    if (arrayNumbersOfPages.length === prevStatePages) {
-      const string = createMarcupContent(
-        prepareDataForBooks(Number(activePage))
-      );
-      refs.content.innerHTML = string;
-    } else {
-      onDeletedItem(data, prevState, activePage);
-    }
-
+  if (data.length <= CARD_PER_PAGE) {
     return;
   }
 
@@ -363,6 +174,165 @@ export default function createPagination(
   }
 }
 
+function onClickPagination(e) {
+  e.preventDefault();
+
+  const clickOnPagePagination = e.target.closest('.js-pagination-pages');
+  const clickOnButtonPagination = e.target.closest('.js-pagination-button');
+
+  if (clickOnPagePagination) {
+    const clickPage = clickOnPagePagination.dataset.pagination;
+
+    if (clickPage === '...') {
+      console.log('case "..."');
+    } else {
+      moveToPage(clickPage);
+    }
+  }
+
+  if (clickOnButtonPagination) {
+    const clickPage = clickOnButtonPagination.dataset.pagination;
+
+    switch (clickPage) {
+      case 'start':
+        moveToStart();
+        break;
+      case 'backward':
+        moveToBackward();
+        break;
+      case 'forward':
+        moveToForward();
+        break;
+      case 'end':
+        moveToEnd();
+        break;
+      default:
+        return;
+    }
+  }
+}
+
+function moveToStart() {
+  createPagination(DATA, 1);
+
+  //  функція створення розмітки секції з вибраними книгами
+  const activePage = findActivePage();
+
+  deleteClassActivePage(activePage);
+  addActivePage(1);
+
+  const string = createMarcupContent(prepareDataForBooks(1));
+  refs.content.innerHTML = string;
+}
+
+function moveToBackward() {
+  const activePage = findActivePage();
+
+  if (activePage === 1) {
+    return;
+  }
+  const startPagePagination = Number(
+    document.querySelector('.js-pagination-pages').dataset.pagination
+  );
+
+  if (activePage <= 3) {
+    const initialPage = 1;
+
+    deleteClassActivePage(activePage);
+    createPagination(DATA, initialPage);
+    addActivePage(activePage - 1);
+
+    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+    refs.content.innerHTML = string;
+  } else {
+    const initialPage = startPagePagination - 1;
+
+    deleteClassActivePage(activePage);
+    createPagination(DATA, initialPage);
+    addActivePage(activePage - 1);
+
+    const string = createMarcupContent(prepareDataForBooks(activePage - 1));
+    refs.content.innerHTML = string;
+  }
+}
+
+function moveToForward() {
+  const activePage = findActivePage();
+
+  if (activePage === arrayNumbersOfPages.length) {
+    return;
+  }
+
+  const startPgePagination = Number(
+    document.querySelector('.js-pagination-pages').dataset.pagination
+  );
+
+  const initialPage = startPgePagination + 1;
+
+  deleteClassActivePage(activePage);
+  createPagination(DATA, initialPage);
+  addActivePage(activePage + 1);
+
+  const string = createMarcupContent(prepareDataForBooks(activePage + 1));
+  refs.content.innerHTML = string;
+}
+
+function moveToEnd() {
+  createPagination(DATA, arrayNumbersOfPages.length);
+
+  //  функція створення розмітки секції з вибраними книгами
+  const activePage = findActivePage();
+  deleteClassActivePage(activePage);
+  addActivePage(arrayNumbersOfPages.length);
+
+  const string = createMarcupContent(
+    prepareDataForBooks(arrayNumbersOfPages.length)
+  );
+  refs.content.innerHTML = string;
+}
+
+function moveToPage(page) {
+  const activePage = findActivePage();
+
+  deleteClassActivePage(activePage);
+  addActivePage(Number(page));
+
+  const string = createMarcupContent(prepareDataForBooks(Number(page)));
+  refs.content.innerHTML = string;
+}
+
+function findActivePage() {
+  let activePage = 1;
+
+  refs.allPaginationPages.forEach(elem => {
+    if (elem.classList.contains('js-active-pagination')) {
+      activePage = elem.dataset.pagination;
+    }
+  });
+
+  return Number(activePage);
+}
+
+function addActivePage(page = 1) {
+  refs.allPaginationPages.forEach(elem => {
+    const number = Number(elem.dataset.pagination);
+
+    if (number === page) {
+      elem.classList.add('js-active-pagination');
+    }
+  });
+}
+
+function deleteClassActivePage(page = 1) {
+  refs.allPaginationPages.forEach(elem => {
+    const number = Number(elem.dataset.pagination);
+
+    if (number === page) {
+      elem.classList.remove('js-active-pagination');
+    }
+  });
+}
+
 function createRefsPagination() {
   refs.content = document.querySelector('.js-content-container');
   refs.pagination = document.querySelector('.js-pagination-list');
@@ -372,10 +342,23 @@ function createRefsPagination() {
 // =============================================
 // функція обробки при видаллені елемента
 
-function onDeletedItem(data, prevState, activePage) {
-  if (activePage === arrayNumbersOfPages.length) {
-    moveToEnd();
-    return;
+function onDeletedItem(data) {
+  const prevState = [...DATA];
+  const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
+
+  DATA = [...data];
+
+  const activePage = findActivePage();
+
+  if (DATA.length <= CARD_PER_PAGE) {
+    refs.paginationContainer.innerHTML = '';
+    const string = createMarcupContent(prepareDataForBooks(1));
+    refs.content.innerHTML = string;
+  }
+
+  if (arrayNumbersOfPages.length === prevStatePages) {
+    const string = createMarcupContent(prepareDataForBooks(Number(activePage)));
+    refs.content.innerHTML = string;
   }
 
   if (activePage === 1) {
@@ -383,20 +366,15 @@ function onDeletedItem(data, prevState, activePage) {
     return;
   }
 
-  const prevStatePages = Math.ceil(prevState.length / CARD_PER_PAGE);
-  if (arrayNumbersOfPages.length === prevStatePages) {
-    const startPagePagination = Number(
-      document.querySelector('.js-pagination-pages').dataset.pagination
-    );
-    const initialPage = startPagePagination;
-    const activePage = findActivePage();
-    addActivePage(Number(page));
-    const string = createMarcupContent(prepareDataForBooks(Number(page)));
-    refs.content.innerHTML = string;
+  if (arrayNumbersOfPages.length - activePage >= 1) {
+    moveToPage(activePage);
+    return;
+  }
+
+  if (activePage === arrayNumbersOfPages.length) {
+    moveToEnd();
   }
 }
-
-// ============================================
 
 // =====================================================================================
 
@@ -411,11 +389,8 @@ function prepareDataForBooks(page) {
     }
   }
 
-  console.log('arrayOfIndexes', arrayOfIndexes);
   const newDataForRenderList = [];
   arrayOfIndexes.forEach(elem => newDataForRenderList.push(DATA[elem]));
-
-  console.log('newDataForRenderList', newDataForRenderList);
 
   return newDataForRenderList;
 }
@@ -428,6 +403,7 @@ function createMarcupPagination(
   isThreePoint = true
 ) {
   let murkupPages = '';
+
   if (isThreePoint) {
     murkupPages =
       createMarcupPagesPagination(initialPage, maxVisiblePages) +
