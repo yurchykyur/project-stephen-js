@@ -62,34 +62,12 @@ export default function createPagination(
     isThreePoint
   );
   createRefsPagination();
-  // for test =================================================================================
-  document
-    .querySelector('.shopping-list-list')
-    .addEventListener('click', onClickDelete);
-  // for test ============================================================================
 
   if (isFirstRender) {
     addActivePage(1);
   }
 }
 
-// for test ========================================================================
-
-function onClickDelete(e) {
-  e.preventDefault();
-  console.log(e.target.closest('.shopping-list-item'));
-  const click = e.target.closest('.shopping-list-item');
-  if (click) {
-    const newData = [...DATA];
-    newData.splice(-1);
-    console.log(' if (click)');
-    console.log(newData);
-
-    createPagination(newData, 1, false, true);
-  }
-}
-
-// for test =========================================================
 
 function onClickPagination(e) {
   e.preventDefault();
