@@ -175,6 +175,9 @@
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
+    border-radius: 36px;
+
+    transition: background-color var(--transition);
   }
 
   .icon-shop {
@@ -210,16 +213,14 @@
     fill: var(--white);
   }
 
-  .header-menu-link:hover,
-  .header-menu-link:focus {
+  .header-menu-link:is(:hover, :focus) {
     font-weight: 700;
     border-radius: 36px;
     background: var(--yellow);
     color: var(--black);
   }
 
-  .header-menu-link:hover .icon-shop,
-  .header-menu-link:focus .icon-shop {
+  .header-menu-link:is(:hover, :focus) .icon-shop {
     fill: var(--black);
   }
 }
