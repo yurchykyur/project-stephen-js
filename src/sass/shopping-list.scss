@@ -1,5 +1,3 @@
-
-
 /* utils */
 @import '/node_modules/modern-normalize/modern-normalize.css';
 @import url('./utils/_reset.scss');
@@ -10,18 +8,13 @@
 @import url('./utils/_container.scss');
 
 /* components */
-
 @import url('./components/_burger-menu.scss');
 @import url('./components/_modal-window.scss');
 @import url('./components/_team-modal.scss');
 @import url('./components/_gotop.scss');
-
-/* banner */
-
-@import url('./banner/_support-ukraine.scss');
+@import url('./components/_loader.scss');
 
 /* layouts */
-
 @import url('./components/_header.scss');
 @import url('./shopping-list/_content-wrapper.scss');
 @import url('./banner/_support-ukraine.scss');
