@@ -3,9 +3,7 @@
 }
 
 
-/* .main-wrapper{
-  background-color: #F6F6F6;
-} */
+
 @media screen and (min-width: 768px) and (max-width: 1439.9px) {
     div>.nav-categories-section {
         padding-bottom: 0px;
@@ -16,7 +14,7 @@
     .gallery {
         width: 996px;
         margin-left: 40px;
-        padding-top: 40px;
+        padding-top: 100px;
     }
 }
 
@@ -60,7 +58,7 @@
     line-height: 1.1875;
     letter-spacing: -0.04em;
 
-    color: var(--primary-text-color-ligth);
+    color: var(--black);
 
     margin-bottom: 40px;
     transition: all 0.3s ease-in-out;
@@ -74,7 +72,7 @@
 }
 
 .gellery-title-akcent {
-    color: var(--accent-color-ligth);
+    color: var(--violet);
 }
 
 .gallery-book-home-link {
@@ -115,13 +113,11 @@
 .gallery-book-cover {
     position: relative;
     overflow: hidden;
-    /* z-index: -1; */
     width: 335px;
     height: 485px;
     background-size: cover;
     margin-bottom: 14px;
     border-radius: 8px;
-    /* transition: transform var(--animation-duration); */
     transition: transform 0.5s ease-in-out;
 }
 
@@ -150,12 +146,9 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 1.28571;
-
     letter-spacing: 0.03em;
     text-transform: uppercase;
-
-    color: var(--secondary-text-color-ligth);
-
+    color: var(--books-color);
     margin-bottom: 18px;
 }
 
@@ -182,7 +175,7 @@
 }
 
 .gallery-book-name {
-    color: var(--primary-text-color-ligth);
+    color: var(--black);
     font-family: var(--main-font);
     font-weight: 700;
     font-size: 16px;
@@ -199,7 +192,7 @@
 }
 
 .gallery-author {
-    color: var(--secondary-text-color-ligth);
+    color: var(--books-color);
     font-family: var(--main-font);
     font-weight: 400;
     font-style: italic;
@@ -214,16 +207,13 @@
 .gallery-see-more-btn {
     display: block;
 
-    color: var(--primary-text-color-ligth);
+    color: var(--black);
     text-transform: uppercase;
     font-family: var(--main-font);
     font-weight: 700;
     font-size: 14px;
     line-height: 1.28571;
     letter-spacing: -0.01em;
-    /* 
-  width: 127px;
-  height: 46px; */
     text-align: center;
 
     padding: 14px 28px;
@@ -238,7 +228,7 @@
 
 .gallery-see-more-btn:hover,
 .gallery-see-more-btn:focus {
-    color: var(--header-color-ligth);
+    color: var(--white);
     background-color: var(--accent-color-ligth);
 
 }

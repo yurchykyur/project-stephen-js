@@ -9,7 +9,7 @@ export default function renderingByCategory(e) {
   // console.log('Rendering by category');
 
   galleryRef.innerHTML = '';
-  // Тицяти на кнопку більше
+
   if (e.target.innerHTML === 'See more') {
     galleryRef.insertAdjacentHTML(
       'beforeend',
@@ -38,32 +38,27 @@ export default function renderingByCategory(e) {
     //   addBooksListeners();
     });
 
-    // Активно до нової категорії
 
     categoriesRef.querySelector('.active').classList.remove('active');
     document
       .querySelector(`[data-id="${e.target.dataset.category}"]`)
       .classList.add('active');
 
-    // Скролимо ап
 
     window.scrollTo(0, 0);
 
     return;
   }
 
-  //Тицяємо на всі категорії
 
   if (e.target.innerHTML.trim() === 'All categories') {
     renderingHomePage();
 
-    // Знов скрол ап
 
     window.scrollTo(0, 0);
     return;
   }
 
-  // Заголовок секції книжок
 
   galleryRef.insertAdjacentHTML(
     'beforeend',
@@ -91,8 +86,6 @@ export default function renderingByCategory(e) {
     );
     // addBooksListeners();
   });
-
-  // Летимо вгору
 
   window.scrollTo(0, 0);
 }

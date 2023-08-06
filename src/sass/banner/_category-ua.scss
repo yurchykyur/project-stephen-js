@@ -1,4 +1,4 @@
-aside {
+.category-ua {
     float: none;
     display: block;
     margin-top: 104px;
@@ -10,7 +10,7 @@ aside {
 }
 
 @media screen and (min-width: 768px) {
-    aside {
+    .category-ua {
         margin-bottom: 100px;
     }
 
@@ -23,7 +23,7 @@ aside {
 }
 
 @media screen and (min-width: 1440px) {
-    aside {
+    .category-ua {
         float: left;
         margin-top: 40px;
     }
