@@ -1,6 +1,8 @@
 import createPagination from '../pagination/pagination';
 import renderCards from '../shopping-list/render-cards';
 import getDataLocalStorage from '../service-local-storage/get-data-local-storage';
+import setDataLocalStorage from '../service-local-storage/save-data-local-storage';
+
 
 import img13 from '/src/js/shopping-list/Rectangle 13.jpg';
 import img14 from '/src/js/shopping-list/Rectangle 14.jpg';
@@ -11,6 +13,7 @@ import img18 from '/src/js/shopping-list/Rectangle 18.jpg';
 import img19 from '/src/js/shopping-list/Rectangle 19.jpg';
 
 const SHOPPING_LIST_LS = 'shopping list';
+
 
 export default function firstRenderShoppingList() {
   //функція запиту в локал сторедж та отриманні даних
@@ -263,7 +266,9 @@ export default function firstRenderShoppingList() {
       ],
     },
   ];
+setDataLocalStorage(SHOPPING_LIST_LS, booksArr)
 
+const data = getDataLocalStorage(SHOPPING_LIST_LS);
   //виклик створення розмітки пагінації та розмітки
-  createPagination(booksArr, 1, true);
+  createPagination(data, 1, true);
 }
