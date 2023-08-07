@@ -1,4 +1,4 @@
-// let mask = document.querySelector('.mask');
+let mask = document.querySelector('.mask');
 
 export function offLoader() {
   mask.classList.remove('visible');
