@@ -5,7 +5,7 @@ const goToTopWrapper = document.querySelector('.gotop-wrapper');
 const throttledScroll = throttle(() => {
   const currentPosition = document.documentElement.scrollTop;
 
-  if (currentPosition >= 800) {
+  if (currentPosition >= 1200) {
     goToTopWrapper.classList.add('show');
   } else {
     goToTopWrapper.classList.remove('show');
