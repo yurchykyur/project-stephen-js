@@ -1,11 +1,11 @@
 import * as basicLightbox from "basiclightbox";
-import sprite from "../images/icons.svg";
-import amazon from "../images/modal/amazon-icon1x.png";
-// import amazon2x from "../images/modal/amazon-icon2x.png";
-import appleBook from "../images/modal/applebook-icon1x.png";
-// import appleBook2x from "../images/modal/applebook-icon2x.png";
-import bookShop from "../images/modal/bookshop-icon1x.png";
-// import bookShop2x from "../images/modal/bookshop-icon2x.png";
+import sprite from '/src/images/icons.svg';
+import amazon from '/src/images/modal/amazon-icon1x.png';
+// import amazon2x from '/src/images/modal/amazon-icon2x.png';
+import appleBook from '/src/images/modal/applebook-icon1x.png';
+// import appleBook2x from '/src/images/modal/applebook-icon2x.png';
+import bookShop from "/src/images/modal/bookshop-icon1x.png";
+// import bookShop2x from "/src/images/modal/bookshop-icon2x.png";
 
 const bodyEl = document.querySelector("body");
 const URL = "https://books.backend.p.goit.global/books/";
