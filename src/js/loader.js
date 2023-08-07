@@ -1,9 +1,9 @@
-let mask = document.querySelector('.mask');
+// let mask = document.querySelector('.mask');
 
-export function offLoader() {
-  mask.classList.remove('visible');
-}
+// export function offLoader() {
+//   mask.classList.remove('visible');
+// }
 
- export function onLoader() {
-  mask.classList.add('visible');
-}
+//  export function onLoader() {
+//   mask.classList.add('visible');
+// }
