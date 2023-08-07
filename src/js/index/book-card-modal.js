@@ -1,14 +1,14 @@
 import * as basicLightbox from "basiclightbox";
 import sprite from '/src/images/icons.svg';
 import amazon from '/src/images/modal/amazon-icon1x.png';
-// import amazon2x from '/src/images/modal/amazon-icon2x.png';
+import amazon2x from '/src/images/modal/amazon-icon2x.png';
 import appleBook from '/src/images/modal/applebook-icon1x.png';
-// import appleBook2x from '/src/images/modal/applebook-icon2x.png';
+import appleBook2x from '/src/images/modal/applebook-icon2x.png';
 import bookShop from "/src/images/modal/bookshop-icon1x.png";
-// import bookShop2x from "/src/images/modal/bookshop-icon2x.png";
+import bookShop2x from "/src/images/modal/bookshop-icon2x.png";
 import serviceBookAPI from '../book-api/service-book-api'
 
-// import 'basicLightbox/dist/basicLightbox.min.css'
+import 'basicLightbox/dist/basicLightbox.min.css'
 
 const SHOPPING_LIST_LS = 'shopping list'
 
@@ -17,9 +17,9 @@ const URL = "https://books.backend.p.goit.global/books/";
 let idBook = "";
 
 const shops = {
-  Amazon: `<img src="${amazon}" alt="amazon logo" width="62" height="19">`,
-  "Apple Books": `<img src="${appleBook}" alt="apple books logo" width="33" height="32">`,
-  "Book Shop": `<img src="${bookShop}" alt="book shop logo" width="38" height="36">`,
+  Amazon: `<img srcset="${amazon} 1x, ${amazon2x} 2x" src="${amazon}" alt="amazon logo" width="62" height="19">`,
+  "Apple Books": `<img srcset="${appleBook} 1x, ${appleBook2x} 2x" src="${appleBook}" alt="apple books logo" width="33" height="32">`,
+  "Book Shop": `<img srcset="${bookShop} 1x, ${bookShop2x} 2x" src="${bookShop}" alt="book shop logo" width="38" height="36">`,
 };
 
 async function getBookInfo(bookId) {
@@ -46,14 +46,17 @@ function getImages(name) {
   } else return "";
 }
 
- async function createMarkup(bookId) {
+async function createMarkup(bookId) {
+   console.log("textmarkup");
   const books = await getBookInfo(bookId);
+  console.log(books);
   const shopName = books.shops
     .map(({ name, url }) => {
       const img = getImages(name);
       return `<li class="item book-item"><a href="${url}" target="_blank" class="link link-img">${img}</a></li>`;
     })
     .join("");
+  console.log(shopName);
    const instance = basicLightbox.create( `
   <div class="modal">
     <div class="book-card-container js-modal">
@@ -112,39 +115,9 @@ const obj = {}
 
 //import to gallery
 export  function openModal(evt) {
-
-
-  // if (
-  //   !(
-  //     (evt.target.parentElement.nodeName === "LI" &&
-  //       evt.target.parentElement.dataset.bookId) ||
-  //     (evt.target.nodeName === "LI" && evt.target.dataset.bookId)
-  //   )
-  // ) {
-  //   return;
-  // }
-
-  // idBook = evt.target.closest('.js-click-book').dataset.bookid
-  // console.log('idBook', idBook)
-    // evt.target.nodeName === "LI"
-    //   ? evt.target.dataset.bookId
-    //   : evt.target.parentElement.dataset.bookId;
-createMarkup(evt.target.closest('.js-click-book').dataset.bookid)
-  //  const instance = basicLightbox.create(` <button type="button" class="btn-modal hidden" id="add">Add to shopping list</button>
-  //       <button type="button" class="btn-modal hidden" id="remove">Remove from the shopping list</button>
-  //       <p class="text-remove hidden">Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".</p>`, {
-  //    onShow: () => {
-  //     console.log('idBook', idBook)
-
-  //     document.addEventListener("keydown", closeModal(instance));
-  //     bodyEl.style.overflow = "hidden";
-  //   },
-  //   onClose: () => {
-  //     document.removeEventListener("keydown", closeModal(instance));
-  //     bodyEl.style.overflow = "auto";
-  //   },
-  // });
-
+console.log(evt.target.closest('.js-click-book').dataset.bookid);
+ createMarkup(evt.target.closest('.js-click-book').dataset.bookid)
+  
   // instance.element().querySelector(".close-btn").onClick = instance.close;
 
   const addBtn = document.querySelector("#add");

@@ -71,6 +71,7 @@ function dataBestsellers(data) {
     divBooksList.innerHTML = dataMarkupTitle;
 
     onCategorriesBtn();
+
 }
 
 // const seeMoreBtn = document.querySelector('.best-sellers-btn');
@@ -119,5 +120,6 @@ function onClickBook(e) {
     if (!e.target.closest('.js-click-book')) {
         return
     }
+
     openModal(e)
 }
