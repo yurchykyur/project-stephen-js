@@ -8,3 +8,4 @@ import './js/best-sellers/best-sellers';
 import './js/best-sellers/fetchTopBooks';
 import './js/loader';
 import './js/index/categories';
+import './js/banner/support-ukraine';
