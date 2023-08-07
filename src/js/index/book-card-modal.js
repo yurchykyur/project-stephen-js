@@ -6,6 +6,11 @@ import appleBook from '/src/images/modal/applebook-icon1x.png';
 // import appleBook2x from '/src/images/modal/applebook-icon2x.png';
 import bookShop from "/src/images/modal/bookshop-icon1x.png";
 // import bookShop2x from "/src/images/modal/bookshop-icon2x.png";
+import serviceBookAPI from '../book-api/service-book-api'
+
+import 'basicLightbox/dist/basicLightbox.min.css'
+
+const SHOPPING_LIST_LS = 'shopping list'
 
 const bodyEl = document.querySelector("body");
 const URL = "https://books.backend.p.goit.global/books/";
@@ -18,8 +23,10 @@ const shops = {
 };
 
 async function getBookInfo(bookId) {
-  const response = await fetch(`${URL}${bookId}`);
-  const responseData = await response.json();
+  // const response = await fetch(`${URL}${bookId}`);
+  // const responseData = await response.json();
+  const responseData = await serviceBookAPI('book', { id: bookId })
+  console.log('responseData', responseData)
   const books = {
     id: responseData._id,
     img: responseData.book_image,
@@ -39,7 +46,7 @@ function getImages(name) {
   } else return "";
 }
 
-async function createMarkup(bookId) {
+ async function createMarkup(bookId) {
   const books = await getBookInfo(bookId);
   const shopName = books.shops
     .map(({ name, url }) => {
@@ -47,7 +54,8 @@ async function createMarkup(bookId) {
       return `<li class="item book-item"><a href="${url}" target="_blank" class="link link-img">${img}</a></li>`;
     })
     .join("");
-  let bookCard = `
+   const instance = basicLightbox.create( `
+  <div class="modal">
     <div class="book-card-container js-modal">
         <button type="button" class="close-btn">
             <svg class="close-img" width="28" height="28"><use href="${sprite}#close-btn"></use></svg>
@@ -66,8 +74,22 @@ async function createMarkup(bookId) {
         <button type="button" class="btn-modal hidden" id="add">Add to shopping list</button>
         <button type="button" class="btn-modal hidden" id="remove">Remove from the shopping list</button>
         <p class="text-remove hidden">Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".</p>
-    </div>`;
-  return bookCard;
+    </div>
+  </div>`, {
+     onShow: () => {
+      console.log('idBook', idBook)
+
+      document.addEventListener("keydown", closeModal(instance));
+      bodyEl.style.overflow = "hidden";
+    },
+    onClose: () => {
+      document.removeEventListener("keydown", closeModal(instance));
+      bodyEl.style.overflow = "auto";
+    },
+   });
+     instance.show();
+
+  // return bookCard;
 }
 
 function closeModal(instance) {
@@ -81,46 +103,54 @@ function closeModal(instance) {
     if (evt.key !== "Escape") {
       return;
     }
-    document.addEventListener("keydown", eventHandler);
+    document.removeEventListener("keydown", eventHandler);
     instance.close();
   });
 }
 
+const obj = {}
+
 //import to gallery
-export async function openModal(evt) {
-  if (
-    !(
-      (evt.target.parentElement.nodeName === "LI" &&
-        evt.target.parentElement.dataset.bookId) ||
-      (evt.target.nodeName === "LI" && evt.target.dataset.bookId)
-    )
-  ) {
-    return;
-  }
+export  function openModal(evt) {
 
-  idBook =
-    evt.target.nodeName === "LI"
-      ? evt.target.dataset.bookId
-      : evt.target.parentElement.dataset.bookId;
 
-  const instance = basicLightbox.create(await createMarkup(idBook), {
-    onShow: () => {
-      document.addEventListener("keydown", closeModal(instance));
-      bodyEl.style.overflow = "hidden";
-    },
-    onClose: () => {
-      document.removeEventListener("keydown", closeModal(instance));
-      bodyEl.style.overflow = "auto";
-    },
-  });
+  // if (
+  //   !(
+  //     (evt.target.parentElement.nodeName === "LI" &&
+  //       evt.target.parentElement.dataset.bookId) ||
+  //     (evt.target.nodeName === "LI" && evt.target.dataset.bookId)
+  //   )
+  // ) {
+  //   return;
+  // }
 
-  instance.element().querySelector(".close-btn").onClick = instance.close;
-  instance.show();
+  // idBook = evt.target.closest('.js-click-book').dataset.bookid
+  // console.log('idBook', idBook)
+    // evt.target.nodeName === "LI"
+    //   ? evt.target.dataset.bookId
+    //   : evt.target.parentElement.dataset.bookId;
+createMarkup(evt.target.closest('.js-click-book').dataset.bookid)
+  //  const instance = basicLightbox.create(` <button type="button" class="btn-modal hidden" id="add">Add to shopping list</button>
+  //       <button type="button" class="btn-modal hidden" id="remove">Remove from the shopping list</button>
+  //       <p class="text-remove hidden">Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".</p>`, {
+  //    onShow: () => {
+  //     console.log('idBook', idBook)
+
+  //     document.addEventListener("keydown", closeModal(instance));
+  //     bodyEl.style.overflow = "hidden";
+  //   },
+  //   onClose: () => {
+  //     document.removeEventListener("keydown", closeModal(instance));
+  //     bodyEl.style.overflow = "auto";
+  //   },
+  // });
+
+  // instance.element().querySelector(".close-btn").onClick = instance.close;
 
   const addBtn = document.querySelector("#add");
   const removeBtn = document.querySelector("#remove");
-  const textRemove = document.querySelector(".text-remove");
-  const books = await getBookInfo(idBook);
+  // const textRemove = document.querySelector(".text-remove");
+  // const books = await getBookInfo(idBook);
 
   const savedBooks = getSavedBooks();
   const isBookSaved = savedBooks.some(item => item.id === idBook);
@@ -129,26 +159,26 @@ export async function openModal(evt) {
     addBtn.classList.add("hidden");
     removeBtn.classList.remove("hidden");
   } else {
-    addBtn.classList.remove("hidden");
-    removeBtn.classList.add("hidden");
-    textRemove.classList.add("hidden");
+    // addBtn.classList.remove("hidden");
+    // removeBtn.classList.add("hidden");
+    // textRemove.classList.add("hidden");
   }
   
-  addBtn.addEventListener("click", () => {
-    addElement(idBook, books);
-    addBtn.classList.add("hidden");
-    removeBtn.classList.remove("hidden");
-    textRemove.classList.remove("hidden");
-  });
+  // addBtn.addEventListener("click", () => {
+  //   addElement(idBook, books);
+  //   addBtn.classList.add("hidden");
+  //   removeBtn.classList.remove("hidden");
+  //   textRemove.classList.remove("hidden");
+  // });
 
-  removeBtn.addEventListener("click", () => {
-    const updatedSavedBooks = savedBooks.filter(item => item.id !== idBook);
-    localStorage.setItem(SHOPPING_LIST_LS, JSON.stringify(updatedSavedBooks));
+  // removeBtn.addEventListener("click", () => {
+  //   const updatedSavedBooks = savedBooks.filter(item => item.id !== idBook);
+  //   localStorage.setItem(SHOPPING_LIST_LS, JSON.stringify(updatedSavedBooks));
 
-    addBtn.classList.remove("hidden");
-    removeBtn.classList.add("hidden");
-    textRemove.classList.add("hidden");
-  });
+  //   addBtn.classList.remove("hidden");
+  //   removeBtn.classList.add("hidden");
+  //   textRemove.classList.add("hidden");
+  // });
 }
 
 function addElement(key, value) {
