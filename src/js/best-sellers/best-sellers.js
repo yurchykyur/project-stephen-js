@@ -71,6 +71,7 @@ function dataBestsellers(data) {
     const dataMarkupTitle = `<h2>Best Sellers <span class="colortext">Books</span></h2>`;
     divBooksList.innerHTML = dataMarkupTitle;
     onCategorriesBtn();
+
 }
 
 
@@ -187,6 +188,7 @@ function onClickBook(e) {
     if (!e.target.closest('.js-click-book')) {
         return
     }
+
     openModal(e)
 }
 
