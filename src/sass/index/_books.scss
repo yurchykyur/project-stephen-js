@@ -9,8 +9,12 @@
     line-height: 1.71;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: var(--books-title-color);
+    color: var(--text);
     margin-bottom: 18px;
+}
+
+.colortext {
+color: var(--violet);
 }
 
 .category-top-books {
@@ -204,6 +208,7 @@
 
     .caterories-content {
         flex: 0 1 996px;
+        margin-left: 40px;
     }
 
     .category-top-books {
