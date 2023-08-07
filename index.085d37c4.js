@@ -15,5 +15,5 @@ let t;var e,r,n,o,i,s="undefined"!=typeof globalThis?globalThis:"undefined"!=typ
       <div class="top-btn-wrapper">
         <button data-filter="${t.list_name}" class="list-name best-sellers-btn">see more</button>
         </div>
-        </li>`,o=r.join(" ");return e+o+n}).join(" ");eq.innerHTML=e,eH.innerHTML="<h2>Best Sellers <span>Books</span></h2>",function(){let t=document.querySelectorAll(".best-sellers-btn");t.forEach(t=>t.addEventListener("click",eV))}(),mask.classList.remove("visible")}"Bookshelf"==eW.text&&(onRenderFiltred(),navList.addEventListener("click",eV));
-//# sourceMappingURL=index.623dfea3.js.map
+        </li>`,o=r.join(" ");return e+o+n}).join(" ");eq.innerHTML=e,eH.innerHTML="<h2>Best Sellers <span>Books</span></h2>",function(){let t=document.querySelectorAll(".best-sellers-btn");t.forEach(t=>t.addEventListener("click",eV))}(),mask.classList.remove("visible")}"Bookshelf"==eW.text&&navList.addEventListener("click",eV);
+//# sourceMappingURL=index.085d37c4.js.map

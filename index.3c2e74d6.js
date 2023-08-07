@@ -15,5 +15,5 @@
       <div class="top-btn-wrapper">
         <button data-filter="${t.list_name}" class="list-name best-sellers-btn">see more</button>
         </div>
-        </li>`,o=r.join(" ");return e+o+n}).join(" ");eq.innerHTML=e,eH.innerHTML="<h2>Best Sellers <span>Books</span></h2>",function(){let t=document.querySelectorAll(".best-sellers-btn");t.forEach(t=>t.addEventListener("click",eW))}(),mask.classList.remove("visible")}"Bookshelf"==eV.text&&(onRenderFiltred(),navList.addEventListener("click",eW))}();
-//# sourceMappingURL=index.01a1f7b5.js.map
+        </li>`,o=r.join(" ");return e+o+n}).join(" ");eq.innerHTML=e,eH.innerHTML="<h2>Best Sellers <span>Books</span></h2>",function(){let t=document.querySelectorAll(".best-sellers-btn");t.forEach(t=>t.addEventListener("click",eW))}(),mask.classList.remove("visible")}"Bookshelf"==eV.text&&navList.addEventListener("click",eW)}();
+//# sourceMappingURL=index.3c2e74d6.js.map
