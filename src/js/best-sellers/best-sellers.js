@@ -4,6 +4,7 @@ import { openModal } from '../index/book-card-modal';
 const ulBooksListTop = document.querySelector('.books-list-top');
 const ulBooksList = document.querySelector('.books-list');
 const divBooksList = document.querySelector('.books-list-title');
+const titleBooksList = document.querySelector('.books-list-title');
 
 let limit = 1;
 
@@ -36,7 +37,7 @@ function dataBestsellers(data) {
     ulBooksList.innerHTML = '';
     const dataBestsellers = data
         .map(elem => {
-            let element1 = `<li><h2 class="books-list-title">${elem.list_name}</h2>
+            let element1 = `<li><h2 class="books-list-title-li">${elem.list_name}</h2>
     <ul class="category-top-books">`;
             let elementArray = [];
             for (let i = 0; i < limit; i += 1) {
@@ -69,50 +70,117 @@ function dataBestsellers(data) {
 
     const dataMarkupTitle = `<h2>Best Sellers <span class="colortext">Books</span></h2>`;
     divBooksList.innerHTML = dataMarkupTitle;
-
     onCategorriesBtn();
 }
 
-// const seeMoreBtn = document.querySelector('.best-sellers-btn');
-// const booksLength = document.querySelectorAll('.js-click-book').length;
-// let items = 6;
-
-// seeMoreBtn.addEventListener('click', () => {
-//     items += 3;
-//     const array = Array.from(document.querySelector('category-top-books').children);
-//     const visItems = array.slice(0, items);
-
-//     visItems.forEach(el => el.classList.add('is-visible'));
-
-//     if (visItems.length === booksLength) {
-//         seeMoreBtn.style.display = 'none';
-//     }
-// });
-
-
-function onClickButton(event) {
-    event.preventDefault();
-
-
-}
 
 function onCategorriesBtn() {
+    console.log('onCategorriesB tn');
     const categorriesBtn = document.querySelectorAll('.best-sellers-btn');
     categorriesBtn.forEach(element =>
-        element.addEventListener('click', onClickButton)
-    );
+        element.addEventListener('click', onFiltred));
 }
 
-// let seeMoreBtn = document.querySelector('.best-sellers-btn');
-// let currentItem = 3;
 
-// seeMoreBtn.onClickButton = () => {
-//     let boxex = [...document.querySelectorAll('.caterories-content . books-list-top')];
-//     for (const i = currentItem; i > currentItem + 3; i++){
-//         boxex[i].style.display = 'inline-block';
-//     }
-//     currentItem += 3;
-// }
+
+let mask = document.querySelector('.mask');
+function onLoader() {
+//   mask.classList.add('visible');
+}
+
+function onFiltred(event) {
+    event.preventDefault();
+
+    if (event.target.tagName !== 'LI' && event.target.tagName !== 'BUTTON')
+        return;
+
+    let cateroryName = event.target.dataset['filter'];
+    let cateroryNamePart = cateroryName.split(' ').slice(0, -1).join(' ');
+    let lastWord = cateroryName.split(' ').pop();
+
+    const dataMarkupTitle = `<h2>${cateroryNamePart} <span>${lastWord}</span></h2>`;
+    titleBooksList.innerHTML = dataMarkupTitle;
+
+    removeActiveClass();
+
+    event.target.classList.add('active');
+    function removeActiveClass() {
+        const listNames = document.querySelectorAll('.categories-list-name');
+        listNames.forEach(elem => {
+            if (elem.textContent === cateroryName) {
+                elem.classList.add('active');
+            } else {
+                elem.classList.remove('active');
+            }
+        });
+    }
+
+    if (cateroryName === 'Best Sellers Books') {
+        onRenderBestsellers();
+        return;
+    }
+    onLoader();
+    console.log(cateroryName); 
+    console.log(dataMarkup);
+    fetchBooks(cateroryName).then(dataMarkup).catch();
+}
+
+function dataMarkup(booksData) {
+    ulBooksListTop.innerHTML = '';
+    if (booksData.length === 0) {
+        console.log('Немає інфо');
+
+        const dataMarkup = `
+    <p class="book-list-discription">This page is empty, add some books and proceed to order.</p>
+    <img src="../images/empty-page.png" alt="Empty list image">
+    `;
+        ulBooksList.innerHTML = '';
+        listEmpty.innerHTML = dataMarkup;
+
+        return;
+    }
+
+    const dataMarkup = booksData
+        .map(bookData => {
+            return `
+      <li>
+        <a class="books-list-link" href="">
+        <div class="thumb">
+          <img class="books-list-img" data-id="${bookData._id}" src="${bookData.book_image}" alt="${bookData.title}">
+          <div class="actions-card">
+          </div>
+
+          </div>
+          <div class="content">
+            <h3 class="books-list-name">${bookData.title}</h3>
+            <p class="books-list-text">${bookData.author}</p> 
+            <p class="books-list-text">${bookData.description}</p> 
+          </div>
+        </a>
+      </li>`;
+        })
+        .join(' ');
+    
+    ulBooksList.innerHTML = dataMarkup;
+    offLoader();
+}
+
+function fetchBooks(cateroryName) {
+  return fetch(
+    `https://books-backend.p.goit.global/books/category?category=${cateroryName}`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
+}
+
+function offLoader() {
+  console.log('mask');
+//   mask.classList.remove('visible');
+}
+
 
 document.querySelector('.books-list-top').addEventListener('click', onClickBook)
 function onClickBook(e) {
@@ -121,3 +189,6 @@ function onClickBook(e) {
     }
     openModal(e)
 }
+
+
+
