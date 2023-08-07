@@ -2,6 +2,7 @@ import { fetchTopBooks } from './fetchTopBooks';
 // import { onFiltred } from './categories/categories';
 import { offLoader, onLoader } from '../loader.js';
 
+
 const ulBooksListTop = document.querySelector('.books-list-top');
 const ulBooksList = document.querySelector('.books-list');
 const divBooksList = document.querySelector('.books-list-title');
@@ -9,61 +10,14 @@ let limit = 1;
 
 const title = document.querySelector('title');
 if (title.text == 'Bookshelf') {
-    onRenderFiltred();
-    navList.addEventListener('click', onFiltred);
-}
-
-export function onFiltred(event) {
-    event.preventDefault();
-
-    // if (event.target.tagName !== 'LI' && event.target.tagName !== 'BUTTON')
-    //     return;
-
-    // let cateroryName = event.target.dataset['filter'];
-    // let cateroryNamePart = cateroryName.split(' ').slice(0, -1).join(' ');
-    // let lastWord = cateroryName.split(' ').pop();
-
-    // const dataMarkupTitle = `<h2>${cateroryNamePart} <span>${lastWord}</span></h2>`;
-    // titleBooksList.innerHTML = dataMarkupTitle;
-
-    // removeActiveClass();
-    // event.target.classList.add('active');
-
-    // function removeActiveClass() {
-    //     const listNames = document.querySelectorAll('.categories-list-name');
-    //     listNames.forEach(elem => {
-    //         if (elem.textContent === cateroryName) {
-    //             elem.classList.add('active');
-    //         } else {
-    //             elem.classList.remove('active');
-    //         }
-    //     });
-    // }
-
-    if (cateroryName === 'Best Sellers Books') {
-        onRenderBestsellers();
-        return;
-    }
-    onLoader();
-    fetchBooks(cateroryName).then(dataMarkup).catch();
-}
-
-// if (title.text == 'Bookshelf') {
-//     onRenderBestsellers();
-//     window.addEventListener(
-//         'resize',
-//         debounce(() => {
-//             if (ulBooksList.textContent == '') {
-//                 onRenderBestsellers();
-//             } else return;
-//         }, 250)
-//     );
-// }
+    onRenderBestsellers();
+}   
 
 export function onRenderBestsellers() {
     onLoader();
     fetchTopBooks().then(dataBestsellers).catch();
 }
+
 
 function dataBestsellers(data) {
     resizeLimit();
@@ -97,7 +51,8 @@ function dataBestsellers(data) {
         </div>
           <div class="content">
             <h3 class="books-list-name">${elem.books[i].title}</h3>
-            <h4 class="books-list-text">${elem.books[i].author}</h4>  
+            <h4 class="books-list-text">${elem.books[i].author}</h4> 
+            <p class="books-list-text">${elem.books[i].description}</p> 
           </div>
         </a>
       </li>`;
@@ -118,13 +73,13 @@ function dataBestsellers(data) {
     const dataMarkupTitle = `<h2>Best Sellers <span>Books</span></h2>`;
     divBooksList.innerHTML = dataMarkupTitle;
 
-    onCategorriesBtn();
+    // onCategorriesBtn();
     offLoader();
 }
 
-function onCategorriesBtn() {
-    const categorriesBtn = document.querySelectorAll('.best-sellers-btn');
-    categorriesBtn.forEach(element =>
-        element.addEventListener('click', onFiltred)
-    );
-}
+// function onCategorriesBtn() {
+//     const categorriesBtn = document.querySelectorAll('.best-sellers-btn');
+//     categorriesBtn.forEach(element =>
+//         element.addEventListener('click', onFiltred)
+//     );
+// }
