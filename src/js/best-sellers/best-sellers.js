@@ -9,7 +9,7 @@ let limit = 1;
 
 const title = document.querySelector('title');
 if (title.text == 'Bookshelf') {
-    onRenderFiltred();
+    // onRenderFiltred();
     navList.addEventListener('click', onFiltred);
 }
 
