@@ -1,6 +1,6 @@
 import { fetchTopBooks } from './fetchTopBooks';
 // import { onFiltred } from './categories/categories';
-import { offLoader, onLoader } from '../loader.js';
+// import { offLoader, onLoader } from '../loader.js';
 
 
 const ulBooksListTop = document.querySelector('.books-list-top');
@@ -14,7 +14,7 @@ if (title.text == 'Bookshelf') {
 }   
 
 export function onRenderBestsellers() {
-    onLoader();
+    // onLoader();
     fetchTopBooks().then(dataBestsellers).catch();
 }
 
@@ -74,7 +74,7 @@ function dataBestsellers(data) {
     divBooksList.innerHTML = dataMarkupTitle;
 
     // onCategorriesBtn();
-    offLoader();
+    // offLoader();
 }
 
 // function onCategorriesBtn() {
