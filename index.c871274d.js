@@ -21,7 +21,7 @@ let t;var e,r,n,o,i,s="undefined"!=typeof globalThis?globalThis:"undefined"!=typ
     </div>
   </div>`,{onShow:()=>{console.log("idBook",""),document.addEventListener("keydown",e0(n)),eX.style.overflow="hidden"},onClose:()=>{document.removeEventListener("keydown",e0(n)),eX.style.overflow="auto"}});n.show()}function e0(t){function e(e){"Escape"===e.key&&(t.close(),eX.style.overflow="auto")}document.addEventListener("keydown",r=>{"Escape"===r.key&&(document.removeEventListener("keydown",e),t.close())})}const e1=document.querySelector(".books-list-top"),e2=document.querySelector(".books-list"),e6=document.querySelector(".books-list-title"),e5=document.querySelector(".books-list-title");let e8=1;const e4=document.querySelector("title");function e3(){eM().then(e7).catch()}function e7(t){!function(){let t=Math.max(document.documentElement.clientWidth||0,window.innerWidth||0);e8=t<768?1:t<1440?3:5}(),e2.innerHTML="";let e=t.map(t=>{let e=`<li><h2 class="books-list-title-li">${t.list_name}</h2>
     <ul class="category-top-books">`,r=[];for(let e=0;e<e8;e+=1){let n=`<li class='js-click-book' data-bookid="${t.books[e]._id}">   
-                <div class="books-list-link">
+                <a class="books-list-link">
         <div class="thumb">
           <img class="books-list-img" data-id="${t.books[e]._id}" src="${t.books[e].book_image}" alt="${t.books[e].title}">
           <div class="actions-card">
@@ -31,7 +31,7 @@ let t;var e,r,n,o,i,s="undefined"!=typeof globalThis?globalThis:"undefined"!=typ
             <h3 class="books-list-name">${t.books[e].title}</h3>
             <h4 class="books-list-text">${t.books[e].author}</h4>  
           </div>
-        </div>
+        </a>
       </li>`;r.push(n)}let n=`</ul>
       <div class="top-btn-wrapper">
         <button data-filter="${t.list_name}" class="list-name best-sellers-btn">see more</button>
@@ -54,8 +54,8 @@ let t;var e,r,n,o,i,s="undefined"!=typeof globalThis?globalThis:"undefined"!=typ
             <p class="books-list-text">${t.description}</p> 
           </div>
         </a>
-      </li>`).join(" ");e2.innerHTML=e,console.log("mask")}"Bookshelf"==e4.text&&e3(),document.querySelector(".mask"),document.querySelector(".books-list-top").addEventListener("click",function(t){t.target.closest(".js-click-book")&&function(t){console.log(t.target.closest(".js-click-book").dataset.bookid),eQ(t.target.closest(".js-click-book").dataset.bookid);let e=document.querySelector("#add"),r=document.querySelector("#remove"),n=JSON.parse(localStorage.getItem("shopping list"))||[],o=n.some(t=>""===t.id);o&&(e.classList.add("hidden"),r.classList.remove("hidden"))}(t)});const{categoriesRef:re}={categoriesRef:document.querySelector(".nav-categories-list")},rr=document.querySelector(".nav-categories-list");async function rn(){try{let{data:t}=await eS.get("https://books-backend.p.goit.global/books/category-list");return t}catch(t){return console.log("Помилка при отриманні списку категорій:",t),[]}}const ro=async()=>{try{let t=await rn();rr.innerHTML=await `<li class="nav-category-item active" data-id="all-categories">All categories</li>
+      </li>`).join(" ");e2.innerHTML=e,console.log("mask")}"Bookshelf"==e4.text&&e3(),document.querySelector(".mask"),document.querySelector(".books-list-top").addEventListener("click",function(t){t.preventDefault(),t.target.closest(".js-click-book")&&function(t){console.log(t.target.closest(".js-click-book").dataset.bookid),eQ(t.target.closest(".js-click-book").dataset.bookid);let e=document.querySelector("#add"),r=document.querySelector("#remove"),n=JSON.parse(localStorage.getItem("shopping list"))||[],o=n.some(t=>""===t.id);o&&(e.classList.add("hidden"),r.classList.remove("hidden"))}(t)});const{categoriesRef:re}={categoriesRef:document.querySelector(".nav-categories-list")},rr=document.querySelector(".nav-categories-list");async function rn(){try{let{data:t}=await eS.get("https://books-backend.p.goit.global/books/category-list");return t}catch(t){return console.log("Помилка при отриманні списку категорій:",t),[]}}const ro=async()=>{try{let t=await rn();rr.innerHTML=await `<li class="nav-category-item active" data-id="all-categories">All categories</li>
         ${t.map(t=>`<li class="nav-category-item" data-id="${t.list_name}">
         ${t.list_name}
         </li>`).join("")}`,function(){let t=document.querySelectorAll(".nav-category-item");t.forEach(t=>{t.addEventListener("click",async t=>{let e=document.querySelector(".nav-category-item.active");e&&e.classList.remove("active"),t.target.classList.add("active"),await void(galleryRef.innerHTML="",window.scrollTo(0,0))})})}()}catch(t){console.log("Помилка при рендерингу категорій:",t)}};ro();
-//# sourceMappingURL=index.e179119d.js.map
+//# sourceMappingURL=index.c871274d.js.map
