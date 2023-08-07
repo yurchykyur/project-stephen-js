@@ -8,8 +8,6 @@ import bookShop from "/src/images/modal/bookshop-icon1x.png";
 import bookShop2x from "/src/images/modal/bookshop-icon2x.png";
 import serviceBookAPI from '../book-api/service-book-api'
 
-import 'basicLightbox/dist/basicLightbox.min.css'
-
 const SHOPPING_LIST_LS = 'shopping list'
 
 const bodyEl = document.querySelector("body");
