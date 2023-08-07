@@ -11,12 +11,12 @@
     var(--white) 100%
   );
 
-  transform: translateX(100%);
+  transform: translateY(-100%);
   transition: transform var(--transition);
 }
 
 .mobile-menu.is-open {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .menu-wrapper {
@@ -75,7 +75,7 @@
   justify-content: center;
   gap: 4px;
   padding: 8px 16px;
-   border-radius: 36px;
+  border-radius: 36px;
 
   transition: background-color var(--transition);
 }

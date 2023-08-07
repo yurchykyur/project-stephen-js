@@ -37,10 +37,26 @@
       </svg>
     </button>
 
-    <img
-      class="mobile-menu-background"
-      src="./images/mobile-menu-background.png"
-      alt=""
-    />
+    <picture class="mobile-menu-background">
+      <source
+        srcset="
+          ./images/mobile/webP/mobile_background.webp     1x,
+          ./images/mobile/webP/mobile_background-@2x.webp 2x
+        "
+        type="image/webp"
+      />
+      <source
+        srcset="
+          ./images/mobile/mobile_background.png     1x,
+          ./images/mobile/mobile_background-@2x.png 2x
+        "
+        type="image/png"
+      />
+      <img
+        class="mobile-menu-background"
+        src="./images/mobile/mobile_background.png"
+        alt="Tube Watch S42 Date Steel With Black Case"
+      />
+    </picture>
   </div>
 </div>

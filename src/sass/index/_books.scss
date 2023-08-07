@@ -1,16 +1,50 @@
 .books-list-top {
-    display: flex;
-    flex-direction: column-reverse;
-    row-gap: 40px;
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 40px;
+  padding-bottom: 112px;
+}
+
+// .books-list-title {
+//   font-size: 14px;
+//   line-height: 1.71;
+//   letter-spacing: 0.03em;
+//   text-transform: uppercase;
+//   color: var(--text);
+//   margin-bottom: 18px;
+// }
+
+.books-list-title h2 {
+  margin-bottom: 40px;
+
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.19;
+  letter-spacing: -1.28px;
+
+  color: var(--text);
+}
+
+.books-list-title span {
+  color: var(--violet);
 }
 
 .books-list-title {
-    font-size: 14px;
-    line-height: 1.71;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 18px;
+
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+
+  color: var(--books-color);
+}
+
+.colortext {
+  color: var(--violet);
+
 }
 
 .colortext {
@@ -18,214 +52,232 @@ color: var(--violet);
 }
 
 .category-top-books {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    row-gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 40px;
 }
 
 .category-top-books li {
-    overflow: hidden;
-    flex-basis: 335px;
+  overflow: hidden;
+  flex-basis: 335px;
 }
 
 .category-top-books .content {
-    padding: 14px 0 0 0;
+  padding: 14px 0 0 0;
 }
 
 .books-list-img {
-    border-radius: 8px;
-    width: 100%;
-    height: 485px;
+  border-radius: 8px;
+  width: 100%;
+  height: 485px;
 }
 
 .books-list-name {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.12;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: var(--black-color);
-
-    padding-bottom: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--black-color);
+  padding-bottom: 4px;
 }
 
 .dark .books-list-name {
-    color: var(--white-color);
+  color: var(--white-color);
 }
 
 .books-list-text {
-    font-style: italic;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: -0.04em;
-    color: #b4afaf;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.04em;
+  color: #b4afaf;
 }
 
-
-
 .simplebar-scrollbar {
-    opacity: 0.5;
-    cursor: pointer;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .category-top-books .thumb {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .category-top-books .actions-card {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateY(100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  content: '';
+  height: 70px;
+  width: 100%;
 
-    content: '';
-    height: 25%;
-    width: 100%;
-    background: var(--gold-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    transition: transform var(--animation);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--yellow);
+  transition: transform var(--transition);
 }
 
 .actions-card {
-    padding: auto 0;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.29;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: var(--black-color);
+  padding: auto 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--black-color);
 }
 
-.category-top-books a:hover .actions-card {
-    transform: translateY(0);
-}
-
+.category-top-books a:hover .actions-card,
 .category-top-books a:focus .actions-card {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .top-btn-wrapper button {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.29;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: var(--black-color);
-    padding: 14px 28px;
-    border: 2px solid #4f2ee8;
-    border-radius: 40px;
-    background-color: transparent;
-    display: flex;
-    margin-top: 32px;
-    margin-left: auto;
-    transition: all var(--animation);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--black-color);
+  padding: 14px 28px;
+  border: 2px solid #4f2ee8;
+  border-radius: 40px;
+  background-color: transparent;
+  display: flex;
+  margin-top: 32px;
+  margin-left: auto;
+  transition: all var(--transition);
 }
 
-.top-btn-wrapper button:hover,
-.top-btn-wrapper button:focus {
-    color: #ffffff;
-    background-color: #4f2ee8;
+.top-btn-wrapper button:is(:hover, :focus) {
+  color: #ffffff;
+  background-color: #4f2ee8;
 }
 
 @media screen and (min-width: 768px) {
-    .categories-container {
-        padding-bottom: 100px;
-    }
+  .categories-container {
+    padding-bottom: 100px;
+  }
 
-    .categories-wrapper {
-        display: flex;
-        flex-direction: row;
-        gap: 32px;
-    }
+  .categories-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
 
-    .categories-list-nav {
-        max-width: 337px;
-        height: 472px;
-        overflow-y: scroll;
-    }
+  .categories-list-nav {
+    max-width: 337px;
+    height: 472px;
+    overflow-y: scroll;
+  }
 
-    .caterories-content {
-        flex: 0 1 704px;
-    }
+  .caterories-content {
+    width: 768px;
+    padding: 0 32px;
+  }
 
-    .categories-list {
-        gap: 32px;
-    }
+  .categories-list {
+    gap: 32px;
+  }
 
-    .categories-list-name {
-        font-size: 18px;
-        line-height: 1.33;
-    }
+  .categories-list-name {
+    font-size: 18px;
+    line-height: 1.33;
+  }
 
-    .books-list-title h2 {
-        font-size: 48px;
-        line-height: 1.08;
-    }
+  .books-list-title h2 {
+    margin-bottom: 40px;
 
-    .category-top-books {
-        gap: 25px;
-    }
+    font-size: 48px;
+    letter-spacing: -1.92px;
+  }
 
-    .category-top-books li {
-        flex-basis: calc((100% - 2 * 25px) / 3);
-    }
+  .books-list-title {
+    line-height: 1.7;
+  }
 
-    .books-list-img {
-        border-radius: 8px;
-        width: 100%;
-        height: 316px;
-    }
+  .category-top-books {
+    gap: 25px;
+  }
+
+  .category-top-books li {
+    flex-basis: calc((100% - 2 * 25px) / 3);
+    width: 28px;
+  }
+
+  .category-top-books li {
+    width: 100px;
+  }
+
+  .thumb {
+    width: 218px;
+  }
+
+  .books-list-img {
+    border-radius: 8px;
+    width: 100%;
+    height: 316px;
+  }
 }
-
 @media screen and (min-width: 1440px) {
-    .categories-container {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+  .categories-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 
-    .categories-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
+  .categories-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
 
-    .categories-list-nav {
-        flex: 0 0 calc(358 / 1392 * 100%);
-        height: 472px;
-    }
+  .categories-list-nav {
+    flex: 0 0 calc(358 / 1392 * 100%);
+    height: 472px;
+  }
 
-    .caterories-content {
-        flex: 0 1 996px;
-        margin-left: 40px;
-    }
+  .caterories-content {
+    padding: 0;
+    margin-left: 40px;
+    width: 996px;
+  }
 
-    .category-top-books {
-        gap: 24px;
-    }
+  .books-list-title h2 {
+    margin-bottom: 40px;
 
-    .category-top-books li {
-        flex-basis: calc((100% - 4 * 24px) / 5);
-    }
+    font-size: 48px;
+    letter-spacing: -1.92px;
+    line-height: 1.08;
+  }
 
-    .books-list-img {
-        border-radius: 16px;
-        width: 100%;
-        height: 256px;
-    }
+  .books-list-title {
+    line-height: 1.7;
+  }
 
-    .category-top-books .thumb {
-        border-radius: 16px;
-    }
+  .category-top-books {
+    gap: 24px;
+  }
+
+  .category-top-books li {
+    flex-basis: calc((100% - 4 * 24px) / 5);
+  }
+
+  .thumb {
+    width: 180px;
+    height: 256px;
+  }
+
+  .books-list-img {
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+  }
 }
