@@ -1,5 +1,4 @@
 
-
 .header-shopping {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -49,7 +48,6 @@
 position: relative;
 width: 100px;
 height: 142px;
-
 }
 
 .book-logo{ 
@@ -93,7 +91,6 @@ height: 142px;
 .shopping-list-info {
   margin-left: 14px;
   position: relative;
-  //height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -135,7 +132,7 @@ height: 142px;
 }
 
 .sh-desc-wrapper{
-max-width: 193px;
+  max-width: 193px;
   height: 68px;
   margin: 0 auto 14px 0;
 }
@@ -188,12 +185,19 @@ max-width: 193px;
 
 .shop-logo-amazon{
   width: 32px;
-height: 11px;
+  height: 11px;
+}
+
+
+.shop-logo-amazon:hover,
+.shop-logo-applebook:hover,
+.shop-logo-bookshop:hover{
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
 }
 
 .empty-sh-page{
   padding-top: 80px;
-  width: 265px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -209,6 +213,11 @@ height: 11px;
   letter-spacing: -0.28px;
 }
 
+.empty-sh-page-img{
+  width: 265px;
+  height: 198px;
+}
+
 @media screen and (min-width: 768px){
   .header-shopping, 
   .header-color{
@@ -219,18 +228,6 @@ height: 11px;
   
   .shopping-book-title{
     max-width: 400px;
-  }
-
-  .empty-sh-page{
-    padding-top: 100px;
-    width: 349px;
-  }
-
-  .empty-sh-page-text{
-    width: 100%;
-    font-size: 18px;
-    line-height: 1.33; 
-    letter-spacing: -0.36px;
   }
 
   .shopping-list-item{
@@ -292,6 +289,24 @@ height: 11px;
       width: 32px;
       height: 30px;
     }
+
+    .empty-sh-page{
+      padding-top: 100px;
+      width: 349px;
+    }
+
+    .empty-sh-page-text{
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.33; 
+      letter-spacing: -0.36px;
+    }
+
+    .empty-sh-page-img{
+    width: 322px;
+    height: 241px;
+  }
+
 }
 
 @media screen and (min-width: 1440px){
@@ -314,4 +329,5 @@ height: 11px;
     max-width: 808px;
     height: 53px;
   }
+
 }
