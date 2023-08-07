@@ -60,13 +60,13 @@
     justify-content: center;
     align-items: center;
 
-    fill: #ff5c01;
+    fill: var(--white);
 
     transition: fill var(--transition);
   }
 
   .modal-team-close-btn:is(:hover, :focus) .modal-team-close-icon {
-    fill: var(--white);
+    fill: #ff5c01;
   }
 
   .modal-team {
@@ -172,8 +172,12 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .modal-team-wrapper::before {
-    height: 706px;
+  .modal-team-wrapper::before {
+    height: 724px;
+  }
+
+  .modal-btns-wrapper {
+    margin-bottom: 12px;
   }
 
   .modal-team {
