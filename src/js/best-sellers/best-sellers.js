@@ -8,6 +8,46 @@ const divBooksList = document.querySelector('.books-list-title');
 let limit = 1;
 
 const title = document.querySelector('title');
+if (title.text == 'Bookshelf') {
+    onRenderFiltred();
+    navList.addEventListener('click', onFiltred);
+}
+
+export function onFiltred(event) {
+    event.preventDefault();
+
+    // if (event.target.tagName !== 'LI' && event.target.tagName !== 'BUTTON')
+    //     return;
+
+    // let cateroryName = event.target.dataset['filter'];
+    // let cateroryNamePart = cateroryName.split(' ').slice(0, -1).join(' ');
+    // let lastWord = cateroryName.split(' ').pop();
+
+    // const dataMarkupTitle = `<h2>${cateroryNamePart} <span>${lastWord}</span></h2>`;
+    // titleBooksList.innerHTML = dataMarkupTitle;
+
+    // removeActiveClass();
+    // event.target.classList.add('active');
+
+    // function removeActiveClass() {
+    //     const listNames = document.querySelectorAll('.categories-list-name');
+    //     listNames.forEach(elem => {
+    //         if (elem.textContent === cateroryName) {
+    //             elem.classList.add('active');
+    //         } else {
+    //             elem.classList.remove('active');
+    //         }
+    //     });
+    // }
+
+    if (cateroryName === 'Best Sellers Books') {
+        onRenderBestsellers();
+        return;
+    }
+    onLoader();
+    fetchBooks(cateroryName).then(dataMarkup).catch();
+}
+
 // if (title.text == 'Bookshelf') {
 //     onRenderBestsellers();
 //     window.addEventListener(
@@ -24,8 +64,6 @@ export function onRenderBestsellers() {
     onLoader();
     fetchTopBooks().then(dataBestsellers).catch();
 }
-
-
 
 function dataBestsellers(data) {
     resizeLimit();
