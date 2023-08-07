@@ -1,6 +1,7 @@
 import { fetchTopBooks } from './fetchTopBooks';
 // import { onFiltred } from './categories/categories';
 import { offLoader, onLoader } from '../loader.js';
+import {openModal} from '/src/js/index/book-card-modal'
 
 
 const ulBooksListTop = document.querySelector('.books-list-top');
