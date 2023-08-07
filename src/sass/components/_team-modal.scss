@@ -1,12 +1,12 @@
 @media screen and (max-width: 767px) {
-  .modal-team,
-  .modal-team-open-btn {
+  .modal-team {
     display: none;
   }
 }
 
 @media screen and (min-width: 768px) {
   .modal-team-wrapper {
+    transform: translateY(-50%);
     opacity: 0;
     visibility: hidden;
 
@@ -23,16 +23,20 @@
     bottom: 0;
     content: '';
     width: 100%;
-    height: 615px;
+    height: 618px;
     background-color: var(--main-background-color);
+    box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.04);
+  }
+
+  .modal-btns-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
   }
 
   .modal-team-goit-icon {
-    position: absolute;
-    top: -32px;
-    left: 0;
-
-    fill: var(--logo-fill-color);
+    fill: var(--white);
 
     transition: fill var(--transition);
   }
@@ -41,33 +45,10 @@
     fill: #ff5c01;
   }
 
-  .modal-team-open-btn {
-    position: absolute;
-    left: 50%;
-    bottom: 1px;
-    transform: translateX(-50%);
-
-    padding: 20px;
-
-    line-height: 1;
-
-    fill: var(--logo-fill-color);
-    background-color: transparent;
-    border: none;
-
-    transition: fill var(--transition);
-  }
-
-  .modal-team-open-btn:is(:hover, :focus) {
-    fill: #ff5c01;
-  }
-
   .modal-team-close-btn {
-    position: absolute;
+    display: block;
     top: -36px;
     right: -5px;
-
-    display: flex;
 
     padding: 0;
 
@@ -85,7 +66,7 @@
   }
 
   .modal-team-close-btn:is(:hover, :focus) .modal-team-close-icon {
-    fill: var(--violet);
+    fill: var(--white);
   }
 
   .modal-team {
@@ -93,11 +74,7 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 9999;
     padding: 12px;
-
-    display: flex;
-    justify-content: center;
 
     border-radius: 15px;
     background-color: var(--violet);
