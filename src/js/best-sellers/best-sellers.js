@@ -42,7 +42,7 @@ function dataBestsellers(data) {
             let elementArray = [];
             for (let i = 0; i < limit; i += 1) {
                 let element = `<li class='js-click-book' data-bookid="${elem.books[i]._id}">   
-                <div class="books-list-link">
+                <a class="books-list-link">
         <div class="thumb">
           <img class="books-list-img" data-id="${elem.books[i]._id}" src="${elem.books[i].book_image}" alt="${elem.books[i].title}">
           <div class="actions-card">
@@ -52,7 +52,7 @@ function dataBestsellers(data) {
             <h3 class="books-list-name">${elem.books[i].title}</h3>
             <h4 class="books-list-text">${elem.books[i].author}</h4>  
           </div>
-        </div>
+        </a>
       </li>`;
                 elementArray.push(element);
             }
@@ -185,6 +185,7 @@ function offLoader() {
 
 document.querySelector('.books-list-top').addEventListener('click', onClickBook)
 function onClickBook(e) {
+  e.preventDefault();
     if (!e.target.closest('.js-click-book')) {
         return
     }
