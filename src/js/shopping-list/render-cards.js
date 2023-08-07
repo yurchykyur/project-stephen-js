@@ -27,8 +27,6 @@ function onDelete(eve) {
     const bookArr = JSON.parse(localStorage.getItem(shRefs.SHOPPING_LIST_LS));
     localStorage.removeItem(shRefs.SHOPPING_LIST_LS);
 
-    console.log(bookArr);
-
     const newBookArr = bookArr.filter(book => book._id !== btn.id);
     localStorage.setItem(shRefs.SHOPPING_LIST_LS, JSON.stringify(newBookArr));
 
