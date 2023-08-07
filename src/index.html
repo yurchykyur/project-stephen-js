@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html style="display: none" lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,36 +12,22 @@
     <script defer type="module" src="./index.js"></script>
   </head>
   <body>
-    <!-- Для переходу на другу сторінку -->
-
     <!-- Секції Максима -->
     <include src="./partials/header.html"></include>
     <include src="./partials/burger-menu.html"></include>
     <!-- Секції Максима -->
 
     <div class="content-wrapper container">
-      <!-- Секції Олександра -->
-<div class="category-ua">
-  <div class="left-side">
-    <div class="home-categories">
-    <include src="./partials/index/categories.html"></include>
-    </div>
-    <div class="home-donate">
-  <include src="./partials/banner/support-ukraine.html"></include>
-    </div>
-  </div>
-</div>
-<!-- <div>
-  <include src="./partials/index/category-section.html"></include>
-</div> -->
-
-
-  
-
-      <!-- Секції Олександра -->
+      <!-- Секції Ростислава -->
+      <div class="categories-wrapper">
+        <include src="./partials/index/categories.html"></include>
+        <include src="./partials/banner/support-ukraine.html"></include>
+      </div>
+      <!-- Секції Ростислава -->
 
       <!-- Секції Мирослава -->
       <include src="./partials/index/books.html"></include>
+      <include src="./partials/best-sellers.html"></include>
       <!-- Секції Мирослава -->
     </div>
 
@@ -50,6 +36,7 @@
     <!-- Секції Дар'ї -->
 
     <!-- Секції Павла -->
+    <include src="./partials/loader.html"></include>
     <include src="./partials/team-modal.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/gotop-btn.html"></include>

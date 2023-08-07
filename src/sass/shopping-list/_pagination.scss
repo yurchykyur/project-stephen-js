@@ -1,8 +1,5 @@
-.js-content-container {
-  height: 300px;
-}
-
 .pagination-container {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +102,26 @@
   scale: 1.15;
 }
 
+.js-three-point {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.22;
+
+  color: var(--text);
+  border: 1px solid var(--pagination-border-color);
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition: var(--transition);
+}
+
 .js-active-pagination {
   color: var(--pagination-text-active-color);
   background-color: var(--pagination-border-color);
@@ -112,6 +129,7 @@
 
 @media screen and (max-width: 768px) {
   .pagination-container {
+    margin-top: 40px;
     gap: 14px;
   }
 
@@ -125,7 +143,8 @@
   .js-pagination-button.backward,
   .js-pagination-button.end,
   .js-pagination-button.forward,
-  .js-pagination-pages {
+  .js-pagination-pages,
+  .js-three-point {
     width: 38px;
     height: 38px;
   }
