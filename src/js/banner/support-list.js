@@ -25,7 +25,7 @@ import support_ua_8_2x from '../../images/support_ua/support_ua_8-@2x.png';
 import support_ua_9 from '../../images/support_ua/support_ua_9.png';
 import support_ua_9_2x from '../../images/support_ua/support_ua_9-@2x.png';
 
-export const donateFunds = [
+export const supportFunds = [
   {
     title: 'Save the Children',
     url:
@@ -42,44 +42,44 @@ export const donateFunds = [
   {
     title: 'UNITED24',
     url: 'https://u24.gov.ua/uk',
-    img1x: support_ua_3,
-    img2x: support_ua_3_2x,
+    img1x: support_ua_7,
+    img2x: support_ua_7_2x,
   },
   {
     title: 'International Medical Corps',
     url: 'https://internationalmedicalcorps.org/country/ukraine/',
-    img1x: support_ua_4,
-    img2x: support_ua_4_2x,
+    img1x: support_ua_3,
+    img2x: support_ua_3_2x,
   },
   {
     title: 'Medicins Sans Frontieres',
     url: 'https://www.msf.org/ukraine',
-    img1x: support_ua_5,
-    img2x: support_ua_5_2x,
+    img1x: support_ua_8,
+    img2x: support_ua_8_2x,
   },
   {
     title: 'RAZOM',
     url: 'https://www.razomforukraine.org/',
-    img1x: support_ua_6,
-    img2x: support_ua_6_2x,
+    img1x: support_ua_4,
+    img2x: support_ua_4_2x,
   },
   {
     title: 'Action against hunger',
     url: 'https://www.actionagainsthunger.org/location/europe/ukraine/',
-    img1x: support_ua_7,
-    img2x: support_ua_7_2x,
+    img1x: support_ua_5,
+    img2x: support_ua_5_2x,
 
   },
   {
     title: 'World vision',
     url: 'https://www.wvi.org/emergencies/ukraine',
-    img1x: support_ua_8,
-    img2x: support_ua_8_2x,
+    img1x: support_ua_9,
+    img2x: support_ua_9_2x,
   },
   {
     title: 'Serhiy Prytula Charity Foundation',
     url: 'https://prytulafoundation.org/en',
-    img1x: support_ua_9,
-     img2x: support_ua_9_2x,
+    img1x: support_ua_6,
+     img2x: support_ua_6_2x,
   }
 ];
