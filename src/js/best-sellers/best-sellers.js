@@ -143,7 +143,7 @@ function dataMarkup(booksData) {
         .map(bookData => {
             return `
       <li>
-        <div class="books-list-link">
+        <a class="books-list-link">
         <div class="thumb">
           <img class="books-list-img" data-id="${bookData._id}" src="${bookData.book_image}" alt="${bookData.title}">
           <div class="actions-card">
@@ -154,7 +154,7 @@ function dataMarkup(booksData) {
             <h3 class="books-list-name">${bookData.title}</h3>
             <p class="books-list-text">${bookData.author}</p>  
           </div>
-        </div>
+        </a>
       </li>`;
         })
         .join(' ');
