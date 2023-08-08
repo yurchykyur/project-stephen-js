@@ -40,7 +40,7 @@
     <img src="../images/empty-page.png" alt="Empty list image">
     `;t5.innerHTML="",listEmpty.innerHTML=e;return}let t=e.map(e=>`
       <li>
-        <div class="books-list-link">
+        <a class="books-list-link">
         <div class="thumb">
           <img class="books-list-img" data-id="${e._id}" src="${e.book_image}" alt="${e.title}">
           <div class="actions-card">
@@ -51,7 +51,7 @@
             <h3 class="books-list-name">${e.title}</h3>
             <p class="books-list-text">${e.author}</p>  
           </div>
-        </div>
+        </a>
       </li>`).join(" ");t5.innerHTML=t,console.log("mask")}"Bookshelf"==t9.text&&re(),document.querySelector(".mask"),document.querySelector(".books-list-top").addEventListener("click",function(e){e.preventDefault(),e.target.closest(".js-click-book")&&function(e){console.log(e.target.closest(".js-click-book").dataset.bookid),t2(e.target.closest(".js-click-book").dataset.bookid);let t=document.querySelector("#add"),r=document.querySelector("#remove"),i=JSON.parse(localStorage.getItem("shopping list"))||[],s=i.some(e=>""===e.id);s&&(t.classList.add("hidden"),r.classList.remove("hidden"))}(e)});let{categoriesRef:rs}={categoriesRef:document.querySelector(".nav-categories-list")},rn=document.querySelector(".nav-categories-list");async function ro(){try{let{data:e}=await tA.get("https://books-backend.p.goit.global/books/category-list");return e}catch(e){return console.log("Помилка при отриманні списку категорій:",e),[]}}let ra=async()=>{try{let e=await ro();rn.innerHTML=await `<li class="nav-category-item active" data-id="all-categories">All categories</li>
         ${e.map(e=>`<li class="nav-category-item" data-id="${e.list_name}">
         ${e.list_name}
@@ -63,4 +63,4 @@
           </a>
         </li>
       `}).join("");return r}(rC));let ie=document.querySelector(".support-button"),it=document.querySelector(".support-button-up"),ir=new r7(".my-swiper",{direction:"vertical",spaceBetween:20,slidesPerView:"auto",navigation:{nextEl:".swiper-button-down",prevEl:".swiper-button-top"},plugins:{scrollContainer:!0}});ie.addEventListener("click",()=>{ir.slideNext(),r9.children[5].classList.contains("swiper-slide-active")&&(ie.style.display="none",it.style.display="block")}),it.addEventListener("click",()=>{ir.slidePrev(),r9.children[0].classList.contains("swiper-slide-active")&&(it.style.display="none",ie.style.display="block")});let ii=document.querySelector(".support-funds-list"),is=new IntersectionObserver(function(e){e[0].intersectionRatio<=0||(it.style.display="block",ie.style.display="none")}),io=new IntersectionObserver(function(e){e[0].intersectionRatio<=0||(it.style.display="none",ie.style.display="block")});is.observe(ii.lastElementChild),io.observe(ii.firstElementChild)}();
-//# sourceMappingURL=index.5ddc9566.js.map
+//# sourceMappingURL=index.68df70c5.js.map
