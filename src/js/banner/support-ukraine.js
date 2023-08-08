@@ -51,9 +51,9 @@ const swiper = new Swiper('.my-swiper', {
     scrollContainer: true,
   },
 });
-
+// Активний елемент для контролю показу/приховування кнопок
 let activeSwiperEl = 5;
-
+// Обробники подій для кнопок прокрутки
 supportButton.addEventListener('click', () => {
   swiper.slideNext();
 
