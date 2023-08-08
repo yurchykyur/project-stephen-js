@@ -1,77 +1,74 @@
 // Vars ---------------------------------------------------------------- //
-$basicLightbox__background: rgba(0, 0, 0, .8) !default;
+$basicLightbox__background: rgba(0, 0, 0, 0.8) !default;
 $basicLightbox__zIndex: 1000 !default;
-$basicLightbox__duration: .4s !default;
+$basicLightbox__duration: 0.4s !default;
 $basicLightbox__timing: ease !default;
 
 // basicLightbox ------------------------------------------------------- //
 .basicLightbox {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: $basicLightbox__background;
+  opacity: 0.01; // Start with .01 to avoid the repaint that happens from 0 to .01
+  transition: opacity $basicLightbox__duration $basicLightbox__timing;
+  z-index: $basicLightbox__zIndex;
+  will-change: opacity;
 
-	position: fixed;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background: $basicLightbox__background;
-	opacity: .01; // Start with .01 to avoid the repaint that happens from 0 to .01
-	transition: opacity $basicLightbox__duration $basicLightbox__timing;
-	z-index: $basicLightbox__zIndex;
-	will-change: opacity;
+  &--visible {
+    opacity: 1;
+  }
 
-	&--visible {
-		opacity: 1;
-	}
+  &__placeholder {
+    max-width: 100%;
+    transform: scale(0.9);
+    transition: transform $basicLightbox__duration $basicLightbox__timing;
+    z-index: 1;
+    will-change: transform;
 
-	&__placeholder {
-		max-width: 100%;
-		transform: scale(.9);
-		transition: transform $basicLightbox__duration $basicLightbox__timing;
-		z-index: 1;
-		will-change: transform;
+    > img:first-child:last-child,
+    > video:first-child:last-child,
+    > iframe:first-child:last-child {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      max-width: 95%;
+      max-height: 95%;
+    }
 
-		> img:first-child:last-child,
-		> video:first-child:last-child,
-		> iframe:first-child:last-child {
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			margin: auto;
-			max-width: 95%;
-			max-height: 95%;
-		}
+    > video:first-child:last-child,
+    > iframe:first-child:last-child {
+      pointer-events: auto;
+    }
 
-		> video:first-child:last-child,
-		> iframe:first-child:last-child {
-			pointer-events: auto;
-		}
+    > img:first-child:last-child,
+    > video:first-child:last-child {
+      width: auto;
+      height: auto;
+    }
+  }
 
-		> img:first-child:last-child,
-		> video:first-child:last-child {
-			width: auto;
-			height: auto;
-		}
-	}
+  &--img &__placeholder,
+  &--video &__placeholder,
+  &--iframe &__placeholder {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
 
-	&--img &__placeholder,
-	&--video &__placeholder,
-	&--iframe &__placeholder {
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-	}
-
-	&--visible &__placeholder {
-		transform: scale(1);
-	}
-
+  &--visible &__placeholder {
+    transform: scale(1);
+  }
 }
-
 
 .hidden {
   display: none;
@@ -79,69 +76,103 @@ $basicLightbox__timing: ease !default;
 
 .close-btn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 12px;
+  right: 12px;
   display: flex;
   padding: 0;
   justify-content: center;
   align-items: center;
-  width: 28px;
-  height: 28px;
   background-color: transparent;
   border: none;
-  stroke: var(--black);
+  fill: var(--black);
 }
 
 .close-btn:hover {
-  stroke: var(--violet);
+  fill: var(--violet);
 }
 
 .book-card-container {
-  padding: 40px;
-  max-width: 580px;
-  max-height: 500px;
+  padding: 40px, 24px;
+  max-width: 336px;
+  height: 806px;
+  max-height: 96vh;
   overflow-y: auto;
+  scrollbar-width: thin;
   border-radius: 18px;
   border: 2px solid var(--black);
   background-color: var(--white);
 }
 
+.book-card-container::-webkit-scrollbar {
+  width: 4px;
+}
+
 .book-cover {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .book-cover img {
-  width: 192px;
-  height: 280px;
+  width: 288px;
+  height: auto;
+  margin-top: 4px;
   border-radius: 8px;
+  border: none;
 }
 
 .book-title {
   color: var(--text);
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1, 17;
+  line-height: 1, 13;
   letter-spacing: -0.96px;
-  margin-bottom: 8px;
+  margin-top: 18px;
+  text-transform: uppercase;
+}
+
+.book-author {
+  color: var(--books-color);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.17;
+  letter-spacing: -0.48px;
+  margin-top: 4px;
 }
 
 .book-description {
+  width: 100%;
   color: var(--text);
   font-size: 14px;
-  line-height: 1, 28;
+  line-height: 1, 29;
   letter-spacing: -0.56px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .shop-list {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 20px;
-  width: 173px;
-  height: 36px;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-top: 14px;
+  padding-bottom: 5px;
+}
+
+.link-img {
+  display: block;
+  text-align: center;
+}
+
+.link-img img {
+  margin: 0;
+  max-width: 62px;
+  height: auto;
 }
 
 .btn-modal {
@@ -149,12 +180,14 @@ $basicLightbox__timing: ease !default;
   width: 100%;
   border-radius: 40px;
   border: 2px solid var(--violet);
+  padding: 14px, 28px;
+  margin-top: 40px;
   background-color: transparent;
   color: var(--black);
-  font-size: 18px;
-  font-weight: 700px;
-  line-height: 1, 33;
-  letter-spacing: -0.18px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1, 29;
+  letter-spacing: -0.14px;
   text-transform: uppercase;
 }
 
@@ -169,13 +202,82 @@ $basicLightbox__timing: ease !default;
   box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.15);
 }
 
-.book-description {
+.text-remove {
   margin: 0 auto;
   margin-top: 8px;
-  max-width: 324px;
+  max-width: 242px;
   color: var(--pop-up-add-text);
   text-align: center;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: -0.48px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04px;
+}
+
+@media screen and (min-width: 768px) {
+  .book-card-container {
+    padding: 40px;
+    max-width: 580px;
+    height: 510px;
+    max-height: 85hv;
+  }
+
+  .book-info-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .book-cover {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0, 24px;
+  }
+
+  .book-cover img {
+    max-height: 280px;
+    width: 192px;
+    margin: 0;
+  }
+
+  .book-title {
+    margin-top: 0;
+    font-size: 24px;
+    line-height: 1.17;
+    letter-spacing: -0.96px;
+  }
+
+  .book-author {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.56px;
+  }
+
+  .book-description {
+    width: 280px;
+    margin-top: 20px;
+  }
+
+  .shop-list {
+    margin-top: 22px;
+    padding-bottom: 6px;
+    // max-width: 75%;
+  }
+
+  .btn-modal {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+  }
+
+  .text-remove {
+    max-width: 324px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.17;
+    letter-spacing: -0.48px;
+  }
 }

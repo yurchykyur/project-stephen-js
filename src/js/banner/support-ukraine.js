@@ -24,10 +24,7 @@ function generateSupportMarkup(supportFunds) {
 }
 
 const container = document.querySelector('.support-funds-list');
-container.insertAdjacentHTML(
-  'beforeend',
-  generateSupportMarkup(supportFunds)
-);
+container.insertAdjacentHTML('beforeend', generateSupportMarkup(supportFunds));
 
 const supportButton = document.querySelector('.support-button');
 const supportButtonUp = document.querySelector('.support-button-up');

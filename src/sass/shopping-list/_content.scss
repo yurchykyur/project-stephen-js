@@ -49,27 +49,31 @@
 }
 
 .sh-wrapper{
-position: relative;
-width: 100px;
-height: 142px;
+  width: 100px;
+  height: 142px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-logo{ 
-    width: 32px;
-    height: 30px;
-    position: absolute;
-     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    fill: var(--violet);
+  width: 32px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--violet);
 }
 
 .shopping-list-img {
-    width: 100%;
-    border-radius: 8px;
-    background:  lightgray 50% / cover no-repeat;
-    border: 1px solid transparent;
-    transition-property: border-color;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  background:  lightgray 50% / cover no-repeat;
+  border: 1px solid transparent;
+  transition-property: border-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -90,10 +94,6 @@ height: 142px;
     width: 20px;
     height: 20px;
     fill: var(--white);
-}
-
-.sh-markap-wrapper{
-  
 }
 
 .shopping-list-info {
@@ -130,13 +130,15 @@ height: 142px;
   text-overflow: ellipsis;
 }
 .shopping-book-author {
-  color: var(--books-color);
-  font-family: DM Sans;
+  max-width: 100px;
   font-size: 12px;
   font-style: italic;
-  font-weight: 400;
   line-height: 1.17;
   letter-spacing: 0.36px;
+  color: var(--books-color);
+   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .sh-desc-wrapper{
@@ -205,7 +207,7 @@ height: 142px;
 
 .empty-sh-page{
   padding-top: 80px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -251,6 +253,10 @@ height: 142px;
     margin-left: 24px;
     width: 516px;
     height: 100%;
+  }
+
+  .shopping-book-author {
+  max-width: 300px;
   }
 
   .sh-desc-wrapper{
