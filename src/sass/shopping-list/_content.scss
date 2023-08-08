@@ -49,27 +49,31 @@
 }
 
 .sh-wrapper{
-position: relative;
-width: 100px;
-height: 142px;
+  width: 100px;
+  height: 142px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-logo{ 
-    width: 32px;
-    height: 30px;
-    position: absolute;
-     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    fill: var(--violet);
+  width: 32px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--violet);
 }
 
 .shopping-list-img {
-    width: 100%;
-    border-radius: 8px;
-    background:  lightgray 50% / cover no-repeat;
-    border: 1px solid transparent;
-    transition-property: border-color;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  background:  lightgray 50% / cover no-repeat;
+  border: 1px solid transparent;
+  transition-property: border-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
