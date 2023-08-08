@@ -2,8 +2,6 @@
     margin-top: 74px;
  }
 
-
-
  @media screen and (min-width: 768px) and (max-width: 1439.9px) {
      div>.nav-categories-section {
          padding-bottom: 0px;
@@ -178,12 +176,9 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 1.125;
-
     letter-spacing: -0.04em;
     text-transform: uppercase;
-
     margin-bottom: 4px;
-
     height: 18px;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
@@ -203,7 +198,6 @@
 
 .gallery-see-more-btn {
     display: block;
-
     color: var(--black);
     text-transform: uppercase;
     font-weight: 700;
@@ -211,9 +205,8 @@
     line-height: 1.28571;
     letter-spacing: -0.01em;
     text-align: center;
-
     padding: 14px 28px;
-    border: 2px solid var(--accent-color-ligth);
+    border: 2px solid var(--violet);
     border-radius: 40px;
 
     margin-bottom: 40px;
@@ -225,6 +218,6 @@
 .gallery-see-more-btn:hover,
 .gallery-see-more-btn:focus {
     color: var(--white);
-    background-color: var(--accent-color-ligth);
+    background-color: var(--violet);
 
 }

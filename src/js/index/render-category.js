@@ -2,7 +2,7 @@ import getRefs from './refs';
 import { createBookCard } from '../best-sellers/fetchTopBooks';
 import { fetchingByCategory } from '../book-api/service-book-api.js';
 import { renderingHomePage } from '../best-sellers/best-sellers';
-// import addBooksListeners from './addBooksListeners';
+// import addBooksListeners from '';
 const { galleryRef, categoriesRef } = getRefs();
 
 export default function renderingByCategory(e) {

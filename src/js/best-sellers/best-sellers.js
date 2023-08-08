@@ -1,9 +1,8 @@
-
- import getRefs from '../index/refs';
+import getRefs from '../index/refs';
  import { fetchingTopBooks } from '../book-api/service-book-api';
  import { createHomeBookCard } from '../best-sellers/fetchTopBooks';
  import renderingByCategory from '../index/render-category';
-//  import addBooksListeners from './addBooksListeners';
+//  import addBooksListeners from '';
  const { galleryRef } = getRefs();
 
 export function renderingHomePage() {
@@ -37,7 +36,7 @@ export function renderingHomePage() {
   } else if (document.documentElement.clientWidth < 1440) {
     galleryRef.insertAdjacentHTML(
       'beforeend',
-      '<h2 class="gallery-title">Best Sellers <span class="gellery-title-akcent">Books</span></h2>'
+      '<h2 class="gallery-title">Best Sellers<span class="gellery-title-akcent">Books</span></h2>'
     );
     fetchingTopBooks().then(response => {
       for (let elem of response) {
