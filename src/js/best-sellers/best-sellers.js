@@ -1,9 +1,9 @@
 
  import getRefs from '../index/refs';
  import { fetchingTopBooks } from '../book-api/service-book-api';
- import { createHomeBookCard } from './render-book';
- import renderingByCategory from './render-category';
- import addBooksListeners from './addBooksListeners';
+ import { createHomeBookCard } from '../best-sellers/fetchTopBooks';
+ import renderingByCategory from '../index/render-category';
+//  import addBooksListeners from './addBooksListeners';
  const { galleryRef } = getRefs();
 
 export function renderingHomePage() {
