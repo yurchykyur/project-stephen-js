@@ -5,15 +5,6 @@
   padding-bottom: 112px;
 }
 
-// .books-list-title {
-//   font-size: 14px;
-//   line-height: 1.71;
-//   letter-spacing: 0.03em;
-//   text-transform: uppercase;
-//   color: var(--text);
-//   margin-bottom: 18px;
-// }
-
 .books-list-title h2 {
   margin-bottom: 40px;
 
@@ -29,7 +20,7 @@
   color: var(--violet);
 }
 
-.books-list-title {
+.books-list-title-li {
   margin-bottom: 18px;
 
   font-size: 14px;
@@ -192,9 +183,10 @@
 
     font-size: 48px;
     letter-spacing: -1.92px;
+    line-height: 1.08;
   }
 
-  .books-list-title {
+  .books-list-title-li {
     line-height: 1.7;
   }
 
@@ -242,18 +234,6 @@
     padding: 0;
     margin-left: 40px;
     width: 996px;
-  }
-
-  .books-list-title h2 {
-    margin-bottom: 40px;
-
-    font-size: 48px;
-    letter-spacing: -1.92px;
-    line-height: 1.08;
-  }
-
-  .books-list-title {
-    line-height: 1.7;
   }
 
   .category-top-books {
