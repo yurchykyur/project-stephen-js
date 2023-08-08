@@ -6,6 +6,5 @@ import './js/first-render/first-render-home';
 import './js/header/anti-flicker.js';
 import './js/best-sellers/best-sellers';
 import './js/best-sellers/fetchTopBooks';
-import './js/loader';
 import './js/index/categories';
 import './js/banner/support-ukraine';

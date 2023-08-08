@@ -2,3 +2,10 @@
     padding-top: 64px;
     max-width: 100%;
 }
+
+@media screen and (min-width: 1440px){
+    .content-wrapper{
+        display: flex;
+        gap: 40px;
+    }
+}
