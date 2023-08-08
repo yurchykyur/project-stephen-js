@@ -3,7 +3,12 @@ import renderCards from '/src/js/shopping-list/render-cards';
 
 let DATA = [];
 
-let CARD_PER_PAGE = 3;
+let CARD_PER_PAGE = 0;
+
+const scrollController = {
+  a: true,
+  b: true
+}
 
 const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
@@ -12,6 +17,11 @@ const refs = {
 refs.paginationContainer.addEventListener('click', onClickPagination);
 
 let arrayNumbersOfPages = [];
+
+let maxVisiblePages = 0
+  // window.innerWidth >= 768 ? 3 : 2
+
+
 
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
@@ -33,9 +43,12 @@ export default function createPagination(
 
   if (isFirstRender) {
     DATA = [...data];
-    CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
+    // CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
+    
+    onScrollController(window.innerWidth)
     numbersOfPages(DATA);
     renderCards(prepareDataForBooks(1));
+    
   }
 
   if (isDeleted) {
@@ -48,7 +61,7 @@ export default function createPagination(
     return;
   }
 
-  const maxVisiblePages = window.innerWidth > 768 ? 3 : 2;
+  // const maxVisiblePages = window.innerWidth > 768 ? 3 : 2;
 
   let isThreePoint = true;
 
@@ -334,7 +347,7 @@ function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
 
   for (let i = newInitialPage; i < initialPage + maxVisiblePages; i += 1) {
     if (i > pages) {
-      console.log('return');
+      console.log('break');
       break;
     }
     markupString += `<li class="js-pagination-pages" data-pagination="${i}">${i}</li>`;
@@ -342,3 +355,38 @@ function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
 
   return markupString;
 }
+
+
+function onScrollController(width) {
+  let needRender = false
+
+  if (width < 768 && scrollController.a) {
+    CARD_PER_PAGE = 4
+
+    maxVisiblePages = 2
+    scrollController.a = false
+    scrollController.b = true
+    needRender = true
+  }
+  
+  if (width > 768 && scrollController.b) {
+    CARD_PER_PAGE = 3
+    maxVisiblePages = 3
+    scrollController.a = true
+    scrollController.b = false
+    needRender = true
+  }
+ return needRender
+}
+
+window.addEventListener("resize", () => {
+  const needRender = onScrollController(window.innerWidth)
+  if (needRender) {
+    createPagination(
+      DATA,
+      1,
+      false,
+      true
+    )
+  }
+})

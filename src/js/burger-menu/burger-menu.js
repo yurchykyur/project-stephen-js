@@ -53,6 +53,15 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
     } else {
       // При розмірі екрану менше 768px - показуємо кнопку відкриття меню
       openMenuBtn.style.display = 'flex';
+
+      // Перевіряємо, чи меню відкрите, і змінюємо відображення кнопок відповідно
+      if (mobileMenu.classList.contains('is-open')) {
+        openMenuBtn.style.display = 'none';
+        closeMenuBtn.style.display = 'flex';
+      } else {
+        openMenuBtn.style.display = 'flex';
+        closeMenuBtn.style.display = 'none';
+      }
     }
   };
 

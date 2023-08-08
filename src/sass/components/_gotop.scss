@@ -1,9 +1,8 @@
 .gotop-wrapper {
   display: none;
   position: fixed;
-  bottom: 84px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 8px;
+  left: 8px;
 }
 
 .gotop-wrapper.show {
@@ -53,20 +52,9 @@
   fill: var(--white);
 }
 
-// @media screen and (min-width: 768px) {
-//   .gotop-link {
-//     width: 55px;
-//     height: 55px;
-//   }
-
-//   .gotop-icon {
-//     width: 30px;
-//     height: 30px;
-//   }
-// }
-
-// @media screen and (min-width: 768px) {
-//   .gotop-wrapper {
-//     bottom: 120px;
-//   }
-// }
+@media screen and (min-width: 768px) {
+  .gotop-wrapper {
+    bottom: 44px;
+    left: 12px;
+  }
+}
