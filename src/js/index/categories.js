@@ -21,7 +21,7 @@ const category_list = document.querySelector('.nav-categories-list');
 // }
 
 // Рендерити список категорій
-export default renderCategories =  (data) => {
+export  default function renderCategories(data) {
   try {
     // const categories = await getCategoryList();
     category_list.innerHTML = markupCategoriesList(data);
