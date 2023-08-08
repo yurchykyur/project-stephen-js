@@ -78,6 +78,13 @@
   letter-spacing: -0.44px;
 }
 
+.header-active {
+  font-weight: 700;
+  border-radius: 36px;
+  background: var(--yellow);
+  color: var(--black);
+}
+
 // Стилі перемикача зміни теми
 .theme-switch {
   position: relative;
