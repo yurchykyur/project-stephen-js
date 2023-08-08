@@ -5,11 +5,7 @@
   width: 100%;
   height: 100%;
 
-  background: radial-gradient(
-    189.32% 190.93% at 59.76% -23.42%,
-    var(--violet) 18.03%,
-    var(--white) 100%
-  );
+  background: var(--main-background-color);
 
   transform: translateY(-100%);
   transition: transform var(--transition);
@@ -21,6 +17,13 @@
 
 .menu-wrapper {
   padding: 104px 20px;
+  height: 100%;
+  widows: 100%;
+  background: radial-gradient(
+    189.32% 190.93% at 59.76% -23.42%,
+    var(--violet) 18.03%,
+    var(--main-background-color) 100%
+  );
 }
 
 .login-mob-btn {

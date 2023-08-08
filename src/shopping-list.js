@@ -4,6 +4,7 @@ import './js/index/modal';
 import './js/pagination/pagination';
 import './js/burger-menu/burger-menu';
 import './js/header/anti-flicker.js';
+import './js/header/header.js';
 import './js/banner/support-ukraine';
 
 import createPagination from './js/pagination/pagination';
@@ -906,6 +907,7 @@ const booksArr = [
   },
 ];
 //setDataLocalStorage(SHOPPING_LIST_LS, booksArr);
+
 
 const data = getDataLocalStorage(SHOPPING_LIST_LS);
 //виклик створення розмітки пагінації та розмітки
