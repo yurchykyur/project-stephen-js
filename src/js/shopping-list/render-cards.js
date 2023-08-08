@@ -14,8 +14,21 @@ export default function renderCards(arr = []) {
   if (!arr.length) {
     emptyPage();
   } else {
-    shRefs.list.insertAdjacentHTML('beforeend', shoppingMarkap(arr));
+    const decipherArr = arrDecipher(arr);
+    shRefs.list.insertAdjacentHTML('beforeend', shoppingMarkap(decipherArr));
   }
+}
+
+function arrDecipher(arr) {
+  return arr.map(obj => ({
+    _id: obj.book.id,
+    book_image: obj.book.img,
+    title: obj.book.title,
+    list_name: obj.book.bookName,
+    description: obj.book.description,
+    author: obj.book.author,
+    buy_links: obj.book.shops,
+  }));
 }
 
 function onDelete(eve) {
@@ -27,14 +40,16 @@ function onDelete(eve) {
     const bookArr = JSON.parse(localStorage.getItem(shRefs.SHOPPING_LIST_LS));
     localStorage.removeItem(shRefs.SHOPPING_LIST_LS);
 
-    const newBookArr = bookArr.filter(book => book._id !== btn.id);
+    const newBookArr = bookArr.filter(book => book.id !== btn.id); //replaced _id with id for encryption
+
     localStorage.setItem(shRefs.SHOPPING_LIST_LS, JSON.stringify(newBookArr));
 
     if (!newBookArr.length) {
       renderCards(newBookArr);
       return;
     }
-    createPagination(newBookArr, 1, false, true);
+    renderCards(newBookArr);
+    //createPagination(newBookArr, 1, false, true);
   } catch (error) {
     console.log('ERROR!', error);
   }

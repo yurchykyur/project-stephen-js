@@ -906,7 +906,8 @@ const booksArr = [
     __v: 0,
   },
 ];
-setDataLocalStorage(SHOPPING_LIST_LS, booksArr);
+//setDataLocalStorage(SHOPPING_LIST_LS, booksArr);
+
 
 const data = getDataLocalStorage(SHOPPING_LIST_LS);
 //виклик створення розмітки пагінації та розмітки
