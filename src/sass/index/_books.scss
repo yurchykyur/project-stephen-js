@@ -47,8 +47,8 @@
 }
 
 .category-top-books li {
+  width: 335px;
   overflow: hidden;
-  flex-basis: 335px;
 }
 
 .books-list-img {
@@ -56,6 +56,8 @@
   height: 485px;
 
   border-radius: 8px;
+
+  object-fit: cover;
 }
 
 .books-list-name {
@@ -89,8 +91,9 @@
 }
 
 .category-top-books .thumb {
-  margin-bottom: 14px;
   position: relative;
+  margin-bottom: 14px;
+
   overflow: hidden;
 
   border-radius: 8px;
@@ -110,6 +113,7 @@
   justify-content: center;
 
   background-color: var(--yellow);
+
   transition: transform var(--transition);
 }
 
@@ -125,9 +129,10 @@
   color: var(--black-color);
 }
 
-.category-top-books a:hover .actions-card,
-.category-top-books a:focus .actions-card {
+.category-top-books a:is(:hover, :focus) .actions-card {
   transform: translateY(0);
+
+  cursor: pointer;
 }
 
 .top-btn-wrapper button {
@@ -142,9 +147,10 @@
   text-transform: uppercase;
 
   color: var(--text);
+  background-color: transparent;
+
   border: 2px solid var(--violet);
   border-radius: 40px;
-  background-color: transparent;
 
   transition: all var(--transition);
 }
@@ -190,11 +196,6 @@
 
   .category-top-books li {
     flex-basis: calc((100% - 2 * 25px) / 3);
-    width: 28px;
-  }
-
-  .category-top-books li {
-    width: 100px;
   }
 
   .thumb {
@@ -252,6 +253,6 @@
   }
 
   .top-btn-wrapper button {
-  margin: 32px 0 0 auto;
-}
+    margin: 32px 0 0 auto;
+  }
 }
