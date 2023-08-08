@@ -13,7 +13,7 @@ let idBook = '';
 const shops = {
   Amazon: `<svg class="amazon" width="62" height="19"><use href="${sprite}#amazon"></use></svg>`,
   'Apple Books': `<svg class="apple-book" width="33" height="32"><use href="${sprite}#applebook"></use></svg>`,
-  'Book Shop': `<svg class="bookshop" width="38" height="36"><use href="${sprite}#bookshop"></use></svg>`,
+  'Bookshop': `<svg class="bookshop" width="38" height="36"><use href="${sprite}#bookshop"></use></svg>`,
 };
 
 async function getBookInfo(bookId) {
@@ -62,7 +62,7 @@ async function createMarkup(bookId) {
           <img src="${books.img}" alt="book cover image" width="192" height="280">
         </div>
         <div class="book-info-modal">
-          <h2 class="book-title">${books.bookName}</h2>
+          <h2 class="book-title">${books.title}</h2>
           <p class="book-author">${books.author}</p>
           <p class="book-description">${books.description}</p>
           <ul class="list shop-list">${shopName}</ul>
@@ -106,7 +106,7 @@ async function createMarkup(bookId) {
   }
 
   addBtn.addEventListener('click', () => {
-    addElement(idBook, obj);
+    addElement(idBook, books);
     addBtn.classList.add('hidden');
     removeBtn.classList.remove('hidden');
     textRemove.classList.remove('hidden');
@@ -138,7 +138,7 @@ function closeModal(instance) {
   });
 }
 
-const obj = {};
+// const obj = {};
 
 //import to gallery
 export function openModal(evt) {

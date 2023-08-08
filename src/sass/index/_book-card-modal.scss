@@ -108,10 +108,12 @@ $basicLightbox__timing: ease !default;
 }
 
 .book-cover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .book-cover img {
@@ -223,6 +225,7 @@ $basicLightbox__timing: ease !default;
   .book-info-container {
     display: flex;
     justify-content: space-between;
+    gap: 24px;
   }
 
   .book-cover {
