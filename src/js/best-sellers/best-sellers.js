@@ -75,7 +75,7 @@ function dataBestsellers(data) {
 
 
 function onCategorriesBtn() {
-    console.log('onCategorriesB tn');
+    // console.log('onCategorriesBtn');
     const categorriesBtn = document.querySelectorAll('.best-sellers-btn');
     categorriesBtn.forEach(element =>
         element.addEventListener('click', onFiltred));
@@ -131,12 +131,10 @@ function dataMarkup(booksData) {
         console.log('Немає інфо');
 
         const dataMarkup = `
-    <p class="book-list-discription">This page is empty, add some books and proceed to order.</p>
     <img src="../images/empty-page.png" alt="Empty list image">
     `;
         ulBooksList.innerHTML = '';
         listEmpty.innerHTML = dataMarkup;
-
         return;
     }
 
@@ -144,7 +142,7 @@ function dataMarkup(booksData) {
         .map(bookData => {
             return `
       <li>
-        <a class="books-list-link" href="">
+        <div class="books-list-link">
         <div class="thumb">
           <img class="books-list-img" data-id="${bookData._id}" src="${bookData.book_image}" alt="${bookData.title}">
           <div class="actions-card">
@@ -153,10 +151,9 @@ function dataMarkup(booksData) {
           </div>
           <div class="content">
             <h3 class="books-list-name">${bookData.title}</h3>
-            <p class="books-list-text">${bookData.author}</p> 
-            <p class="books-list-text">${bookData.description}</p> 
+            <p class="books-list-text">${bookData.author}</p>  
           </div>
-        </a>
+        </div>
       </li>`;
         })
         .join(' ');
