@@ -31,6 +31,9 @@
   border-radius: 16px;
   border: 2px solid var(--book-border-color);
   background:var(--background-color);
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .shopping-list-item:hover,
@@ -41,7 +44,8 @@
 .shopping-list-item:hover .shopping-list-img,
 .shopping-list-item:focus .shopping-list-img
 {
-  border: 1px solid var(--logo-fill-color);
+  
+  border-color: var(--logo-fill-color);
 }
 
 .sh-wrapper{
@@ -64,6 +68,10 @@ height: 142px;
     width: 100%;
     border-radius: 8px;
     background:  lightgray 50% / cover no-repeat;
+    border: 1px solid transparent;
+    transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .trash-btn{
@@ -173,21 +181,21 @@ height: 142px;
   width: 100%;
 }
 
-.shop-logo-applebook{
-    height: 16px;
-    width: 16px;
-}
-
-.shop-logo-bookshop{
+.shop-logo-applebook, 
+.shop-logo-bookshop, 
+.shop-logo-amazon{
   height: 16px;
   width: 16px;
+  transition-property: filter;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .shop-logo-amazon{
   width: 32px;
   height: 11px;
+  fill: var(--text);
 }
-
 
 .shop-logo-amazon:hover,
 .shop-logo-applebook:hover,
