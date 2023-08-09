@@ -2,7 +2,7 @@ import { fetchTopBooks } from './fetchTopBooks';
 import { openModal } from '../index/book-card-modal';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import LocalStorageManager from '../service-local-storage/local-storage-manager.js';
-LS_KEY = 'top books';
+const LS_KEY = 'top books';
 
 const ulBooksListTop = document.querySelector('.books-list-top');
 const ulBooksList = document.querySelector('.books-list');
