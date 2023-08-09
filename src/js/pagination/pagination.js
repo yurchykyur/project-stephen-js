@@ -233,7 +233,10 @@ function createRefsPagination() {
 function onDeletedItem(data) {
   DATA = [...data];
   numbersOfPages(DATA);
-  let activePage = findActivePage();
+  let activePage = 1
+  if (numbersOfPages(DATA) > 1) {
+       activePage = findActivePage();
+  }
 
   if (DATA.length <= CARD_PER_PAGE) {
     refs.paginationContainer.innerHTML = '';
