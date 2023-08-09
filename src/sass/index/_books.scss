@@ -49,6 +49,7 @@
 .category-top-books li {
   width: 335px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .books-list-img {
@@ -60,31 +61,6 @@
   object-fit: cover;
 }
 
-.books-list-name {
-  margin-bottom: 4px;
-
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.12;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-
-  color: var(--text);
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.books-list-text {
-  font-style: italic;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: -0.05em;
-
-  color: var(--books-color);
-}
-
 .simplebar-scrollbar {
   opacity: 0.5;
   cursor: pointer;
@@ -92,10 +68,7 @@
 
 .category-top-books .thumb {
   position: relative;
-  margin-bottom: 14px;
-
   overflow: hidden;
-
   border-radius: 8px;
 }
 
@@ -131,8 +104,31 @@
 
 .category-top-books a:is(:hover, :focus) .actions-card {
   transform: translateY(0);
+}
 
-  cursor: pointer;
+.books-list-name {
+  padding: 14px 0 4px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+
+  color: var(--text);
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.books-list-text {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.05em;
+
+  color: var(--books-color);
 }
 
 .top-btn-wrapper button {
@@ -205,10 +201,10 @@
   .books-list-img {
     height: 316px;
   }
-}
 
-.top-btn-wrapper button {
-  margin: 20px 0 0 auto;
+  .top-btn-wrapper button {
+    margin: 20px 0 0 auto;
+  }
 }
 
 @media screen and (min-width: 1440px) {
