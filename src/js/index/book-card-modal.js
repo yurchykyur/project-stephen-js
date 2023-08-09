@@ -10,12 +10,6 @@ const bodyEl = document.querySelector('body');
 const URL = 'https://books.backend.p.goit.global/books/';
 let idBook = '';
 
-const shops = {
-  Amazon: `<svg class="amazon" width="62" height="19"><use href="${sprite}#amazon"></use></svg>`,
-  'Apple Books': `<svg class="apple-book" width="33" height="32"><use href="${sprite}#applebook"></use></svg>`,
-  'Bookshop': `<svg class="bookshop" width="38" height="36"><use href="${sprite}#bookshop"></use></svg>`,
-};
-
 async function getBookInfo(bookId) {
   // const response = await fetch(`${URL}${bookId}`);
   // const responseData = await response.json();
@@ -33,6 +27,12 @@ async function getBookInfo(bookId) {
   return books;
 }
 
+const shops = {
+  Amazon: `<svg class="amazon" width="62" height="19"><use href="${sprite}#amazon"></use></svg>`,
+  'Apple Books': `<svg class="apple-book" width="33" height="32"><use href="${sprite}#applebook"></use></svg>`,
+  Bookshop: `<svg class="bookshop" width="38" height="36"><use href="${sprite}#bookshop"></use></svg>`,
+};
+
 function getImages(name) {
   if (name in shops) {
     const img = shops[name];
@@ -43,13 +43,17 @@ function getImages(name) {
 async function createMarkup(bookId) {
   // console.log("textmarkup");
   const books = await getBookInfo(bookId);
-  // console.log(books);
+  const description =
+    books.description.trim() !== '' ? books.description : 'No description';
+  console.log(description);
   const shopName = books.shops
+    .filter((_, index) => [0, 1, 4].includes(index))
     .map(({ name, url }) => {
       const img = getImages(name);
       return `<li class="item book-item"><a href="${url}" target="_blank" class="link link-img">${img}</a></li>`;
     })
     .join('');
+
   // console.log(shopName);
   const instance = basicLightbox.create(
     `
@@ -64,7 +68,7 @@ async function createMarkup(bookId) {
         <div class="book-info-modal">
           <h2 class="book-title">${books.title}</h2>
           <p class="book-author">${books.author}</p>
-          <p class="book-description">${books.description}</p>
+          <p class="book-description">${description}</p>
           <ul class="list shop-list">${shopName}</ul>
         </div>
       </div>
@@ -113,7 +117,7 @@ async function createMarkup(bookId) {
   });
 
   removeBtn.addEventListener('click', () => {
-    localStorage.removeItem(bookId);
+    removeElement(idBook);
     addBtn.classList.remove('hidden');
     removeBtn.classList.add('hidden');
     textRemove.classList.add('hidden');
@@ -153,6 +157,12 @@ export function openModal(evt) {
 function addElement(key, value) {
   let existingItems = JSON.parse(localStorage.getItem(SHOPPING_LIST_LS)) || [];
   existingItems.push({ id: key, book: value });
+  localStorage.setItem(SHOPPING_LIST_LS, JSON.stringify(existingItems));
+}
+
+function removeElement(key) {
+  let existingItems = JSON.parse(localStorage.getItem(SHOPPING_LIST_LS)) || [];
+  existingItems = existingItems.filter(item => item.id !== key);
   localStorage.setItem(SHOPPING_LIST_LS, JSON.stringify(existingItems));
 }
 

@@ -84,23 +84,27 @@ $basicLightbox__timing: ease !default;
   align-items: center;
   background-color: transparent;
   border: none;
-  fill: var(--black);
+  fill: var(--text);
 }
 
 .close-btn:hover {
   fill: var(--violet);
 }
 
+.amazon {
+  fill: var(--text);
+}
+
 .book-card-container {
-  padding: 40px, 24px;
-  max-width: 336px;
+  padding: 40px 24px;
+  max-width: 334px;
   height: 806px;
   max-height: 96vh;
   overflow-y: auto;
   scrollbar-width: thin;
   border-radius: 18px;
-  border: 2px solid var(--black);
-  background-color: var(--white);
+  border: 2px solid var(--header-border-color);
+  background-color: var(--background-color);
 }
 
 .book-card-container::-webkit-scrollbar {
@@ -108,16 +112,14 @@ $basicLightbox__timing: ease !default;
 }
 
 .book-cover {
-  // display: flex;
-  // justify-content: center;
+  display: flex;
+  justify-content: center;
   // align-items: center;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 287px;
 }
 
 .book-cover img {
-  width: 288px;
+  width: 100%;
   height: auto;
   margin-top: 4px;
   border-radius: 8px;
@@ -183,7 +185,7 @@ $basicLightbox__timing: ease !default;
   padding: 14px, 28px;
   margin-top: 40px;
   background-color: transparent;
-  color: var(--black);
+  color: var(--text);
   font-size: 14px;
   font-weight: 700;
   line-height: 1, 29;
@@ -232,6 +234,9 @@ $basicLightbox__timing: ease !default;
     display: flex;
     justify-content: flex-start;
     margin: 0, 24px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .book-cover img {
