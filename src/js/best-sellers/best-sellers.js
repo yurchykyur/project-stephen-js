@@ -1,5 +1,8 @@
 import { fetchTopBooks } from './fetchTopBooks';
 import { openModal } from '../index/book-card-modal';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import LocalStorageManager from '../service-local-storage/local-storage-manager.js';
+LS_KEY = 'top books';
 
 const ulBooksListTop = document.querySelector('.books-list-top');
 const ulBooksList = document.querySelector('.books-list');
@@ -8,6 +11,7 @@ const titleBooksList = document.querySelector('.books-list-title');
 
 let limit = 1;
 let DATA = [];
+// let isShow = 0;
 
 const title = document.querySelector('title');
 if (title.text == 'Bookshelf') {
@@ -62,7 +66,9 @@ window.addEventListener("resize", () => {
     dataBestsellers(data)
   }
 })
+
 function dataBestsellers(data, isFirstRender = false) {
+  LocalStorageManager.saveData(LS_KEY, data);
   console.log('dataBestsellers')
     // resizeLimit();
     if (isFirstRender) {
@@ -111,15 +117,22 @@ function dataBestsellers(data, isFirstRender = false) {
                 elementArray.push(element);
           }
           
-            let element3 = `</ul>
-      <div class="top-btn-wrapper">
+          let element3 = '';
+          if (limit < elem.books.length) {
+            element3 = `<div class="top-btn-wrapper">
         <button data-filter="${elem.list_name}" class="list-name best-sellers-btn">see more</button>
-        </div>
-        </li>`;
+        </div>`;
+          } 
+          
+          const element4 = '</ul>';
+          const element5 = '</li>';
             const element2 = elementArray.join(' ');
-            return element1 + element2 + element3;
+          return element1 + element2 + element4 + element3 + element5;
         })
-        .join(' ');
+    .join(' ');
+  
+  
+  
 
     ulBooksListTop.innerHTML = dataBestsellers;
 
@@ -128,6 +141,39 @@ function dataBestsellers(data, isFirstRender = false) {
     onCategorriesBtn();
 
 }
+
+// isShow = 0;
+
+// async function fetchTopBooks(book) {
+//   console.log('fetchTopBooks');
+//   categorriesBtn.classList.add('is-hidden');
+//   const result = await fetch.fetchTopBooks(book);
+//   const { hits, total } = result;
+//   isShow += hits.length;
+
+//   if (!hits.length) {
+//     Notify.failure(
+//       `Sorry, there are no images matching your search query. Please try adain.`
+//     );
+//     categorriesBtn.classList.add('is-hidden');
+//     return;
+//   }
+
+//   onRenderBestsellers(hits);
+//   isShow += hits.length;
+
+//   if (isShow < total) {
+//     Notify.success(`Hooray! We found ${total} images !!!`);
+//     categorriesBtn.classList.remove('is-hidden');
+//   }
+
+//   if (isShow >= total) {
+//     Notify.info("We're sorry, but you've reached the end of search results.");
+//   }
+// }
+
+
+
 
 function onCategorriesBtn() {
     // console.log('onCategorriesBtn');
@@ -178,11 +224,13 @@ function onFiltred(event) {
   // const parent = event.target.closest('.js-category-top-books');
   // const id = parent;
   // console.dir(id);
-  fetchBooks(cateroryName).then((data) => dataMarkup(data, cateroryName)).catch();
+  const getDataLS = LocalStorageManager.getData(LS_KEY);
+  creatMarkup(getDataLS, cateroryName);
+//   fetchBooks(cateroryName).then((data) => dataMarkup(data, cateroryName)).catch();
 }
 
 function dataMarkup(booksData, dataAttr) {
-  console.log('fghhjk');
+  // console.log('fghhjk');
     // ulBooksListTop.innerHTML = '';
     if (booksData.length === 0) {
         console.log('Немає інфо');
@@ -224,6 +272,50 @@ function dataMarkup(booksData, dataAttr) {
   console.log("document.querySelector('.category-top-books", document.querySelector(`[data-filter="${dataAttr}"]`));
 }
 
+function creatMarkup(booksData, dataAttr) {
+  const categorBooks = booksData.filter(elem => elem.list_name === dataAttr);
+  const { books } = categorBooks[0];
+  const booksLiChildren = document.querySelector(`[data-filter="${dataAttr}"]`).children.length;
+
+  let start = 0;
+  let counterEl = 0;
+
+  if (booksLiChildren + limit >= books.length) {
+    start = booksLiChildren;
+    counterEl = books.length - booksLiChildren;
+
+    document.querySelector(`button[data-filter="${dataAttr}"]`).style.display = 'none';
+    Notify.info(`We're sorry, but you've reached the end of ${dataAttr}.`);
+
+  }
+
+  if (booksLiChildren + limit < books.length) {
+    start = booksLiChildren;
+    counterEl = limit;
+  } 
+  
+  let stringBooksMarkup = '';
+  for (let i = 0; i < counterEl; i += 1) {
+  stringBooksMarkup += `<li class="js-click-book" data-bookid="${books[start+i]._id}">
+        <a class="books-list-link">
+        <div class="thumb">
+          <img class="books-list-img" data-id="${books[start+i]._id}" src="${books[start+i].book_image}" alt="${books[start+i].title}">
+          <div class="actions-card">
+        <p class="discription">quick view</p>
+          </div>
+          </div>
+          <div class="content">
+            <h3 class="books-list-name">${books[start + i].title}</h3>
+            <p class="books-list-text">${books[start + i].author}</p>
+          </div>
+        </a>
+      </li>`
+  }
+  
+  document.querySelector(`[data-filter="${dataAttr}"]`).insertAdjacentHTML('beforeend', stringBooksMarkup);
+  console.log(stringBooksMarkup);
+}
+
 function fetchBooks(cateroryName) {
   return fetch(
     `https://books-backend.p.goit.global/books/category?category=${cateroryName}`
@@ -232,7 +324,7 @@ function fetchBooks(cateroryName) {
       throw new Error(response.status);
     }
     return response.json();
-  });
+  });  
 }
 
 // function offLoader() {
@@ -247,8 +339,7 @@ function onClickBook(e) {
     if (!e.target.closest('.js-click-book')) {
         return
     }
-
-    openModal(e)
+  openModal(e)
 }
 
 
