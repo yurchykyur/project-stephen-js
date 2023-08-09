@@ -2,6 +2,7 @@ import getRefs from '../index/refs';
  import { fetchingTopBooks } from '../book-api/service-book-api';
  import { createHomeBookCard } from '../index/render-book';
  import renderingByCategory from '../index/render-category';
+ 
 //  import addBooksListeners from '';
  const { galleryRef } = getRefs();
 

@@ -1,7 +1,5 @@
 // створення HTML-розмітки карточок книжок
 
-
-
 export function createBookCard(book) {
   return `  <div class="gallery-book-link" data-id="${book._id}">
               <div class="gallery-book-card">
