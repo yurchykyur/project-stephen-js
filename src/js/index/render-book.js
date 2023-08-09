@@ -1,7 +1,7 @@
 // створення HTML-розмітки карточок книжок
 
 export function createBookCard(book) {
-  return `  <div class="gallery-book-link" data-id="${book._id}">
+  return `  <div class="gallery-book-link js-click-book" data-bookid="${book._id}">
               <div class="gallery-book-card">
                 <div class="gallery-book-cover" style="background-image: url('${book.book_image}')">
                 </div>
@@ -12,7 +12,7 @@ export function createBookCard(book) {
 }
 
 export function createHomeBookCard(book) {
-  return `  <div class="gallery-book-home-link" data-id="${book._id}">
+  return `  <div class="gallery-book-home-link js-click-book" data-bookid="${book._id}">
               <div class="gallery-book-card">
                 <div class="gallery-book-cover" style="background-image: url('${book.book_image}')">
                 </div>
