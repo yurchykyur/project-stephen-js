@@ -7,8 +7,8 @@ let CARD_PER_PAGE = 0;
 
 const scrollController = {
   a: true,
-  b: true
-}
+  b: true,
+};
 
 const refs = {
   paginationContainer: document.querySelector('.pagination-container'),
@@ -18,10 +18,8 @@ refs.paginationContainer.addEventListener('click', onClickPagination);
 
 let arrayNumbersOfPages = [];
 
-let maxVisiblePages = 0
-  // window.innerWidth >= 768 ? 3 : 2
-
-
+let maxVisiblePages = 0;
+// window.innerWidth >= 768 ? 3 : 2
 
 function numbersOfPages(data) {
   arrayNumbersOfPages = [];
@@ -43,12 +41,10 @@ export default function createPagination(
 
   if (isFirstRender) {
     DATA = [...data];
-    // CARD_PER_PAGE = window.innerWidth < 768 ? 4 : 3;
-    
-    onScrollController(window.innerWidth)
+
+    onScrollController(window.innerWidth);
     numbersOfPages(DATA);
     renderCards(prepareDataForBooks(1));
-    
   }
 
   if (isDeleted) {
@@ -60,8 +56,6 @@ export default function createPagination(
   if (data.length <= CARD_PER_PAGE) {
     return;
   }
-
-  // const maxVisiblePages = window.innerWidth > 768 ? 3 : 2;
 
   let isThreePoint = true;
 
@@ -80,7 +74,6 @@ export default function createPagination(
     addActivePage(1);
   }
 }
-
 
 function onClickPagination(e) {
   e.preventDefault();
@@ -233,9 +226,10 @@ function createRefsPagination() {
 function onDeletedItem(data) {
   DATA = [...data];
   numbersOfPages(DATA);
-  let activePage = 1
-  if (numbersOfPages(DATA) > 1) {
-       activePage = findActivePage();
+  let activePage = 1;
+
+  if (arrayNumbersOfPages.length > 1) {
+    activePage = findActivePage();
   }
 
   if (DATA.length <= CARD_PER_PAGE) {
@@ -359,37 +353,31 @@ function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
   return markupString;
 }
 
-
 function onScrollController(width) {
-  let needRender = false
+  let needRender = false;
 
   if (width < 768 && scrollController.a) {
-    CARD_PER_PAGE = 4
+    CARD_PER_PAGE = 4;
 
-    maxVisiblePages = 2
-    scrollController.a = false
-    scrollController.b = true
-    needRender = true
+    maxVisiblePages = 2;
+    scrollController.a = false;
+    scrollController.b = true;
+    needRender = true;
   }
-  
+
   if (width > 768 && scrollController.b) {
-    CARD_PER_PAGE = 3
-    maxVisiblePages = 3
-    scrollController.a = true
-    scrollController.b = false
-    needRender = true
+    CARD_PER_PAGE = 3;
+    maxVisiblePages = 3;
+    scrollController.a = true;
+    scrollController.b = false;
+    needRender = true;
   }
- return needRender
+  return needRender;
 }
 
-window.addEventListener("resize", () => {
-  const needRender = onScrollController(window.innerWidth)
+window.addEventListener('resize', () => {
+  const needRender = onScrollController(window.innerWidth);
   if (needRender) {
-    createPagination(
-      DATA,
-      1,
-      false,
-      true
-    )
+    createPagination(DATA, 1, false, true);
   }
-})
+});
