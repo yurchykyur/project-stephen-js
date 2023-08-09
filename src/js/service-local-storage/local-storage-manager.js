@@ -18,6 +18,8 @@ export default class LocalStorageManager {
   }
 }
 
+// за рахунок static створювати новий клас не потрібно, тільки імпортувати цей клас
+
 // виклики будуть ось такі:
 // LocalStorageManager.getData(key);
 // LocalStorageManager.saveData(key, value);
