@@ -4,12 +4,13 @@
 // Книги окремої категорії	https://books-backend.p.goit.global/books/category?category=selectedCategory
 // Детальна інформація про книгу	https://books-backend.p.goit.global/books/ bookId																						
 
+
 // import axios from 'axios';
-import renderingByCategory from './render-category';
+// import renderingByCategory from './render-category';
 
-const category_list = document.querySelector('.nav-categories-list');
+// const category_list = document.querySelector('.nav-categories-list');
 
-// Отримати список категорій книг з API
+// // Отримати список категорій книг з API
 // async function getCategoryList() {
 //   try {
 //     const { data } = await axios.get('https://books-backend.p.goit.global/books/category-list');
@@ -20,37 +21,95 @@ const category_list = document.querySelector('.nav-categories-list');
 //   }
 // }
 
-// Рендерити список категорій
-export  default function renderCategories(data) {
+// // Рендерити список категорій
+// const renderCategories = async () => {
+//   try {
+//     const categories = await getCategoryList();
+//     category_list.innerHTML = await markupCategoriesList(categories);
+//     addCategoryClickListeners();
+//   } catch (error) {
+//     console.log('Помилка при рендерингу категорій:', error);
+//   }
+// };
+
+// // Додати обробники подій для кожної категорії
+// function addCategoryClickListeners() {
+//   const listCategory = document.querySelectorAll('.nav-category-item');
+//   listCategory.forEach(itemCategory => {
+//     itemCategory.addEventListener('click', async event => {
+//       const ActiveCategory = document.querySelector('.nav-category-item.active');
+//       if (ActiveCategory) {
+//         ActiveCategory.classList.remove('active');
+//       }
+//       event.target.classList.add('active');
+      
+//       // Викликати функцію рендерингу книг за вибраною категорією
+//       await renderingByCategory(event);
+//     });
+//   });
+// }
+
+// // Функція для рендерингу HTML-коду списку категорій
+// function markupCategoriesList(categories) {
+//   return `<li class="nav-category-item active" data-id="all-categories">All categories</li>
+//         ${categories
+//           .map(
+//             category => `<li class="nav-category-item" data-id="${category.list_name}">
+//         ${category.list_name}
+//         </li>`
+//           )
+//           .join('')}`;
+// }
+
+// // Викликати функцію для рендерингу категорій при завантаженні сторінки
+// renderCategories();
+
+
+
+import axios from 'axios';
+ import renderingByCategory from './render-category';
+const category_list = document.querySelector('.nav-categories-list');
+
+async function getCategoryList() {
+  const { data } = await axios.get(
+    'https://books-backend.p.goit.global/books/category-list'
+  );
+  return data;
+}
+
+const renderCategories = async () => {
   try {
-    // const categories = await getCategoryList();
-    category_list.innerHTML = markupCategoriesList(data);
-    addCategoryClickListeners();
+    const category = await getCategoryList();
+    category_list.innerHTML = await markupCategoriesList(category);
+    const listCategory = document.querySelectorAll('.nav-category-item');
+    listCategory.forEach(itemCategory => {
+      itemCategory.addEventListener('click', event => {
+        const ActiveCategory = document.querySelector(
+          '.nav-category-item.active'
+        );
+        if (ActiveCategory) {
+          ActiveCategory.classList.remove('active');
+        }
+        event.target.classList.add('active');
+      });
+    });
   } catch (error) {
-    console.log('Помилка при рендерингу категорій:', error);
+    console.log('Oops! Something went wrong');
   }
 };
 
-// Додати обробники подій для кожної категорії
-function addCategoryClickListeners() {
-  const listCategory = document.querySelectorAll('.nav-category-item');
-  listCategory.forEach(itemCategory => {
-    itemCategory.addEventListener('click', async event => {
-      const ActiveCategory = document.querySelector('.nav-category-item.active');
-      if (ActiveCategory) {
-        ActiveCategory.classList.remove('active');
-      }
-      event.target.classList.add('active');
-      
-      // Викликати функцію рендерингу книг за вибраною категорією
-      await renderingByCategory(event);
-    });
-  });
+renderCategories();
+category_list.addEventListener('click', checkCategory);
+
+function checkCategory(e) {
+  if (e.target.dataset.id) {
+    renderingByCategory(e);
+  }
 }
 
-// Функція для рендерингу HTML-коду списку категорій
 function markupCategoriesList(categories) {
-  return `<li class="nav-category-item active" data-id="all-categories">All categories</li>
+  return `<li class="nav-category-item active" data-id="all-categories">
+        All categories</li>
         ${categories
           .map(
             category => `<li class="nav-category-item" data-id="${category.list_name}">
@@ -59,6 +118,3 @@ function markupCategoriesList(categories) {
           )
           .join('')}`;
 }
-
-// Викликати функцію для рендерингу категорій при завантаженні сторінки - зроблено в індекс.джс
-// renderCategories();
