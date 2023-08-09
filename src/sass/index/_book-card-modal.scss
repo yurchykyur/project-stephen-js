@@ -120,6 +120,7 @@ $basicLightbox__timing: ease !default;
 
 .book-cover img {
   width: 100%;
+  height: 408px;
   height: auto;
   margin-top: 4px;
   border-radius: 8px;
@@ -228,6 +229,7 @@ $basicLightbox__timing: ease !default;
     display: flex;
     justify-content: space-between;
     gap: 24px;
+    min-height: 280px;
   }
 
   .book-cover {
@@ -272,6 +274,7 @@ $basicLightbox__timing: ease !default;
 
   .btn-modal {
     padding: 20px;
+    margin-bottom: 0;
     font-size: 18px;
     font-weight: 700;
     line-height: 1.33;
