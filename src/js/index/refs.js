@@ -1,7 +1,7 @@
 export default function getRefs() {
   return {
    
-    // galleryRef: document.querySelector('.gallery'),
+    galleryRef: document.querySelector('.caterories-content'),
 
     categoriesRef: document.querySelector('.nav-categories-list'),
   

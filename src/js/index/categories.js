@@ -4,27 +4,28 @@
 // Книги окремої категорії	https://books-backend.p.goit.global/books/category?category=selectedCategory
 // Детальна інформація про книгу	https://books-backend.p.goit.global/books/ bookId																						
 
-// import axios from 'axios';
+
+import axios from 'axios';
 import renderingByCategory from './render-category';
 
 const category_list = document.querySelector('.nav-categories-list');
 
 // Отримати список категорій книг з API
-// async function getCategoryList() {
-//   try {
-//     const { data } = await axios.get('https://books-backend.p.goit.global/books/category-list');
-//     return data;
-//   } catch (error) {
-//     console.log('Помилка при отриманні списку категорій:', error);
-//     return [];
-//   }
-// }
+async function getCategoryList() {
+  try {
+    const { data } = await axios.get('https://books-backend.p.goit.global/books/category-list');
+    return data;
+  } catch (error) {
+    console.log('Помилка при отриманні списку категорій:', error);
+    return [];
+  }
+}
 
 // Рендерити список категорій
-export  default function renderCategories(data) {
+const renderCategories = async () => {
   try {
-    // const categories = await getCategoryList();
-    category_list.innerHTML = markupCategoriesList(data);
+    const categories = await getCategoryList();
+    category_list.innerHTML = await markupCategoriesList(categories);
     addCategoryClickListeners();
   } catch (error) {
     console.log('Помилка при рендерингу категорій:', error);
@@ -60,5 +61,7 @@ function markupCategoriesList(categories) {
           .join('')}`;
 }
 
-// Викликати функцію для рендерингу категорій при завантаженні сторінки - зроблено в індекс.джс
-// renderCategories();
+// Викликати функцію для рендерингу категорій при завантаженні сторінки
+renderCategories();
+
+
