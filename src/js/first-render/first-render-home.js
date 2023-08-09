@@ -1,7 +1,7 @@
-import serviceBookAPI from '../book-api/service-book-api'
+import serviceBookAPI from '../book-api/service-book-api';
 import throttle from 'lodash.throttle';
 import { renderingHomePage } from '..//index/createHomeBooks';
-
+import { openModal } from '..//index/book-card-modal';
 
 function firstRenderHome() {
   const topBooksPromise = serviceBookAPI('topBooks').catch(error => {
@@ -23,11 +23,12 @@ function firstRenderHome() {
         console.log('Top Books:', topBooksResult.value);
         // Виклик функції для рендеру секції Мирослави
         checkAndRenderHomePage();
+        addBooksListeners();
       }
 
       if (categoryListResult.status === 'fulfilled') {
         console.log('Category List:', categoryListResult.value);
-        
+
         checkAndRenderHomePage();
       }
     })
@@ -37,9 +38,26 @@ function firstRenderHome() {
     });
 }
 
+function addBooksListeners() {
+  document
+    .querySelector('.caterories-content')
+    .addEventListener('click', onClickBook);
+
+  function onClickBook(e) {
+    e.preventDefault();
+    if (!e.target.closest('.js-click-book')) {
+      return;
+    }
+    openModal(e);
+  }
+}
+
 function checkAndRenderHomePage() {
   const activeCategory = document.querySelector('.active');
-  if (activeCategory && activeCategory.textContent.trim() === 'All categories') {
+  if (
+    activeCategory &&
+    activeCategory.textContent.trim() === 'All categories'
+  ) {
     renderingHomePage();
   }
 }
@@ -48,12 +66,7 @@ window.onresize = throttle(() => {
   checkAndRenderHomePage();
 }, 100);
 
-
-
 firstRenderHome();
-
-
-
 
 // function firstRenderHome() {
 //        serviceBookAPI('topBooks').then(data => {
@@ -116,9 +129,6 @@ firstRenderHome();
 //   checkAndRenderHomePage();
 // }, 100);
 // firstRenderHome();
-
-
-
 
 // import throttle from 'lodash.throttle';
 // import { renderingHomePage } from '..//index/createHomeBooks';
