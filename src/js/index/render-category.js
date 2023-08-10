@@ -1,7 +1,10 @@
 import getRefs from './refs';
 import { createBookCard } from './render-book';
 import { fetchingByCategory } from '../book-api/service-book-api.js';
-import { renderingHomePage } from '..//index/createHomeBooks';
+// import { renderingHomePage } from '..//index/createHomeBooks';
+import LocalStorageManager from '../service-local-storage/local-storage-manager';
+import { onRenderBestsellers } from '../best-sellers/best-sellers';
+const LS_KEY = 'top books';
 
 // import addBooksListeners from './addBooksListeners';
 const { galleryRef, categoriesRef } = getRefs();
@@ -50,7 +53,15 @@ export default function renderingByCategory(e) {
 
   if (e.target.innerHTML.trim() === 'All categories') {
     // renderingHomePage();
+    console.log(document.querySelector('.caterories-content'));
+    document.querySelector(
+      '.caterories-content'
+    ).innerHTML = ` <div class="books-list-title"></div>
+    <ul class="books-list-top"></ul>
+    <ul class="books-list"></ul>
+    <div class="books-list-empty"></div>`;
 
+    onRenderBestsellers();
     window.scrollTo(0, 0);
     return;
   }
