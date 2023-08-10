@@ -85,6 +85,7 @@ $basicLightbox__timing: ease !default;
   background-color: transparent;
   border: none;
   fill: var(--text);
+  transition: var(--transition);
 }
 
 .close-btn:hover {
@@ -172,6 +173,11 @@ $basicLightbox__timing: ease !default;
   text-align: center;
 }
 
+.link-img:hover,
+.link-img:focus {
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
 .link-img img {
   margin: 0;
   max-width: 62px;
@@ -183,7 +189,7 @@ $basicLightbox__timing: ease !default;
   width: 100%;
   border-radius: 40px;
   border: 2px solid var(--violet);
-  padding: 14px, 28px;
+  padding: 14px 28px;
   margin-top: 40px;
   background-color: transparent;
   color: var(--text);
@@ -192,6 +198,7 @@ $basicLightbox__timing: ease !default;
   line-height: 1, 29;
   letter-spacing: -0.14px;
   text-transform: uppercase;
+  transition: var(--transition);
 }
 
 .btn-modal:hover {
@@ -200,7 +207,6 @@ $basicLightbox__timing: ease !default;
 }
 
 .btn-modal:focus {
-  color: var(--violet);
   background-color: var(--violet);
   box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.15);
 }
