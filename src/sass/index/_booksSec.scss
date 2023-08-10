@@ -1,127 +1,127 @@
-// .gallery-list2 {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 40px;
-// }
+.gallery-list2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 
-// .gallery-title {
-//   margin-bottom: 40px;
+.gallery-title {
+  margin-bottom: 40px;
 
-//   font-size: 32px;
-//   font-weight: 700;
-//   line-height: 1.19;
-//   letter-spacing: -1.28px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.19;
+  letter-spacing: -1.28px;
 
-//   color: var(--text);
-// }
+  color: var(--text);
+}
 
-// .gellery-title-akcent {
-//   color: var(--violet);
-// }
+.gellery-title-akcent {
+  color: var(--violet);
+}
 
-// .gallery-book-name {
-//   padding: 14px 0 4px;
+.gallery-book-name {
+  padding: 14px 0 4px;
 
-//   font-weight: 700;
-//   font-size: 16px;
-//   line-height: 1.12;
-//   letter-spacing: -0.04em;
-//   text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 
-//   color: var(--text);
+  color: var(--text);
 
-//   overflow: hidden;
-//   white-space: nowrap;
-//   text-overflow: ellipsis;
-// }
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
-// .gallery-author {
-//   font-style: italic;
-//   font-size: 12px;
-//   line-height: 1.17;
-//   letter-spacing: -0.05em;
+.gallery-author {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.05em;
 
-//   color: var(--books-color);
-// }
+  color: var(--books-color);
+}
 
-// @media screen and (min-width: 768px) {
-//   .gallery-list {
-//     display: flex;
-//     gap: 25px;
-//   }
+@media screen and (min-width: 768px) {
+  .gallery-list {
+    display: flex;
+    gap: 25px;
+  }
 
-//   .gallery-list2 {
-//     flex-direction: row;
-//     gap: 40px 25px;
-//     flex-wrap: wrap;
-//   }
+  .gallery-list2 {
+    flex-direction: row;
+    gap: 40px 25px;
+    flex-wrap: wrap;
+  }
 
-//   .book-card {
-//     display: flex;
-//     flex-direction: column;
-//     max-width: 218 px;
-//     flex-wrap: wrap;
-//     gap: 30px;
-//   }
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 218 px;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 
-//   .gallery-title {
-//     font-size: 48px;
-//     line-height: 1.08;
-//   }
+  .gallery-title {
+    font-size: 48px;
+    line-height: 1.08;
+  }
 
-//   .gallery-book-cover {
-//     width: 218px;
-//     height: 316px;
-//   }
+  .gallery-book-cover {
+    width: 218px;
+    height: 316px;
+  }
 
-//   .gallery-book-home-link {
-//     display: flex;
-//     flex-direction: column;
-//     flex-wrap: wrap;
-//     gap: 25px;
-//     padding-bottom: 20px;
-//   }
+  .gallery-book-home-link {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding-bottom: 20px;
+  }
 
-//   .gallery-book-home-link {
-//     padding-bottom: 32px;
-//   }
+  .gallery-book-home-link {
+    padding-bottom: 32px;
+  }
 
-//   .gallery-book-card {
-//     max-width: 218px;
-//     gap: 25px;
-//   }
+  .gallery-book-card {
+    max-width: 218px;
+    gap: 25px;
+  }
 
-//   .gallery-category {
-//     line-height: 1.7;
-//   }
-// }
+  .gallery-category {
+    line-height: 1.7;
+  }
+}
 
-// @media screen and (min-width: 1440px) {
-//   .gallery-book-card {
-//     max-width: 180px;
-//     gap: 24px;
-//   }
+@media screen and (min-width: 1440px) {
+  .gallery-book-card {
+    max-width: 180px;
+    gap: 24px;
+  }
 
-//   .gallery-book-cover {
-//     width: 180px;
-//     height: 256px;
-//   }
+  .gallery-book-cover {
+    width: 180px;
+    height: 256px;
+  }
 
-//   .gallery {
-//     width: 996px;
-//     margin-left: 40px;
-//     padding-top: 100px;
-//   }
+  .gallery {
+    width: 996px;
+    margin-left: 40px;
+    padding-top: 100px;
+  }
 
-//   .gallery-list {
-//     gap: 24px;
-//   }
+  .gallery-list {
+    gap: 24px;
+  }
 
-//   .gallery-list2 {
-//     gap: 40px 24px;
-//   }
+  .gallery-list2 {
+    gap: 40px 24px;
+  }
 
-//   .book-card {
-//     gap: 24px;
-//   }
-// }
+  .book-card {
+    gap: 24px;
+  }
+}

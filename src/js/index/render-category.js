@@ -1,42 +1,36 @@
 import getRefs from './refs';
 import { createBookCard } from './render-book';
 import { fetchingByCategory } from '../book-api/service-book-api.js';
-// import { renderingHomePage } from '..//index/createHomeBooks';
 import LocalStorageManager from '../service-local-storage/local-storage-manager';
 import { onRenderBestsellers } from '../best-sellers/best-sellers';
 const LS_KEY = 'top books';
 
-// import addBooksListeners from './addBooksListeners';
 const { galleryRef, categoriesRef } = getRefs();
 
 export default function renderingByCategory(e) {
-  // console.log('Rendering by category');
-
   galleryRef.innerHTML = '';
+
   if (e.target.innerHTML === 'See more') {
+    const categoryName = e.target.innerHTML.trim();
+    const lastWordIndex = categoryName.lastIndexOf(' ');
+    const truncatedCategoryName = categoryName.substring(0, lastWordIndex);
+
     galleryRef.insertAdjacentHTML(
       'beforeend',
-      `<h2 class="category-list-title">${e.target.innerHTML
-        .trim()
-        .split(' ')
-        .slice(0, e.target.innerHTML.length - 1)
-        .join(' ')} <span class="colortext">${e.target.innerHTML
+      `<h2 class="gallery-title">${truncatedCategoryName} <span class="gellery-title-akcent">${e.target.innerHTML
         .trim()
         .split(' ')
         .pop()}</span></h2>`
     );
-    galleryRef.insertAdjacentHTML(
-      'beforeend',
-      `<ul class="gallery-book-list"></ul>`
-    );
 
-    const galleryListRef = document.querySelector('.gallery-book-list');
+    galleryRef.insertAdjacentHTML('beforeend', `<ul class="gallery-list2"></ul>`);
+
+    const galleryListRef = document.querySelector('.gallery-list2');
     const query = e.target.dataset.category.split(' ').join('%20');
     fetchingByCategory(query).then(response => {
       response.map(book => {
         galleryListRef.insertAdjacentHTML('beforeend', createBookCard(book));
       });
-      // addBooksListeners();
     });
 
     categoriesRef.querySelector('.active').classList.remove('active');
@@ -50,46 +44,30 @@ export default function renderingByCategory(e) {
   }
 
   if (e.target.innerHTML.trim() === 'All categories') {
-    location.replace('/')
-    // renderingHomePage();
-    // console.log(document.querySelector('.caterories-content'));
-    // document.querySelector(
-    //   '.caterories-content'
-    // ).innerHTML = ` <div class="books-list-title"></div>
-    // <ul class="books-list-top"></ul>
-    // <ul class="books-list"></ul>
-    // <div class="books-list-empty"></div>`;
-
-    // onRenderBestsellers();
+    location.replace('/');
     window.scrollTo(0, 0);
     return;
   }
 
+  const categoryName = e.target.innerHTML.trim();
+  const lastWordIndex = categoryName.lastIndexOf(' ');
+  const truncatedCategoryName = categoryName.substring(0, lastWordIndex);
+
   galleryRef.insertAdjacentHTML(
     'beforeend',
-    `<h2 class="category-list-title">${e.target.innerHTML
-      .trim()
-      .split(' ')
-      .slice(0, e.target.innerHTML.length - 1)
-      .join(' ')} <span class="colortext">${e.target.innerHTML
+    `<h2 class="gallery-title">${truncatedCategoryName} <span class="gellery-title-akcent">${e.target.innerHTML
       .trim()
       .split(' ')
       .pop()}</span></h2>`
   );
 
-  galleryRef.insertAdjacentHTML(
-    'beforeend',
-    `<ul class="gallery-book-list"></ul>`
-  );
+  galleryRef.insertAdjacentHTML('beforeend', `<ul class="gallery-list2"></ul>`);
 
-  const galleryListRef = document.querySelector('.gallery-book-list');
+  const galleryListRef = document.querySelector('.gallery-list2');
   const query = e.target.innerHTML.trim().split(' ').join('%20');
 
   fetchingByCategory(query).then(response => {
-    response.map(book =>
-      galleryListRef.insertAdjacentHTML('beforeend', createBookCard(book))
-    );
-    // addBooksListeners();
+    response.map(book => galleryListRef.insertAdjacentHTML('beforeend', createBookCard(book)));
   });
 
   window.scrollTo(0, 0);
