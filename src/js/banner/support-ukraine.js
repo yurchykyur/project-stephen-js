@@ -31,7 +31,7 @@ const supportButtonUp = document.querySelector('.support-button-up');
 // const supportFound = document.querySelector('.support-funds-visible');
 const swiper = new Swiper('.my-swiper', {
   direction: 'vertical',
-  spaceBetween: 20,
+  spaceBetween: 0,
   slidesPerView: 'auto',
 
   navigation: {

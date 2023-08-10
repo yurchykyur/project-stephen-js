@@ -1,11 +1,10 @@
-.shopping-list-wrapper{
-    padding-top: 64px;
-    width: 100%;
+.shopping-list-wrapper {
+  width: 100%;
 }
 
-@media screen and (min-width: 1440px){
-    .content-wrapper{
-        display: flex;
-        gap: 40px;
-    }
+@media screen and (min-width: 1440px) {
+  .content-wrapper {
+    display: flex;
+    gap: 40px;
+  }
 }
