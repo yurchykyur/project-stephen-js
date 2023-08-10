@@ -22,14 +22,14 @@ function firstRenderHome() {
       if (topBooksResult.status === 'fulfilled') {
         console.log('Top Books:', topBooksResult.value);
         // Виклик функції для рендеру секції Мирослави
-        checkAndRenderHomePage();
-        addBooksListeners();
+        // checkAndRenderHomePage();
+        // addBooksListeners();
       }
 
       if (categoryListResult.status === 'fulfilled') {
         console.log('Category List:', categoryListResult.value);
 
-        checkAndRenderHomePage();
+        // checkAndRenderHomePage();
       }
     })
     .finally(() => {
@@ -38,19 +38,19 @@ function firstRenderHome() {
     });
 }
 
-function addBooksListeners() {
-  document
-    .querySelector('.caterories-content')
-    .addEventListener('click', onClickBook);
+// function addBooksListeners() {
+//   document
+//     .querySelector('.caterories-content')
+//     .addEventListener('click', onClickBook);
 
-  function onClickBook(e) {
-    e.preventDefault();
-    if (!e.target.closest('.js-click-book')) {
-      return;
-    }
-    openModal(e);
-  }
-}
+//   function onClickBook(e) {
+//     e.preventDefault();
+//     if (!e.target.closest('.js-click-book')) {
+//       return;
+//     }
+//     openModal(e);
+//   }
+// }
 
 function checkAndRenderHomePage() {
   const activeCategory = document.querySelector('.active');
@@ -62,9 +62,9 @@ function checkAndRenderHomePage() {
   }
 }
 
-window.onresize = throttle(() => {
-  checkAndRenderHomePage();
-}, 100);
+// window.onresize = throttle(() => {
+//   checkAndRenderHomePage();
+// }, 100);
 
 firstRenderHome();
 
