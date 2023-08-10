@@ -37,7 +37,7 @@ function onScreenController(width) {
 console.log('width < 768 && scrollController.a', width < 768 && screenController.a)
     needRender = true
   }
-  if (width > 768 && width < 1440 && screenController.b) {
+  if (width >= 768 && width < 1440 && screenController.b) {
     limit = 3
     screenController.a = true
     screenController.b = false
@@ -45,7 +45,7 @@ console.log('width < 768 && scrollController.a', width < 768 && screenController
     console.log("width > 768 && width < 1440 && scrollController.b", width > 768 && width < 1440 && screenController.b)
     needRender = true
   }
-    if (width > 1440 && screenController.c) {
+    if (width >= 1440 && screenController.c) {
     limit = 5
     screenController.a = true
     screenController.b = true
