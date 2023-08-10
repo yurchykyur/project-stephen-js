@@ -80,11 +80,13 @@ async function createMarkup(bookId) {
       onShow: () => {
         console.log('idBook', idBook);
 
-        document.addEventListener('keydown', closeModal(instance));
+        document.addEventListener('keydown', evt => closeModal(evt, instance));
         bodyEl.style.overflow = 'hidden';
       },
       onClose: () => {
-        document.removeEventListener('keydown', closeModal(instance));
+        document.removeEventListener('keydown', evt =>
+          closeModal(evt, instance)
+        );
         bodyEl.style.overflow = 'auto';
       },
     }
@@ -126,23 +128,12 @@ async function createMarkup(bookId) {
   // return bookCard;
 }
 
-function closeModal(instance) {
-  function eventHandler(evt) {
-    if (evt.key === 'Escape') {
-      instance.close();
-      bodyEl.style.overflow = 'auto';
-    }
-  }
-  document.addEventListener('keydown', evt => {
-    if (evt.key !== 'Escape') {
-      return;
-    }
-    document.removeEventListener('keydown', eventHandler);
+function closeModal(evt, instance) {
+  if (evt.key === 'Escape') {
     instance.close();
-  });
+    bodyEl.style.overflow = 'auto';
+  }
 }
-
-// const obj = {};
 
 //import to gallery
 export function openModal(evt) {
