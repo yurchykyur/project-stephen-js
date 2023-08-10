@@ -239,14 +239,14 @@ function fetchBooks(cateroryName) {
   });  
 }
 
-document.querySelector('.books-list-top').addEventListener('click', onClickBook)
-function onClickBook(e) {
-  e.preventDefault();
-    if (!e.target.closest('.js-click-book')) {
-        return
-    }
-  openModal(e)
-}
+// document.querySelector('.books-list-top').addEventListener('click', onClickBook)
+// function onClickBook(e) {
+//   e.preventDefault();
+//     if (!e.target.closest('.js-click-book')) {
+//         return
+//     }
+//   openModal(e)
+// }
 
 
 

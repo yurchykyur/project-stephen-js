@@ -9,8 +9,7 @@ const { galleryRef, categoriesRef } = getRefs();
 export default function renderingByCategory(e) {
   // console.log('Rendering by category');
 
-
-   galleryRef.innerHTML = '';
+  galleryRef.innerHTML = '';
   if (e.target.innerHTML === 'See more') {
     galleryRef.insertAdjacentHTML(
       'beforeend',
@@ -44,18 +43,13 @@ export default function renderingByCategory(e) {
       .querySelector(`[data-id="${e.target.dataset.category}"]`)
       .classList.add('active');
 
-
-
     window.scrollTo(0, 0);
 
     return;
   }
 
-
   if (e.target.innerHTML.trim() === 'All categories') {
     // renderingHomePage();
-
-
 
     window.scrollTo(0, 0);
     return;
@@ -87,7 +81,6 @@ export default function renderingByCategory(e) {
     );
     // addBooksListeners();
   });
-
 
   window.scrollTo(0, 0);
 }

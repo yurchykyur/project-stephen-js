@@ -38,6 +38,18 @@ function firstRenderHome() {
     });
 }
 
+document
+  .querySelector('.caterories-content')
+  .addEventListener('click', onClickBook);
+function onClickBook(e) {
+  e.preventDefault();
+  console.log('onClickBook');
+  if (!e.target.closest('.js-click-book')) {
+    return;
+  }
+  openModal(e);
+}
+
 // function addBooksListeners() {
 //   document
 //     .querySelector('.caterories-content')
