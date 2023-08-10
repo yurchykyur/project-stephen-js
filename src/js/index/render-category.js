@@ -50,16 +50,17 @@ export default function renderingByCategory(e) {
   }
 
   if (e.target.innerHTML.trim() === 'All categories') {
+    location.replace('/')
     // renderingHomePage();
-    console.log(document.querySelector('.caterories-content'));
-    document.querySelector(
-      '.caterories-content'
-    ).innerHTML = ` <div class="books-list-title"></div>
-    <ul class="books-list-top"></ul>
-    <ul class="books-list"></ul>
-    <div class="books-list-empty"></div>`;
+    // console.log(document.querySelector('.caterories-content'));
+    // document.querySelector(
+    //   '.caterories-content'
+    // ).innerHTML = ` <div class="books-list-title"></div>
+    // <ul class="books-list-top"></ul>
+    // <ul class="books-list"></ul>
+    // <div class="books-list-empty"></div>`;
 
-    onRenderBestsellers();
+    // onRenderBestsellers();
     window.scrollTo(0, 0);
     return;
   }
