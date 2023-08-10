@@ -13,23 +13,21 @@ export default function renderingByCategory(e) {
   if (e.target.innerHTML === 'See more') {
     galleryRef.insertAdjacentHTML(
       'beforeend',
-      `<h2 class="gallery-title">${e.target.dataset.category
+      `<h2 class="category-list-title">${e.target.innerHTML
         .trim()
         .split(' ')
         .slice(0, e.target.innerHTML.length - 1)
-        .join(
-          ' '
-        )} <span class = "gellery-title-akcent">${e.target.dataset.category
+        .join(' ')} <span class="colortext">${e.target.innerHTML
         .trim()
         .split(' ')
         .pop()}</span></h2>`
     );
     galleryRef.insertAdjacentHTML(
       'beforeend',
-      `<div class="gallery-list2"></div>`
+      `<ul class="gallery-book-list"></ul>`
     );
 
-    const galleryListRef = document.querySelector('.gallery-list2');
+    const galleryListRef = document.querySelector('.gallery-book-list');
     const query = e.target.dataset.category.split(' ').join('%20');
     fetchingByCategory(query).then(response => {
       response.map(book => {
@@ -57,11 +55,11 @@ export default function renderingByCategory(e) {
 
   galleryRef.insertAdjacentHTML(
     'beforeend',
-    `<h2 class="gallery-title">${e.target.innerHTML
+    `<h2 class="category-list-title">${e.target.innerHTML
       .trim()
       .split(' ')
       .slice(0, e.target.innerHTML.length - 1)
-      .join(' ')} <span class = "gellery-title-akcent">${e.target.innerHTML
+      .join(' ')} <span class="colortext">${e.target.innerHTML
       .trim()
       .split(' ')
       .pop()}</span></h2>`
@@ -69,10 +67,10 @@ export default function renderingByCategory(e) {
 
   galleryRef.insertAdjacentHTML(
     'beforeend',
-    `<div class="gallery-list2"></div>`
+    `<ul class="gallery-book-list"></ul>`
   );
 
-  const galleryListRef = document.querySelector('.gallery-list2');
+  const galleryListRef = document.querySelector('.gallery-book-list');
   const query = e.target.innerHTML.trim().split(' ').join('%20');
 
   fetchingByCategory(query).then(response => {
