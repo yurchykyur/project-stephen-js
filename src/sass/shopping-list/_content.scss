@@ -1,6 +1,5 @@
 .header-shopping {
   margin-bottom: 40px;
-  margin: 0 auto;
   color: var(--header-border-color);
   font-size: 32px;
   line-height: 1.19;
@@ -34,8 +33,7 @@
   background: var(--background-color);
 
   transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
 }
 
 .shopping-list-item:hover,
@@ -74,8 +72,7 @@
   background: lightgray 50% / cover no-repeat;
   border: 1px solid transparent;
   transition-property: border-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
 }
 
 .trash-btn {
@@ -89,6 +86,12 @@
 
   background-color: var(--violet);
   border-radius: 50%;
+  transition-property: opacity;
+  transition: var(--transition);
+}
+
+.trash-btn:hover{
+  opacity: 0.85;
 }
 
 .trash-logo {
@@ -191,8 +194,7 @@
   height: 16px;
   width: 16px;
   transition-property: filter;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
 }
 
 .shop-logo-amazon {
@@ -249,6 +251,7 @@
   }
 
   .shopping-book-polygraphy {
+    max-width: 400px;
     margin-bottom: 14px;
   }
 
