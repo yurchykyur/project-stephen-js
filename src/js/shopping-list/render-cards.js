@@ -48,7 +48,6 @@ function onDelete(eve) {
       renderCards(newBookArr);
       return;
     }
-    // renderCards(newBookArr);
     createPagination(newBookArr, 1, false, true);
   } catch (error) {
     console.log('ERROR!', error);
