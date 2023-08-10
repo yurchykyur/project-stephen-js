@@ -53,7 +53,7 @@ export default function renderingByCategory(e) {
 
 
   if (e.target.innerHTML.trim() === 'All categories') {
-    renderingHomePage();
+    // renderingHomePage();
 
 
 

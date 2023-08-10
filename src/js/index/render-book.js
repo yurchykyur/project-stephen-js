@@ -11,13 +11,13 @@ export function createBookCard(book) {
             </div>`;
 }
 
-export function createHomeBookCard(book) {
-  return `  <div class="gallery-book-home-link js-click-book" data-bookid="${book._id}">
-              <div class="gallery-book-card">
-                <div class="gallery-book-cover" style="background-image: url('${book.book_image}')">
-                </div>
-                <p class="gallery-book-name">${book.title}</p>
-                <p class="gallery-author">${book.author}</p>
-              </div>
-            </div>`;
-}
+// export function createHomeBookCard(book) {
+//   return `  <div class="gallery-book-home-link js-click-book" data-bookid="${book._id}">
+//               <div class="gallery-book-card">
+//                 <div class="gallery-book-cover" style="background-image: url('${book.book_image}')">
+//                 </div>
+//                 <p class="gallery-book-name">${book.title}</p>
+//                 <p class="gallery-author">${book.author}</p>
+//               </div>
+//             </div>`;
+// }
