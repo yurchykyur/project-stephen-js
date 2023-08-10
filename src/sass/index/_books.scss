@@ -142,6 +142,10 @@
   letter-spacing: -0.05em;
 
   color: var(--books-color);
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .top-btn-wrapper button {

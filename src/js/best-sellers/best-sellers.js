@@ -223,7 +223,7 @@ function creatMarkup(booksData, dataAttr) {
 
   let stringBooksMarkup = '';
   for (let i = 0; i < counterEl; i += 1) {
-    stringBooksMarkup += `<li class="js-click-book" data-bookid="${
+    stringBooksMarkup += `<li class="gallery-book-item js-click-book" data-bookid="${
       books[start + i]._id
     }">
         <a class="books-list-link">
