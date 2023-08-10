@@ -2,6 +2,7 @@ import { fetchTopBooks } from './fetchTopBooks';
 import { openModal } from '../index/book-card-modal';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import LocalStorageManager from '../service-local-storage/local-storage-manager.js';
+
 const LS_KEY = 'top books';
 
 const ulBooksListTop = document.querySelector('.books-list-top');
@@ -18,6 +19,7 @@ if (title.text == 'Bookshelf') {
 }
 
 export function onRenderBestsellers() {
+
   fetchTopBooks()
     .then(data => dataBestsellers(data, true))
     .catch();
@@ -84,6 +86,7 @@ function dataBestsellers(data, isFirstRender = false) {
     onScreenController(window.innerWidth);
   }
 
+
   ulBooksList.innerHTML = '';
   const dataBestsellers = data
     .map(elem => {
@@ -93,6 +96,7 @@ function dataBestsellers(data, isFirstRender = false) {
       for (let i = 0; i < limit; i += 1) {
         let element = `<li class='gallery-book-item js-click-book' data-bookid="${elem.books[i]._id}">
                    <a class="gallery-book-link">
+
         <div class="thumb">
           <img class="gallery-book-img" data-id="${elem.books[i]._id}" src="${elem.books[i].book_image}" alt="${elem.books[i].title}">
           <div class="actions-card">
