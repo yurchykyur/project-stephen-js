@@ -7,8 +7,8 @@ const LS_KEY = 'top books';
 
 const ulBooksListTop = document.querySelector('.books-list-top');
 const ulBooksList = document.querySelector('.books-list');
-const divBooksList = document.querySelector('.books-list-title');
-const titleBooksList = document.querySelector('.books-list-title');
+const divBooksList = document.querySelector('.books-list-wrapper');
+const titleBooksList = document.querySelector('.books-list-wraper');
 
 let limit = 1;
 let DATA = [];
@@ -19,7 +19,7 @@ if (title.text == 'Bookshelf') {
 }
 
 export function onRenderBestsellers() {
-  console.log('eeeeeee');
+
   fetchTopBooks()
     .then(data => dataBestsellers(data, true))
     .catch();
@@ -85,26 +85,27 @@ function dataBestsellers(data, isFirstRender = false) {
     DATA = [...data];
     onScreenController(window.innerWidth);
   }
-  console.log(data);
+
 
   ulBooksList.innerHTML = '';
   const dataBestsellers = data
     .map(elem => {
-      let element1 = `<li><h2 class="books-list-title-li">${elem.list_name}</h2>
-    <ul class="category-top-books" data-filter="${elem.list_name}">`;
+      let element1 = `<li><h2 class="gallery-title">${elem.list_name}</h2>
+    <ul class="gallery-book-list" data-filter="${elem.list_name}">`;
       let elementArray = [];
       for (let i = 0; i < limit; i += 1) {
-        let element = `<li class='js-click-book' data-bookid="${elem.books[i]._id}">   
-                   <a class="books-list-link">
+        let element = `<li class='gallery-book-item js-click-book' data-bookid="${elem.books[i]._id}">
+                   <a class="gallery-book-link">
+
         <div class="thumb">
-          <img class="books-list-img" data-id="${elem.books[i]._id}" src="${elem.books[i].book_image}" alt="${elem.books[i].title}">
+          <img class="gallery-book-img" data-id="${elem.books[i]._id}" src="${elem.books[i].book_image}" alt="${elem.books[i].title}">
           <div class="actions-card">
-        <p class="discription">quick view</p>
+        <p class="action-text">quick view</p>
           </div>
         </div>
           <div class="content">
-            <h3 class="books-list-name">${elem.books[i].title}</h3>
-            <h4 class="books-list-text">${elem.books[i].author}</h4>  
+            <h3 class="gallery-book-name">${elem.books[i].title}</h3>
+            <h4 class="gallery-book-text">${elem.books[i].author}</h4>
           </div>
         </a>
       </li>`;
@@ -124,7 +125,6 @@ function dataBestsellers(data, isFirstRender = false) {
       return element1 + element2 + element4 + element3 + element5;
     })
     .join(' ');
-  console.log(ulBooksListTop);
 
   ulBooksListTop.innerHTML = dataBestsellers;
   const dataMarkupTitle = `<h2>Best Sellers <span class="colortext">Books</span></h2>`;
@@ -188,7 +188,7 @@ function dataMarkup(booksData, dataAttr) {
           </div>
           <div class="content">
             <h3 class="books-list-name">${bookData.title}</h3>
-            <p class="books-list-text">${bookData.author}</p>  
+            <p class="books-list-text">${bookData.author}</p>
           </div>
         </a>
       </li>`;
@@ -227,7 +227,7 @@ function creatMarkup(booksData, dataAttr) {
 
   let stringBooksMarkup = '';
   for (let i = 0; i < counterEl; i += 1) {
-    stringBooksMarkup += `<li class="js-click-book" data-bookid="${
+    stringBooksMarkup += `<li class="gallery-book-item js-click-book" data-bookid="${
       books[start + i]._id
     }">
         <a class="books-list-link">
