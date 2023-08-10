@@ -88,6 +88,10 @@
   color: var(--black);
 }
 
+.header-menu-link.header-active .icon-shop {
+  fill: var(--black);
+}
+
 .theme-switch {
   position: relative;
   align-items: center;

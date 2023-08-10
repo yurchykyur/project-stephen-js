@@ -87,6 +87,10 @@
   fill: var(--white);
 }
 
+.mob-menu-link.header-active .mob-menu-icon {
+  fill: var(--black);
+}
+
 .mobile-menu-background {
   position: absolute;
   bottom: 0;
