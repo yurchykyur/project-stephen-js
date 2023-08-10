@@ -1,14 +1,13 @@
 import { fetchTopBooks } from './fetchTopBooks';
-import { openModal } from '../index/book-card-modal';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import LocalStorageManager from '../service-local-storage/local-storage-manager.js';
+import serviceBookAPI from '../book-api/service-book-api';
 
 const LS_KEY = 'top books';
 
 const ulBooksListTop = document.querySelector('.books-list-top');
 const ulBooksList = document.querySelector('.books-list');
 const divBooksList = document.querySelector('.books-list-wrapper');
-const titleBooksList = document.querySelector('.books-list-wraper');
 
 let limit = 1;
 let DATA = [];
@@ -38,10 +37,6 @@ function onScreenController(width) {
     screenController.a = false;
     screenController.b = true;
     screenController.c = true;
-    console.log(
-      'width < 768 && scrollController.a',
-      width < 768 && screenController.a
-    );
     needRender = true;
   }
   if (width >= 768 && width < 1440 && screenController.b) {
@@ -49,10 +44,6 @@ function onScreenController(width) {
     screenController.a = true;
     screenController.b = false;
     screenController.c = true;
-    console.log(
-      'width > 768 && width < 1440 && scrollController.b',
-      width > 768 && width < 1440 && screenController.b
-    );
     needRender = true;
   }
   if (width >= 1440 && screenController.c) {
@@ -60,10 +51,6 @@ function onScreenController(width) {
     screenController.a = true;
     screenController.b = true;
     screenController.c = false;
-    console.log(
-      'width > 1440 && scrollController.c',
-      width > 1440 && screenController.c
-    );
     needRender = true;
   }
   return needRender;
@@ -71,7 +58,7 @@ function onScreenController(width) {
 
 window.addEventListener('resize', () => {
   const needRender = onScreenController(window.innerWidth);
-  console.log('needRender', needRender);
+
   if (needRender) {
     const data = [...DATA];
     dataBestsellers(data);
@@ -80,7 +67,7 @@ window.addEventListener('resize', () => {
 
 function dataBestsellers(data, isFirstRender = false) {
   LocalStorageManager.saveData(LS_KEY, data);
-  console.log('dataBestsellers');
+
   if (isFirstRender) {
     DATA = [...data];
     onScreenController(window.innerWidth);
@@ -113,11 +100,11 @@ function dataBestsellers(data, isFirstRender = false) {
       }
 
       let element3 = '';
-      if (limit < elem.books.length) {
+      // if (limit < elem.books.length) {
         element3 = `<div class="top-btn-wrapper">
         <button data-filter="${elem.list_name}" class="list-name best-sellers-btn">see more</button>
         </div>`;
-      }
+      // }
 
       const element4 = '</ul>';
       const element5 = '</li>';
@@ -139,12 +126,7 @@ function onCategorriesBtn() {
   );
 }
 
-let mask = document.querySelector('.mask');
-function onLoader() {
-  //   mask.classList.add('visible');
-}
-
-function onFiltred(event) {
+async function onFiltred(event) {
   event.preventDefault();
 
   let cateroryName = event.target.dataset['filter'];
@@ -155,93 +137,37 @@ function onFiltred(event) {
     onRenderBestsellers();
     return;
   }
-  onLoader();
-  console.log(cateroryName);
 
-  const getDataLS = LocalStorageManager.getData(LS_KEY);
-  creatMarkup(getDataLS, cateroryName);
+  // const getDataLS = LocalStorageManager.getData(LS_KEY);
+const booksByCategory = await serviceBookAPI('category', {
+  category: cateroryName,
+});
+
+  creatMarkup(booksByCategory, cateroryName);
 }
 
-function dataMarkup(booksData, dataAttr) {
-  if (booksData.length === 0) {
-    console.log('Немає інфо');
-
-    const dataMarkup = `
-    <img src="../images/empty-page.png" alt="Empty list image">
-    `;
-    ulBooksList.innerHTML = '';
-    listEmpty.innerHTML = dataMarkup;
-    return;
-  }
-
-  const dataMarkup = booksData
-    .map(bookData => {
-      return `
-      <li class='js-click-book'>
-        <a class="books-list-link">
-        <div class="thumb">
-          <img class="books-list-img" data-id="${bookData._id}" src="${bookData.book_image}" alt="${bookData.title}">
-          <div class="actions-card">
-        <p class="discription">quick view</p>
-          </div>
-
-          </div>
-          <div class="content">
-            <h3 class="books-list-name">${bookData.title}</h3>
-            <p class="books-list-text">${bookData.author}</p>
-          </div>
-        </a>
-      </li>`;
-    })
-    .join('');
-
-  document.querySelector(`[data-filter="${dataAttr}"]`).innerHTML = dataMarkup;
-  console.log(
-    "document.querySelector('.category-top-books",
-    document.querySelector(`[data-filter="${dataAttr}"]`)
-  );
-}
-
-function creatMarkup(booksData, dataAttr) {
-  const categorBooks = booksData.filter(elem => elem.list_name === dataAttr);
-  const { books } = categorBooks[0];
-  const booksLiChildren = document.querySelector(`[data-filter="${dataAttr}"]`)
-    .children.length;
-
-  let start = 0;
-  let counterEl = 0;
-
-  if (booksLiChildren + limit >= books.length) {
-    start = booksLiChildren;
-    counterEl = books.length - booksLiChildren;
-
-    document.querySelector(`button[data-filter="${dataAttr}"]`).style.display =
+function creatMarkup(books, dataAttr) {
+      document.querySelector(`button[data-filter="${dataAttr}"]`).style.display =
       'none';
     Notify.info(`We're sorry, but you've reached the end of ${dataAttr}.`);
-  }
-
-  if (booksLiChildren + limit < books.length) {
-    start = booksLiChildren;
-    counterEl = limit;
-  }
-
+  
   let stringBooksMarkup = '';
-  for (let i = 0; i < counterEl; i += 1) {
+  for (let i = 0; i < books.length; i += 1) {
     stringBooksMarkup += `<li class="gallery-book-item js-click-book" data-bookid="${
-      books[start + i]._id
+      books[i]._id
     }">
-        <a class="books-list-link">
+        <a class="gallery-book-link">
         <div class="thumb">
-          <img class="books-list-img" data-id="${books[start + i]._id}" src="${
-      books[start + i].book_image
-    }" alt="${books[start + i].title}">
+          <img class="gallery-book-img" data-id="${books[i]._id}" src="${
+      books[i].book_image
+    }" alt="${books[i].title}">
           <div class="actions-card">
-        <p class="discription">quick view</p>
+        <p class="action-text">quick view</p>
           </div>
           </div>
           <div class="content">
-            <h3 class="books-list-name">${books[start + i].title}</h3>
-            <p class="books-list-text">${books[start + i].author}</p>
+            <h3 class="gallery-book-name">${books[i].title}</h3>
+            <h4 class="gallery-book-text">${books[i].author}</h4>
           </div>
         </a>
       </li>`;
@@ -249,8 +175,7 @@ function creatMarkup(booksData, dataAttr) {
 
   document
     .querySelector(`[data-filter="${dataAttr}"]`)
-    .insertAdjacentHTML('beforeend', stringBooksMarkup);
-  console.log(stringBooksMarkup);
+    .innerHTML =  stringBooksMarkup;
 }
 
 function fetchBooks(cateroryName) {
@@ -264,11 +189,3 @@ function fetchBooks(cateroryName) {
   });
 }
 
-// document.querySelector('.books-list-top').addEventListener('click', onClickBook)
-// function onClickBook(e) {
-//   e.preventDefault();
-//     if (!e.target.closest('.js-click-book')) {
-//         return
-//     }
-//   openModal(e)
-// }
