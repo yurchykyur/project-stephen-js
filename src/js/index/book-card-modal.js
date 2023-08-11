@@ -45,7 +45,7 @@ async function createMarkup(bookId) {
   const books = await getBookInfo(bookId);
   const description =
     books.description.trim() !== '' ? books.description : 'No description';
-  console.log(description);
+  // console.log(description);
   const shopName = books.shops
     .filter((_, index) => [0, 1, 4].includes(index))
     .map(({ name, url }) => {
@@ -78,7 +78,7 @@ async function createMarkup(bookId) {
     </div>`,
     {
       onShow: () => {
-        console.log('idBook', idBook);
+        // console.log('idBook', idBook);
 
         document.addEventListener('keydown', evt => closeModal(evt, instance));
         bodyEl.style.overflow = 'hidden';
