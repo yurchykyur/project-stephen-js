@@ -47,7 +47,7 @@ export default function renderingByCategory(e) {
   }
 
   if (e.target.innerHTML.trim() === 'All categories') {
-    location.replace('/');
+    location.replace('/project-stephen-js/');
     window.scrollTo(0, 0);
     return;
   }
