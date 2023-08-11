@@ -46,6 +46,8 @@
   letter-spacing: -0.04em;
 
   color: var(--white);
+
+  transition: color var(--transition);
 }
 
 .support-funds-list {
@@ -73,23 +75,27 @@
 }
 
 .support-img {
+  height: 32px;
+
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
-  height: 32px;
   object-fit: contain;
+
   transition: filter var(--transition);
 }
 
 .support-img {
-  transition: scale var(--transition);
+  transition: filter var(--transition);
 }
 
-.support-img:hover {
-  scale: 1.05;
-}
-.support-fund:hover .support-img {
+.support-item-link:hover .support-img {
   filter: brightness(0) invert(0);
 }
+
+.support-fund:hover .support-index {
+  color: var(--black);
+}
+
 .support-button,
 .support-button-up {
   position: relative;
