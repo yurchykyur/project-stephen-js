@@ -45,7 +45,8 @@ function onDelete(eve) {
     localStorage.setItem(shRefs.SHOPPING_LIST_LS, JSON.stringify(newBookArr));
 
     if (!newBookArr.length) {
-      renderCards(newBookArr);
+      createPagination(newBookArr, 1, false, true);
+      //renderCards(newBookArr);
       return;
     }
     createPagination(newBookArr, 1, false, true);
