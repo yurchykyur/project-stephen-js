@@ -36,6 +36,8 @@ export default function createPagination(
   isDeleted = false
 ) {
   if (data === 'undefined' || data.length === 0) {
+    DATA = [];
+    renderCards();
     return;
   }
 
