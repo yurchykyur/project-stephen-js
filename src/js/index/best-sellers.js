@@ -1,4 +1,4 @@
-import { fetchTopBooks } from './fetchTopBooks';
+import { fetchTopBooks } from '../best-sellers/fetchTopBooks';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import LocalStorageManager from '../service-local-storage/local-storage-manager.js';
 import serviceBookAPI from '../book-api/service-book-api';
