@@ -45,7 +45,7 @@
 }
 
 .nav-category-item:is(:hover, :focus) {
-  color: var(--violet);
+  color: var(--categories-text-color-active);
 }
 
 .nav-category-item:first-child {
@@ -60,7 +60,7 @@
   font-weight: 700;
   text-transform: uppercase;
 
-  color: #4f2ee8;
+  color: var(--categories-text-color-active);
 }
 
 @media screen and (min-width: 768px) {
