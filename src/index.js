@@ -1,6 +1,6 @@
-import './js/index/loader';
-import './js/index/gotop';
-import './js/index/modal';
+// import './js/index/loader';
+import './js/components/gotop';
+import './js/components/modal';
 import './js/header/burger-menu';
 import './js/first-render/first-render-home';
 import './js/header/anti-flicker.js';
