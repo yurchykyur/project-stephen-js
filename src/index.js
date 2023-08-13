@@ -1,11 +1,10 @@
-import './js/index/loader';
-import './js/index/gotop';
-import './js/index/modal';
-import './js/burger-menu/burger-menu';
+import './js/components/gotop';
+import './js/components/modal';
+import './js/header/burger-menu';
 import './js/first-render/first-render-home';
 import './js/header/anti-flicker.js';
 import './js/header/header.js';
-import './js/best-sellers/best-sellers';
+import './js/index/best-sellers';
 import './js/best-sellers/fetchTopBooks';
 import './js/index/categories';
 import './js/banner/support-ukraine';

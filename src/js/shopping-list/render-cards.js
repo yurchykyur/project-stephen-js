@@ -1,5 +1,5 @@
 import sprite from '/src/images/icons.svg';
-import createPagination from '../pagination/pagination';
+import createPagination from './pagination';
 
 const shRefs = {
   list: document.querySelector('.shopping-list-list'),

@@ -2,7 +2,6 @@ import getRefs from './refs';
 import { createBookCard } from './render-book';
 import { fetchingByCategory } from '../book-api/service-book-api.js';
 import LocalStorageManager from '../service-local-storage/local-storage-manager';
-import { onRenderBestsellers } from '../best-sellers/best-sellers';
 const LS_KEY = 'top books';
 
 const { galleryRef, categoriesRef } = getRefs();
