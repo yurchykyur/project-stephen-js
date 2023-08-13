@@ -1,4 +1,3 @@
-// import './js/index/loader';
 import './js/components/gotop';
 import './js/components/modal';
 import './js/header/burger-menu';

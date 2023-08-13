@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Loader from '../index/loader';
+import Loader from '../components/loader';
 const loader = new Loader('.loader')
 export default async function serviceBookAPI(endpoint, params = {}) {
   const BASE_URL = 'https://books-backend.p.goit.global/books/';
