@@ -1,11 +1,13 @@
-import sprite from '/src/images/icons.svg';
 import renderCards from '/src/js/shopping-list/render-cards';
+import createMarkupPagination from './create-markup-pagination'
 
 let DATA = [];
 
 let CARD_PER_PAGE = 0;
 
-const scrollController = {
+let TOTAL_PAGES = 0;
+
+const screenInputControllers = {
   a: true,
   b: true,
 };
@@ -16,17 +18,10 @@ const refs = {
 
 refs.paginationContainer.addEventListener('click', onClickPagination);
 
-let arrayNumbersOfPages = [];
-
 let maxVisiblePages = 0;
-// window.innerWidth >= 768 ? 3 : 2
 
 function numbersOfPages(data) {
-  arrayNumbersOfPages = [];
-
-  for (let i = 0; i < Math.ceil(data.length / CARD_PER_PAGE); i += 1) {
-    arrayNumbersOfPages.push(i + 1);
-  }
+  TOTAL_PAGES = Math.ceil(data.length / CARD_PER_PAGE)
 }
 
 export default function createPagination(
@@ -44,11 +39,11 @@ export default function createPagination(
   if (isFirstRender) {
     DATA = [...data];
 
-    onScrollController(window.innerWidth);
+    onScreenController(window.innerWidth)
     numbersOfPages(DATA);
     renderCards(prepareDataForBooks(1));
   }
-
+ 
   if (isDeleted) {
     onDeletedItem(data);
 
@@ -61,7 +56,7 @@ export default function createPagination(
 
   let isThreePoint = true;
 
-  if (initialPage + maxVisiblePages - 1 >= arrayNumbersOfPages.length) {
+  if (initialPage + maxVisiblePages - 1 >= TOTAL_PAGES) {
     isThreePoint = false;
   }
 
@@ -131,6 +126,7 @@ function moveToBackward() {
   if (activePage === 1) {
     return;
   }
+
   const startPagePagination = Number(
     document.querySelector('.js-pagination-pages').dataset.pagination
   );
@@ -155,7 +151,7 @@ function moveToBackward() {
 function moveToForward() {
   const activePage = findActivePage();
 
-  if (activePage === arrayNumbersOfPages.length) {
+  if (activePage === TOTAL_PAGES) {
     return;
   }
 
@@ -172,12 +168,12 @@ function moveToForward() {
 }
 
 function moveToEnd() {
-  createPagination(DATA, arrayNumbersOfPages.length);
+  createPagination(DATA, TOTAL_PAGES);
 
   const activePage = findActivePage();
   deleteClassActivePage(activePage);
-  addActivePage(arrayNumbersOfPages.length);
-  renderCards(prepareDataForBooks(arrayNumbersOfPages.length));
+  addActivePage(TOTAL_PAGES);
+  renderCards(prepareDataForBooks(TOTAL_PAGES));
 }
 
 function moveToPage(page) {
@@ -230,7 +226,7 @@ function onDeletedItem(data) {
   numbersOfPages(DATA);
   let activePage = 1;
 
-  if (arrayNumbersOfPages.length > 1) {
+  if (TOTAL_PAGES > 1) {
     activePage = findActivePage();
   }
 
@@ -242,15 +238,15 @@ function onDeletedItem(data) {
     return;
   }
 
-  if (activePage > arrayNumbersOfPages.length) {
-    createPagination(DATA, arrayNumbersOfPages.length);
-    addActivePage(arrayNumbersOfPages.length);
-    renderCards(prepareDataForBooks(arrayNumbersOfPages.length));
+  if (activePage > TOTAL_PAGES) {
+    createPagination(DATA, TOTAL_PAGES);
+    addActivePage(TOTAL_PAGES);
+    renderCards(prepareDataForBooks(TOTAL_PAGES));
 
     return;
   }
 
-  if (activePage < arrayNumbersOfPages.length && activePage === 1) {
+  if (activePage < TOTAL_PAGES && activePage === 1) {
     createPagination(DATA, 1);
     addActivePage(1);
     renderCards(prepareDataForBooks(1));
@@ -299,87 +295,57 @@ function createMarcupPagination(
   } else {
     murkupPages = createMarcupPagesPagination(initialPage, maxVisiblePages);
   }
-
-  return `<div class="left-arrows-wrapper">
-        <button class="js-pagination-button start" type="button" data-pagination="start">
-          <svg class="pagination-icon-start" width="24" height="24">
-            <use href="${sprite}#icon-arrow-ff"></use>
-          </svg>
-        </button>
-        <button class="js-pagination-button backward" type="button" data-pagination="backward">
-          <svg class="pagination-icon-backward" width="24" height="24">
-            <use href="${sprite}#icon-arrow"></use>
-          </svg>
-        </button>
-      </div>
-
-      <ul class="js-pagination">
-        ${murkupPages}
-      </ul>
-
-      <div class="right-arrows-wrapper">
-        <button class="js-pagination-button forward" type="button" data-pagination="forward">
-          <svg class="pagination-icon-forward" width="24" height="24">
-            <use href="${sprite}#icon-arrow"></use>
-          </svg>
-        </button>
-        <button class="js-pagination-button end" type="button" data-pagination="end">
-          <svg class="pagination-icon-end" width="24" height="24">
-            <use href="${sprite}#icon-arrow-ff"></use>
-          </svg>
-        </button>
-      </div>`;
+  return createMarkupPagination(murkupPages);
 }
 
 function createMarcupPagesPagination(initialPage = 1, maxVisiblePages = 2) {
   let markupString = '';
   let newInitialPage = initialPage;
-  const pages = arrayNumbersOfPages.length;
 
-  if (initialPage + maxVisiblePages - 1 >= pages) {
-    newInitialPage = pages - maxVisiblePages + 1;
+  if (initialPage + maxVisiblePages - 1 >= TOTAL_PAGES) {
+    newInitialPage = TOTAL_PAGES - maxVisiblePages + 1;
   }
 
-  if (maxVisiblePages > pages) {
+  if (maxVisiblePages > TOTAL_PAGES) {
     newInitialPage = 1;
   }
 
   for (let i = newInitialPage; i < initialPage + maxVisiblePages; i += 1) {
-    if (i > pages) {
-      console.log('break');
-      break;
-    }
+    if (i <= TOTAL_PAGES) {
     markupString += `<li class="js-pagination-pages" data-pagination="${i}">${i}</li>`;
+    }
+
   }
 
   return markupString;
 }
 
-function onScrollController(width) {
+function onScreenController(width) {
   let needRender = false;
 
-  if (width < 768 && scrollController.a) {
+  if (width < 768 && screenInputControllers.a) {
     CARD_PER_PAGE = 4;
-
     maxVisiblePages = 2;
-    scrollController.a = false;
-    scrollController.b = true;
+    screenInputControllers.a = false;
+    screenInputControllers.b = true;
     needRender = true;
   }
 
-  if (width > 768 && scrollController.b) {
+  if (width > 768 && screenInputControllers.b) {
     CARD_PER_PAGE = 3;
     maxVisiblePages = 3;
-    scrollController.a = true;
-    scrollController.b = false;
+    screenInputControllers.a = true;
+    screenInputControllers.b = false;
     needRender = true;
   }
   return needRender;
 }
 
-window.addEventListener('resize', () => {
-  const needRender = onScrollController(window.innerWidth);
+window.addEventListener('resize', handlerScreenWidth);
+
+function handlerScreenWidth() {
+  const needRender = onScreenController(window.innerWidth);
   if (needRender) {
     createPagination(DATA, 1, false, true);
   }
-});
+}
