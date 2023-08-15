@@ -1,4 +1,4 @@
-export function createBookCard(book) {
+export default function createBookCard(book) {
   return `<li class="gallery-book-item js-click-book" data-bookid="${book._id}">
   <a class="gallery-book-link">
     <div class="thumb">

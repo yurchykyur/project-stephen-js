@@ -1,6 +1,5 @@
 import serviceBookAPI from '../book-api/service-book-api';
 import throttle from 'lodash.throttle';
-import { renderingHomePage } from '..//index/createHomeBooks';
 import { openModal } from '..//index/book-card-modal';
 
 function firstRenderHome() {
