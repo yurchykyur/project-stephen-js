@@ -12,16 +12,16 @@ const divBooksList = document.querySelector('.books-list-wrapper');
 let limit = 1;
 let DATA = [];
 
-const title = document.querySelector('title');
-if (title.text == 'Bookshelf') {
-  onRenderBestsellers();
-}
+// const title = document.querySelector('title');
+// if (title.text == 'Bookshelf') {
+//   onRenderBestsellers();
+// }
 
-export function onRenderBestsellers() {
-
-  fetchTopBooks()
-    .then(data => dataBestsellers(data, true))
-    .catch();
+export default function onRenderBestsellers(data) {
+dataBestsellers(data, true)
+  // fetchTopBooks()
+  //   .then(data => dataBestsellers(data, true))
+  //   .catch();
 }
 
 const screenController = {
