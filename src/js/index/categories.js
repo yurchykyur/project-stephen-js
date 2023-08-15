@@ -4,19 +4,19 @@ import renderingByCategory from './render-category';
 
 const category_list = document.querySelector('.nav-categories-list');
 
-async function getCategoryList() {
+// async function getCategoryList() {
+//   try {
+//     const { data } = await axios.get('https://books-backend.p.goit.global/books/category-list');
+//     return data;
+//   } catch (error) {
+//     console.log('Помилка при отриманні списку категорій:', error);
+//     return [];
+//   }
+// }
+export default function renderCategories(categories) {
   try {
-    const { data } = await axios.get('https://books-backend.p.goit.global/books/category-list');
-    return data;
-  } catch (error) {
-    console.log('Помилка при отриманні списку категорій:', error);
-    return [];
-  }
-}
-const renderCategories = async () => {
-  try {
-    const categories = await getCategoryList();
-    category_list.innerHTML = await markupCategoriesList(categories);
+    // const categories = await getCategoryList();
+    category_list.innerHTML =  markupCategoriesList(categories);
     addCategoryClickListeners();
   } catch (error) {
     console.log('Помилка при рендерингу категорій:', error);
@@ -49,6 +49,6 @@ function markupCategoriesList(categories) {
           .join('')}`;
 }
 
-renderCategories();
+// renderCategories();
 
 
