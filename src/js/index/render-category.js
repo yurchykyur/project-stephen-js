@@ -1,5 +1,5 @@
 import getRefs from './refs';
-import { createBookCard } from './render-book';
+import createBookCard from './render-book';
 import { fetchingByCategory } from '../book-api/service-book-api.js';
 import LocalStorageManager from '../service-local-storage/local-storage-manager';
 const LS_KEY = 'top books';

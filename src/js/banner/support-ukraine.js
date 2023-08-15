@@ -1,7 +1,5 @@
 import { supportFunds } from './support-list.js';
-
 import Swiper from 'swiper';
-// Функція для генерації HTML-коду для кожного спонсора
 function generateSupportMarkup(supportFunds) {
   const isRetina = window.devicePixelRatio > 1.1;
 
@@ -22,13 +20,10 @@ function generateSupportMarkup(supportFunds) {
 
   return markup;
 }
-
 const container = document.querySelector('.support-funds-list');
 container.insertAdjacentHTML('beforeend', generateSupportMarkup(supportFunds));
-
 const supportButton = document.querySelector('.support-button');
 const supportButtonUp = document.querySelector('.support-button-up');
-// const supportFound = document.querySelector('.support-funds-visible');
 const swiper = new Swiper('.my-swiper', {
   direction: 'vertical',
   spaceBetween: 0,
@@ -43,9 +38,7 @@ const swiper = new Swiper('.my-swiper', {
     scrollContainer: true,
   },
 });
-// Активний елемент для контролю показу/приховування кнопок
 let activeSwiperEl = 5;
-// Обробники подій для кнопок прокрутки
 supportButton.addEventListener('click', () => {
   swiper.slideNext();
 
@@ -65,7 +58,6 @@ supportButtonUp.addEventListener('click', () => {
   }
 });
 
-// Спостерігачі за видимістю елементів для показу/приховування кнопоk
 const supportFundsList = document.querySelector('.support-funds-list');
 const intersectionObserver = new IntersectionObserver(function (entries) {
   if (entries[0].intersectionRatio <= 0) return;
@@ -80,6 +72,5 @@ const intersectionObserver1 = new IntersectionObserver(function (entries) {
   supportButtonUp.style.display = 'none';
   supportButton.style.display = 'block';
 });
-// Спостерігачі за останнім та першим елементами списку спонсорів
 intersectionObserver.observe(supportFundsList.lastElementChild);
 intersectionObserver1.observe(supportFundsList.firstElementChild);
