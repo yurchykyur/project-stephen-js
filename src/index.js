@@ -9,6 +9,7 @@ import './js/banner/support-ukraine';
 import serviceBookAPI from './js/book-api/service-book-api';
 import renderCategories from './js/index/categories';
 import onRenderBestsellers from './js/index/best-sellers'
+import {openModal} from './js/index/book-card-modal'
 
 const topBooksPromise = serviceBookAPI('topBooks').catch(error => {
   console.error('Error fetching topBooks:', error);
@@ -41,7 +42,6 @@ document
   .addEventListener('click', onClickBook);
 function onClickBook(e) {
   e.preventDefault();
-  console.log('onClickBook');
   if (!e.target.closest('.js-click-book')) {
     return;
   }
