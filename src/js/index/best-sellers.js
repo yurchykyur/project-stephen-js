@@ -1,4 +1,3 @@
-import { fetchTopBooks } from '../best-sellers/fetchTopBooks';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import LocalStorageManager from '../service-local-storage/local-storage-manager.js';
 import serviceBookAPI from '../book-api/service-book-api';
@@ -12,16 +11,8 @@ const divBooksList = document.querySelector('.books-list-wrapper');
 let limit = 1;
 let DATA = [];
 
-// const title = document.querySelector('title');
-// if (title.text == 'Bookshelf') {
-//   onRenderBestsellers();
-// }
-
 export default function onRenderBestsellers(data) {
 dataBestsellers(data, true)
-  // fetchTopBooks()
-  //   .then(data => dataBestsellers(data, true))
-  //   .catch();
 }
 
 const screenController = {
@@ -100,11 +91,9 @@ function dataBestsellers(data, isFirstRender = false) {
       }
 
       let element3 = '';
-      // if (limit < elem.books.length) {
         element3 = `<div class="top-btn-wrapper">
         <button data-filter="${elem.list_name}" class="list-name best-sellers-btn">see more</button>
         </div>`;
-      // }
 
       const element4 = '</ul>';
       const element5 = '</li>';
@@ -138,7 +127,6 @@ async function onFiltred(event) {
     return;
   }
 
-  // const getDataLS = LocalStorageManager.getData(LS_KEY);
 const booksByCategory = await serviceBookAPI('category', {
   category: cateroryName,
 });

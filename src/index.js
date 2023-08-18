@@ -3,7 +3,6 @@ import './js/components/modal';
 import './js/header/burger-menu';
 import './js/header/anti-flicker.js';
 import './js/header/header.js';
-import './js/best-sellers/fetchTopBooks';
 import './js/banner/support-ukraine';
 
 import serviceBookAPI from './js/book-api/service-book-api';
